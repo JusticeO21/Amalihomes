@@ -6,7 +6,7 @@
         "./*": "./src/*.tsx"
     },
     "scripts": {
-        "test":"jest",
+        "test":"jest --passWithNoTests",
         "dev": "tailwindcss -i ./src/style/input.css -o ./src/style/output.css --watch",
         "lint": "eslint . --max-warnings 0",
         "generate:component": "turbo gen react-component",
