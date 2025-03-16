@@ -20,7 +20,7 @@ pipeline {
         stage('Testing pipeline') {
             steps {
                 script {
-                    echo 'Testing pipeline'
+                    echo 'Testing pipeline<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>'
                 }
             }
         }
