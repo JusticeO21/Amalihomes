@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     echo 'Testing pipeline'
-                    echo 'Testing Status Checking...>><<<<<<<<????<<<<<'
+                    echo '<<<>>>>>>><<<<?????Testing Status Checking...>><<<<<<<<????<<<<<'
                 }
             }
         }
