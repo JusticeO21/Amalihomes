@@ -27,6 +27,7 @@ pnpm lint
 ```
 
 This script:
+
 1. Executes the branch validation script from the scripts directory
 2. Runs the project's linting command using pnpm
 
@@ -71,6 +72,7 @@ chmod +x ./scripts/commit-message-validation.sh
 ```
 
 This script:
+
 1. Displays debug information about its execution environment
 2. Navigates to the project root
 3. Verifies that the validation script exists
@@ -95,11 +97,13 @@ Commit messages must follow this format:
 ```
 
 Where:
+
 - **Type**: Indicates the kind of change (required)
 - **Scope**: Indicates which part of the codebase is affected (optional)
 - **Description**: A short description of the change (required)
 
 #### Allowed Types:
+
 - `chore`: Changes to the build process or auxiliary tools
 - `feat`: A new feature
 - `fix`: A bug fix
@@ -112,6 +116,7 @@ Where:
 - `build`: Changes that affect the build system or external dependencies
 
 #### Examples:
+
 - `feat(auth): add login functionality`
 - `fix: resolve issue with navbar responsive design`
 - `docs(api): update API documentation`
@@ -123,21 +128,25 @@ The project enforces specific naming conventions for branches to maintain clarit
 ### Allowed Branch Patterns:
 
 1. **Feature Branches**:
+
    - Pattern: `feature/{issue-number}-{description}`
    - Example: `feature/123-add-login`
    - Purpose: For developing new features
 
 2. **Bugfix Branches**:
+
    - Pattern: `bugfix/{issue-number}-{description}`
    - Example: `bugfix/456-fix-navbar`
    - Purpose: For fixing non-critical bugs
 
 3. **Hotfix Branches**:
+
    - Pattern: `hotfix/{issue-number}-{description}`
    - Example: `hotfix/789-critical-fix`
    - Purpose: For urgent fixes to production code
 
 4. **Release Branches**:
+
    - Pattern: `release/{version}`
    - Example: `release/1.0.0`
    - Purpose: For preparing releases
@@ -148,6 +157,7 @@ The project enforces specific naming conventions for branches to maintain clarit
    - Purpose: For configuration and setup tasks
 
 These conventions help in:
+
 - Tracking which issue a branch is related to
 - Understanding the purpose of a branch at a glance
 - Automating processes based on branch types
@@ -156,11 +166,13 @@ These conventions help in:
 The validation is enforced by the pre-commit hook, which prevents commits to improperly named branches.
 
 The validation pattern used is:
+
 ```
 ^(feature|bugfix|hotfix)/[0-9]+-[a-z0-9_-]+$|^(release|setup)/[a-z0-9._-]+$
 ```
 
 This pattern ensures:
+
 - Feature, bugfix, and hotfix branches include an issue number and description
 - Release branches include a version number
 - Setup branches include a description

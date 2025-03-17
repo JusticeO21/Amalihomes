@@ -1,6 +1,6 @@
 # 📖 Storybook - Amali Homes
 
-This is the **Storybook app** for the Amali Homes monorepo. It showcases and documents reusable UI components from the shared `@repo/ui` package.
+This is the **Storybook app** for the Amali Homes monorepo. It showcases and documents reusable UI components from the shared `@amalihomes/ui` package.
 
 ---
 

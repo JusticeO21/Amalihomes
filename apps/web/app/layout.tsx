@@ -4,28 +4,26 @@ import "./globals.css";
 import { QueryProvider } from "../providers/query-provider";
 
 const lato = Lato({
-    weight: ["400", "700"],
-    subsets: ["latin"],
-    variable: "--font-lato",
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-lato",
 });
 
 export const metadata: Metadata = {
-    title: "Amalizon",
-    description: "Amalizon",
+  title: "Amalizon",
+  description: "Amalizon",
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-            <body className={`${lato.variable}`}>
-                <QueryProvider>
-                    {children}
-                </QueryProvider>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body className={`${lato.variable}`}>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
+    </html>
+  );
 }

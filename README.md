@@ -1,15 +1,20 @@
 # amaliHomes
-A multinational multilanguage home decor company, AmaliHomes seeks to boost their online presence with their website and e-commerce platforms. 
+
+A multinational multilanguage home decor company, AmaliHomes seeks to boost their online presence with their website and e-commerce platforms.
+
 # amaliHomes
+
 Welcome to the **Amali Homes** - a multinational multilanguage home decor company, .using **Turborepo**, **pnpm workspaces** and **NextJS (Composition API)**
 
 This monorepo architecture enables a scalable, modular setup with shared UI components, utilities, and consistent TypeScript configurations across multiple apps.
 
 ---
+
 ## 📁 Folder Structure
+
 amali-homes/
 ├── apps/
-  └── storybook/ # storybook application
+└── storybook/ # storybook application
 │ └── web/ # NextJS application
 ├── packages/
 │ ├── ui/ # Shared UI components (buttons, forms, layouts, etc.)
@@ -45,7 +50,7 @@ Before you start, ensure the following tools are installed on your machine:
 
 ### 2 Install dependencies
 
-```bash	
+```bash
 pnpm install
 
 ```
@@ -72,14 +77,13 @@ pnpm dev --filter apps/storybook
 
 ## 🛠 Useful Commands
 
-| Command                          | Description                                     |
-|----------------------------------|-------------------------------------------------|
-| `pnpm install`                   | Install all workspace dependencies              |
-| `pnpm dev --filter apps/web`     | Start the frontend app in development mode      |
-| `pnpm build`                     | Build all apps and packages                     |
-| `pnpm lint`                      | Run linter across workspace                     |
-| `pnpm test`                      | Run tests                       |
-
+| Command                      | Description                                |
+| ---------------------------- | ------------------------------------------ |
+| `pnpm install`               | Install all workspace dependencies         |
+| `pnpm dev --filter apps/web` | Start the frontend app in development mode |
+| `pnpm build`                 | Build all apps and packages                |
+| `pnpm lint`                  | Run linter across workspace                |
+| `pnpm test`                  | Run tests                                  |
 
 ---
 
@@ -88,3 +92,6 @@ pnpm dev --filter apps/storybook
 - [Web App README](./apps/web/README.md)
 - [Storybook README](./apps/storybook/README.md)
 - [Husky README](./husky-documentation.md)
+- [Contentful README](/apps/web/lib/contentful/contentful-readme.md)
+- [Supabase README](apps/web/supabase/supabase-readme.md)
+- [Zustand Store README](apps/web/stores/README.md)
