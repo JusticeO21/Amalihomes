@@ -1,5 +1,5 @@
 {
-    "name": "amalizon_frontend",
+    "name": "amalihomes",
     "private": true,
     "scripts": {
         "build": "turbo run build",
