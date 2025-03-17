@@ -39,4 +39,3 @@ export const useCounterStore = create<CounterStore>()(
     ),
   ),
 );
-

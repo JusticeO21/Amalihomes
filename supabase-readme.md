@@ -5,6 +5,7 @@ This document outlines the Supabase integration setup and usage in our project.
 ## Overview
 
 We use Supabase as our backend-as-a-service (BaaS) solution, providing:
+
 - Database hosting
 - Authentication
 - Real-time subscriptions
@@ -20,6 +21,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 ```
 
 ### Variable Descriptions:
+
 - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your project's anonymous key for public API access
 
@@ -28,6 +30,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 Our Supabase database includes the following tables:
 
 ### Profiles Table
+
 ```typescript
 {
   id: string;
@@ -39,6 +42,7 @@ Our Supabase database includes the following tables:
 ```
 
 ### Properties Table
+
 ```typescript
 {
   id: string;
@@ -52,6 +56,7 @@ Our Supabase database includes the following tables:
 ```
 
 ### Todo Table
+
 ```typescript
 {
   created_at: string;
@@ -65,6 +70,7 @@ Our Supabase database includes the following tables:
 ### Enums
 
 Property Status:
+
 - available
 - rented
 - sold
@@ -73,6 +79,7 @@ Property Status:
 ### Composite Types
 
 Address:
+
 ```typescript
 {
   street: string;
@@ -93,17 +100,18 @@ The project includes automatically generated TypeScript types for the database s
 - Generic helper types for table operations
 
 Example usage:
+
 ```typescript
-import type { TableRow, TableInsert, TableUpdate } from './database.types';
+import type { TableRow, TableInsert, TableUpdate } from "./database.types";
 
 // Type-safe row access
-type Profile = TableRow<'profiles'>;
+type Profile = TableRow<"profiles">;
 
 // Type-safe insert
-type NewProperty = TableInsert<'properties'>;
+type NewProperty = TableInsert<"properties">;
 
 // Type-safe update
-type PropertyUpdate = TableUpdate<'properties'>;
+type PropertyUpdate = TableUpdate<"properties">;
 ```
 
 ## Setup Instructions
@@ -113,12 +121,13 @@ type PropertyUpdate = TableUpdate<'properties'>;
 3. Navigate to Project Settings > API to find your project URL and anon key
 4. Add the environment variables to your `.env.local` file
 5. Initialize the Supabase client in your application:
+
    ```typescript
    import { createBrowserClient } from "@supabase/ssr";
-   
+
    const supabase = createBrowserClient(
      process.env.NEXT_PUBLIC_SUPABASE_URL,
-     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
    );
    ```
 
@@ -133,6 +142,7 @@ type PropertyUpdate = TableUpdate<'properties'>;
 ## Database Migrations
 
 To make changes to the database schema:
+
 1. Use the Supabase Dashboard or SQL editor
 2. Update the TypeScript types to reflect schema changes
 3. Test the changes in a development environment before deploying
@@ -140,8 +150,8 @@ To make changes to the database schema:
 ## Support
 
 For more information about Supabase features and API:
+
 - [Supabase Documentation](https://supabase.com/docs)
 - [Supabase JavaScript Client](https://supabase.com/docs/reference/javascript)
 - [Supabase Dashboard](https://app.supabase.com)
 - [Row Level Security](https://supabase.com/docs/guides/auth/row-level-security)
-

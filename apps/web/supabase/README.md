@@ -5,6 +5,7 @@ This document outlines the Supabase integration setup and usage in the Amali Hom
 ## Overview
 
 We use Supabase as our backend-as-a-service (BaaS) solution for:
+
 - Database storage
 - Authentication
 - Real-time capabilities
@@ -28,18 +29,15 @@ The Supabase client is initialized in `supabase.ts`:
 ```typescript
 import { createBrowserClient } from "@supabase/ssr";
 
-const supabase = createBrowserClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+const supabase = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 ```
-
 
 ## Type Safety
 
 Type definitions are located in `database.types.ts` and provide:
 
 ### Helper Types
+
 ```typescript
 // Get the row type for a table
 type TableRow<T extends keyof Tables> = Tables[T]["Row"];
@@ -52,16 +50,17 @@ type TableUpdate<T extends keyof Tables> = Tables[T]["Update"];
 ```
 
 ### Usage Example
+
 ```typescript
-import type { TableRow, TableInsert } from './database.types';
+import type { TableRow, TableInsert } from "./database.types";
 
 // Type-safe property operations
-type Property = TableRow<'properties'>;
-type NewProperty = TableInsert<'properties'>;
+type Property = TableRow<"properties">;
+type NewProperty = TableInsert<"properties">;
 
 // Type-safe profile operations
-type Profile = TableRow<'profiles'>;
-type NewProfile = TableInsert<'profiles'>;
+type Profile = TableRow<"profiles">;
+type NewProfile = TableInsert<"profiles">;
 ```
 
 ## Generating TypeScript Types
@@ -69,11 +68,13 @@ type NewProfile = TableInsert<'profiles'>;
 To keep your TypeScript types in sync with your Supabase database schema, follow these steps:
 
 1. Install the Supabase CLI globally:
+
    ```bash
    npm install -g supabase
    ```
 
 2. Login to Supabase CLI:
+
    ```bash
    supabase login
    ```
@@ -84,6 +85,7 @@ To keep your TypeScript types in sync with your Supabase database schema, follow
    ```
 
 Alternatively, you can use the direct database URL method:
+
 ```bash
 supabase gen types typescript --db-url "postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres" > database.types.ts
 ```
@@ -92,7 +94,6 @@ supabase gen types typescript --db-url "postgresql://postgres:[YOUR-PASSWORD]@db
 
 1. **Regular Updates**: Generate types after any database schema changes
 2. **Version Control**: Commit the generated types to your repository
-
 
 ### Troubleshooting Type Generation
 
@@ -106,41 +107,33 @@ If you encounter issues:
 ## Common Operations
 
 ### Querying Data
+
 ```typescript
 // Fetch properties
-const { data: properties, error } = await supabase
-  .from('properties')
-  .select('*');
+const { data: properties, error } = await supabase.from("properties").select("*");
 
 // Fetch profile by ID
-const { data: profile, error } = await supabase
-  .from('profiles')
-  .select('*')
-  .eq('id', userId)
-  .single();
+const { data: profile, error } = await supabase.from("profiles").select("*").eq("id", userId).single();
 ```
 
 ### Inserting Data
+
 ```typescript
 // Insert a new property
-const { data, error } = await supabase
-  .from('properties')
-  .insert({
-    title: 'New Property',
-    description: 'Property description',
-    price: 250000,
-    owner_id: userId,
-    status: 'available'
-  });
+const { data, error } = await supabase.from("properties").insert({
+  title: "New Property",
+  description: "Property description",
+  price: 250000,
+  owner_id: userId,
+  status: "available",
+});
 ```
 
 ### Updating Data
+
 ```typescript
 // Update property status
-const { data, error } = await supabase
-  .from('properties')
-  .update({ status: 'sold' })
-  .eq('id', propertyId);
+const { data, error } = await supabase.from("properties").update({ status: "sold" }).eq("id", propertyId);
 ```
 
 ## Best Practices
@@ -164,4 +157,3 @@ const { data, error } = await supabase
 - [Supabase Dashboard](https://app.supabase.com)
 - [Row Level Security Guide](https://supabase.com/docs/guides/auth/row-level-security)
 - [TypeScript Support](https://supabase.com/docs/reference/typescript-support)
-

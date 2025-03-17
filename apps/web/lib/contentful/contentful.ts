@@ -59,7 +59,7 @@ export function getContentfulClient(preview: boolean = false): ContentfulClientA
  */
 export async function getEntry<T extends EntrySkeletonType>(
   contentType: string,
-  options: Record<string, any> = {},
+  options: Record<string, unknown> = {},
   preview: boolean = false,
 ): Promise<Entry<T>> {
   const client = getContentfulClient(preview);
@@ -85,7 +85,7 @@ export async function getEntry<T extends EntrySkeletonType>(
  */
 export async function getEntries<T extends EntrySkeletonType>(
   contentType: string,
-  options: Record<string, any> = {},
+  options: Record<string, unknown> = {},
   preview: boolean = false,
 ): Promise<EntryCollection<T>> {
   const client = getContentfulClient(preview);

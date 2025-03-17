@@ -110,8 +110,9 @@ apps/web/
 - [TypeScript](https://www.typescriptlang.org/)
 - [pnpm](https://pnpm.io/)
 - [Turborepo](https://turbo.build/repo)
-  
+
 ## Documentations
+
 - [Contentful README](lib/contentful/README.md)
 - [Supabase README](supabase/README.md)
 - [Zustand Store README](stores/README.md)
