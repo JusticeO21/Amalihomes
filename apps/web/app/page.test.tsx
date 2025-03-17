@@ -1,8 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Home from '../app/page'
-
-// Test suite for the Home component
+import Home from './page'
 
 describe('Home Component', () => {
     it('renders a button with the correct text', () => {
@@ -11,3 +9,4 @@ describe('Home Component', () => {
         expect(buttonElement).toBeInTheDocument()
     })
 })
+

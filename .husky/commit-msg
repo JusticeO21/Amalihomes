@@ -1,0 +1,20 @@
+# Debug information
+echo "Current directory: $(pwd)"
+echo "Script location: $0"
+echo "Commit message file: $1"
+
+# Ensure we're in the project root (where .git directory is)
+cd "$(git rev-parse --show-toplevel)"
+
+# Check if validation script exists
+if [ ! -f "./scripts/commit-message-validation.sh" ]; then
+  echo "❌ Error: commit-message-validation.sh script not found!"
+  echo "Expected location: $(pwd)/scripts/commit-message-validation.sh"
+  exit 1
+fi
+
+# Make sure the script is executable
+chmod +x ./scripts/commit-message-validation.sh
+
+# Run the commit message validation script
+./scripts/commit-message-validation.sh "$1"

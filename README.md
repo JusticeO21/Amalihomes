@@ -1,4 +1,4 @@
-# amali-homes_byteforge
+# amaliHomes
 A multinational multilanguage home decor company, AmaliHomes seeks to boost their online presence with their website and e-commerce platforms. 
 # amaliHomes
 Welcome to the **Amali Homes** - a multinational multilanguage home decor company, .using **Turborepo**, **pnpm workspaces** and **NextJS (Composition API)**
