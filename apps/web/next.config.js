@@ -4,4 +4,5 @@ const nextConfig = {
     transpilePackages: ["@amalihomes/ui"],
 };
 
+
 export default nextConfig;

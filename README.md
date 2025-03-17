@@ -1,84 +1,89 @@
-# Turborepo starter
+# amaliHomes
+A multinational multilanguage home decor company, AmaliHomes seeks to boost their online presence with their website and e-commerce platforms. 
+# amaliHomes
+Welcome to the **Amali Homes** - a multinational multilanguage home decor company, .using **Turborepo**, **pnpm workspaces** and **NextJS (Composition API)**
 
-This Turborepo starter is maintained by the Turborepo core team.
+This monorepo architecture enables a scalable, modular setup with shared UI components, utilities, and consistent TypeScript configurations across multiple apps.
 
-## Using this example
+---
+## 📁 Folder Structure
+amali-homes/
+├── apps/
+  └── storybook/ # storybook application
+│ └── web/ # NextJS application
+├── packages/
+│ ├── ui/ # Shared UI components (buttons, forms, layouts, etc.)
+│ ├── utils/ # Reusable utility functions
+│ └── typescript-config/ # Shared TypeScript configuration
+├── turbo.json # Turborepo task pipeline config
+├── pnpm-workspace.yaml # Workspace definitions
+└── tsconfig.base.json # Base TypeScript config
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
-```
+## 🧰 Requirements
 
-## What's inside?
+Before you start, ensure the following tools are installed on your machine:
 
-This Turborepo includes the following packages/apps:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [pnpm](https://pnpm.io/) (v8 or higher)
+- [Git](https://git-scm.com/)
 
-### Apps and Packages
+---
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## 🚀 Getting Started
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### 1 Clone the repository
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
+```bash
+    git clone https://github.com/Amali-Tech/amali-homes-byteforge.git
+    cd amali-homes-byteforg
 
 ```
-cd my-turborepo
-pnpm dev
-```
 
-### Remote Caching
+---
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+### 2 Install dependencies
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+```bash	
+pnpm install
 
 ```
-cd my-turborepo
-npx turbo login
+
+---
+
+### 3 Run the development server
+
+```bash
+pnpm dev --filter apps/web
+
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+---
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### 4 Run Storybook
+
+```bash
+pnpm dev --filter apps/storybook
 
 ```
-npx turbo link
-```
 
-## Useful Links
+---
 
-Learn more about the power of Turborepo:
+## 🛠 Useful Commands
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+| Command                          | Description                                     |
+|----------------------------------|-------------------------------------------------|
+| `pnpm install`                   | Install all workspace dependencies              |
+| `pnpm dev --filter apps/web`     | Start the frontend app in development mode      |
+| `pnpm build`                     | Build all apps and packages                     |
+| `pnpm lint`                      | Run linter across workspace                     |
+| `pnpm test`                      | Run tests                       |
+
+
+---
+
+## 📂 App-specific Docs
+
+- [Web App README](./apps/web/README.md)
+- [Storybook README](./apps/storybook/README.md)
