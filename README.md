@@ -87,3 +87,4 @@ pnpm dev --filter apps/storybook
 
 - [Web App README](./apps/web/README.md)
 - [Storybook README](./apps/storybook/README.md)
+- [Husky README](./husky-documentation.md)
