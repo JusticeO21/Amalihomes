@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
+import { QueryProvider } from "../providers/query-provider";
 
 const lato = Lato({
     weight: ["400", "700"],
@@ -20,7 +21,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${lato.variable}`}>{children}</body>
+            <body className={`${lato.variable}`}>
+                <QueryProvider>
+                    {children}
+                </QueryProvider>
+            </body>
         </html>
     );
 }
