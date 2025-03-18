@@ -27,9 +27,9 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 The Supabase client is initialized in `supabase.ts`:
 
 ```typescript
-import { createBrowserClient } from "@supabase/ssr";
+import { createServerClient } from "@supabase/ssr";
 
-const supabase = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+const supabase = createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 ```
 
 ## Type Safety

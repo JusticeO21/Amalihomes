@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
-import { QueryProvider } from "../providers/query-provider";
+import { QueryProvider } from "../providers/react-query/query-provider";
 
 const lato = Lato({
   weight: ["400", "700"],
