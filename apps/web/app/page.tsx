@@ -13,6 +13,5 @@ export default async function Home() {
   const carts = await getEntries<CartEntry>("cartDetail", {});
   console.log("from contentful", carts);
 
-  
   return <div></div>;
 }
