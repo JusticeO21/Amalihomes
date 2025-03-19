@@ -160,9 +160,9 @@
 @layer utilities;
 @font-face {
   font-family: Lato;
-  src: url("../../asset/font/Lato/Lato-Regular.ttf");
+  src: url("/asset/font/Lato/Lato-Regular.ttf") format('truetype');
 }
 @font-face {
   font-family: Rubik;
-  src: url("../../asset/font/Rubik/Rubik-Regular.ttf");
+  src: url("/asset/font/Rubik/Rubik-Regular.ttf") format('truetype');
 }
