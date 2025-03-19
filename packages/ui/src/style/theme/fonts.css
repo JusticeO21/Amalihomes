@@ -1,0 +1,24 @@
+@font-face {
+  font-family: Lato;
+  src: url("../../asset/font/Lato/Lato-Regular.ttf");
+}
+@font-face {
+  font-family: Rubik;
+  src: url("../../asset/font/Rubik/Rubik-Regular.ttf");
+}
+
+@theme {
+  --font-*: initial;
+  --font-lato: Lato;
+  --font-rubik: Rubik;
+
+  --text-*: initial;
+  --text-h1: 4rem;
+  --text-h2: 3.5rem;
+  --text-h3: 3rem;
+  --text-h4: 2.5rem;
+  --text-h5: 2rem;
+  --text-h6: 1.5rem;
+  --text-body: 1rem;
+  --text-sm: 0.75rem;
+}
