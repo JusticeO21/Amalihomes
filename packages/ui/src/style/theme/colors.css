@@ -1,0 +1,29 @@
+@theme {
+  --color-*: initial;
+  --color-brand-fill: rgba(255, 248, 237, 1);
+  --color-brand-stroke-weak: rgba(254, 221, 170, 1);
+  --color-brand-stroke-strong: rgba(251, 160, 60, 1);
+  --color-brand-text: rgba(234, 105, 12, 1);
+  --color-info-fill: rgba(244, 246, 251, 1);
+  --color-info-stroke-weak: rgba(206, 217, 233, 1);
+  --color-info-stroke-strong: rgba(113, 148, 191, 1);
+  --color-info-text: rgba(60, 93, 141, 1);
+  --color-Amber-fill: rgba(255, 255, 234, 1);
+  --color-Amber-stroke-weak: rgba(255, 248, 133, 1);
+  --color-Amber-stroke-strong: rgba(255, 223, 27, 1);
+  --color-Amber-text: rgba(226, 148, 0, 1);
+  --color-Grey-fill-weaker: rgba(246, 246, 246, 1);
+  --color-Grey-fill: rgba(231, 231, 231, 1);
+  --color-Grey-stroke-weak: rgba(209, 209, 209, 1);
+  --color-Grey-stroke-strong: rgba(176, 176, 176, 1);
+  --color-Grey-text-weak: rgba(93, 93, 93, 1);
+  --color-Grey-text-strong: rgba(38, 38, 38, 1);
+  --color-Red-fill: rgba(254, 242, 242, 1);
+  --color-Red-stroke-weak: rgba(255, 201, 200, 1);
+  --color-Red-stroke-strong: rgba(252, 112, 109, 1);
+  --color-Red-text: rgba(226, 36, 32, 1);
+  --color-Green-fill: rgba(243, 250, 243, 1);
+  --color-Green-stroke-weak: rgba(200, 234, 201, 1);
+  --color-Green-stroke-strong: rgba(106, 190, 109, 1);
+  --color-Green-text: rgba(52, 133, 55, 1);
+}
