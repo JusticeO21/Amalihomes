@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import { QueryProvider } from "../providers/react-query/query-provider";
+import { Lato } from "next/font/google";
 import "./globals.css";
+import { QueryProvider } from "../providers/react-query/query-provider";
+
+const lato = Lato({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-lato",
+});
 
 export const metadata: Metadata = {
   title: "Amalizon",
@@ -14,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-lato`}>
+      <body className={`${lato.variable}`}>
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
