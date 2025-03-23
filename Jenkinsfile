@@ -2,11 +2,46 @@ pipeline {
     agent any
 
     tools {
-        nodejs "nodejs"
+        nodejs "node22"
     }
 
     stages {
-        stage('SonarQube analysis') {
+
+        stage('Install pnpm') {
+            steps {
+                sh 'npm install -g pnpm'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'rm -rf node_modules'
+                sh 'pnpm install'
+            }
+        }
+
+        stage('Linting') {
+            steps {
+                script {
+                    echo 'Running ESLint...'
+                    sh 'pnpm run lint'
+                }
+            }
+        }
+
+        stage('Build Application') {
+            steps {
+                sh 'pnpm run build'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'pnpm test'
+            }
+        }
+
+        stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     script {
@@ -16,41 +51,25 @@ pipeline {
                 }
             }
         }
-
-        stage('Testing pipeline') {
-            steps {
-                script {
-                    echo 'Testing pipeline<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>'
-                }
-            }
-        }
     }
+
 
     post {
         always {
-            echo 'One way or another, I have finished'
+            echo 'Cleaning workspace...'
             cleanWs()
         }
         success {
-            script {
-                withAWS(region: 'eu-west-1', credentials: 'aws-cred') {
-                    echo 'operation successful'
-                }
+            withAWS(region: 'eu-west-1', credentials: 'aws-cred') {
+                echo 'Build and test succeeded!'
             }
-        }
-        unstable {
-            echo 'I am unstable :/'
         }
         failure {
-            script {
-                withAWS(region: 'eu-west-1', credentials: 'aws-cred') {
-                    echo 'operation failed'
-                }
+            withAWS(region: 'eu-west-1', credentials: 'aws-cred') {
+                echo 'Build failed!'
             }
         }
-        changed {
-            echo 'Things were different before...'
-        }
     }
+
 }
 
