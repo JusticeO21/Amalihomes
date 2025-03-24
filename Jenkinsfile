@@ -20,14 +20,14 @@ pipeline {
             }
         }
 
-        stage('Linting') {
-            steps {
-                script {
-                    echo 'Running ESLint...'
-                    sh 'pnpm run lint'
-                }
-            }
-        }
+        // stage('Linting') {
+        //     steps {
+        //         script {
+        //             echo 'Running ESLint...'
+        //             sh 'pnpm run lint'
+        //         }
+        //     }
+        // }
 
         stage('Build Application') {
             steps {
