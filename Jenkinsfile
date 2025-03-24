@@ -31,7 +31,11 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                sh 'pnpm run build'
+                withCredentials([
+                    file(credentialsId: 'byteforge-env', variable: 'byteforge-env')
+                ]) {
+                    sh 'pnpm run build'
+                }
             }
         }
 
