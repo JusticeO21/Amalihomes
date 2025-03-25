@@ -1,11 +1,23 @@
 @theme {
   --text-*: initial;
-  --text-h1: 4rem;
-  --text-h2: 3.5rem;
-  --text-h3: 3rem;
-  --text-h4: 2.5rem;
-  --text-h5: 2rem;
-  --text-h6: 1.5rem;
+  --text-h1-lg: 4rem;
+  --text-h1-md: 3.5rem;  
+  --text-h1-sm: 3rem;
+  --text-h2-lg: 3.5rem;
+  --text-h2-md: 3rem;
+  --text-h2-sm: 2.5rem;
+  --text-h3-lg: 3rem;
+  --text-h3-md: 2.5rem;
+  --text-h3-sm: 2rem;
+  --text-h4-lg: 2.5rem;
+  --text-h4-md: 2.2rem;
+  --text-h4-sm: 1.8rem;
+  --text-h5-lg: 2rem;
+  --text-h5-md: 1.75rem;
+  --text-h5-sm: 1.5rem;
+  --text-h6-lg: 1.5rem;
+  --text-h6-md: 1.3rem;
+  --text-h6-sm: 1.1rem;
   --text-body: 1rem;
   --text-sm: 0.75rem;
 }
