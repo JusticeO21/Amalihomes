@@ -33,8 +33,11 @@ pipeline {
             steps {
                 withCredentials([
                     file(credentialsId: 'byteforge-env', variable: 'ENV_FILE')]) {
-                    sh "cp $ENV_FILE .env"
-                    sh 'pnpm run build'
+                    sh '''
+                        cp $ENV_FILE .env
+                        echo "DEBUG: Copied env file"
+                        pnpm run build
+                    '''
                 }
             }
         }
