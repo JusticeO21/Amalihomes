@@ -46,6 +46,17 @@ pipeline {
 
         stage('Run Tests') {
             steps {
+                withCredentials([
+                    file(credentialsId: 'byteforge-env', variable: 'ENV_FILE'),
+                    file(credentialsId: 'web-env-creds', variable: 'WEB_ENV_FILE')]) {
+                    sh '''
+                        cp $ENV_FILE ./apps/storybook/.env.local
+                        cp $WEB_ENV_FILE ./apps/web/.env
+                        echo "DEBUG: Copied env file"
+                        pnpm run build
+                    '''
+                }
+            } 
                 sh 'pnpm test'
             }
         }
