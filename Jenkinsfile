@@ -50,7 +50,6 @@ pipeline {
                     file(credentialsId: 'byteforge-env', variable: 'ENV_FILE'),
                     file(credentialsId: 'web-env-creds', variable: 'WEB_ENV_FILE')]) {
                     sh '''
-                        set -x # Debug mode
                         chmod -R 750 ./apps/storybook ./apps/web/
                         cp $WEB_ENV_FILE ./apps/web/.env
                         echo "DEBUG: Copied env file"
