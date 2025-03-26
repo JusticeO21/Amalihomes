@@ -50,8 +50,11 @@ pipeline {
                     file(credentialsId: 'byteforge-env', variable: 'ENV_FILE'),
                     file(credentialsId: 'web-env-creds', variable: 'WEB_ENV_FILE')]) {
                     sh '''
-                        cp $ENV_FILE ./apps/storybook/.env.local
+                        set -x # Debug mode
+                        chmod -R 750 ./apps/storybook ./apps/web/
                         cp $WEB_ENV_FILE ./apps/web/.env
+                        echo "DEBUG: Copied env file"
+                        cp $ENV_FILE ./apps/storybook/.env.local
                         echo "DEBUG: Copied env file"
                         pnpm test
                     '''
