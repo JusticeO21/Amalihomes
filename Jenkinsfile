@@ -53,11 +53,11 @@ pipeline {
                         cp $ENV_FILE ./apps/storybook/.env.local
                         cp $WEB_ENV_FILE ./apps/web/.env
                         echo "DEBUG: Copied env file"
-                        pnpm run build
+                        pnpm test
                     '''
                 }
             } 
-                sh 'pnpm test'
+
             }
         }
 
