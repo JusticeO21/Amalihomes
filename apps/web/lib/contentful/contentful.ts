@@ -21,8 +21,8 @@ import { createClient } from "contentful";
 // Function to get client configuration options based on preview mode
 function getClientOptions(preview: boolean = false): CreateClientParams {
   return {
-    space: process.env.CONTENTFUL_SPACE_ID!,
-    accessToken: preview ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN! : process.env.CONTENTFUL_ACCESS_TOKEN!,
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: preview ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN : process.env.CONTENTFUL_ACCESS_TOKEN,
     environment: process.env.CONTENTFUL_ENVIRONMENT ?? "master",
     ...(preview && { host: "preview.contentful.com" }),
   };

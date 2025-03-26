@@ -7,7 +7,7 @@
   --spacing-12: 0.75rem;
   --spacing-14: 0.875rem;
   --spacing-16: 1rem;
-  --spacing-20: 1.250rem;
+  --spacing-20: 1.25rem;
   --spacing-24: 1.5rem;
   --spacing-32: 2rem;
   --spacing-36: 2.25rem;
@@ -19,6 +19,7 @@
   --spacing-80: 8rem;
   --spacing-96: 6rem;
   --spacing-112: 7rem;
+  --spacing-112-8: 7.8rem;
   --spacing-128: 8rem;
   --spacing-144: 9rem;
   --spacing-160: 10rem;
@@ -31,4 +32,14 @@
   --spacing-288: 18rem;
   --spacing-320: 20rem;
   --spacing-384: 24rem;
+
+  --spacing-1: 1px;
+  --spacing-18: 12px;
+  --spacing-14: 14px;
+  --spacing-87: 87px;
+  --spacing-357: 357px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
 }

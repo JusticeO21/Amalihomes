@@ -1,0 +1,9 @@
+export type { TypeContacts, TypeContactsFields, TypeContactsSkeleton } from "./TypeContacts";
+export type { TypeFooter, TypeFooterFields, TypeFooterSkeleton } from "./TypeFooter";
+export type { TypeFooterItem, TypeFooterItemFields, TypeFooterItemSkeleton } from "./TypeFooterItem";
+export type { TypeLanguageLocal, TypeLanguageLocalFields, TypeLanguageLocalSkeleton } from "./TypeLanguageLocal";
+export type { TypeLanguages, TypeLanguagesFields, TypeLanguagesSkeleton } from "./TypeLanguages";
+export type { TypeLogo, TypeLogoFields, TypeLogoSkeleton } from "./TypeLogo";
+export type { TypeNavigation, TypeNavigationFields, TypeNavigationSkeleton } from "./TypeNavigation";
+export type { TypeNavLink, TypeNavLinkFields, TypeNavLinkSkeleton } from "./TypeNavLink";
+export type { TypeNewsLetter, TypeNewsLetterFields, TypeNewsLetterSkeleton } from "./TypeNewsLetter";

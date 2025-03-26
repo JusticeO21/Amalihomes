@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import "../../../packages/ui/src/style/output.css";
 @import "../../../packages/ui/src/style/theme/fonts.css";
 @import "../../../packages/ui/src/style/theme/spacing.css";
-@import "../../../packages/ui/src/style/theme/colors.css"
+@import "../../../packages/ui/src/style/theme/colors.css";
+@import "tailwindcss";

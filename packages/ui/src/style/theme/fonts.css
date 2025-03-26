@@ -20,4 +20,10 @@
   --text-h6-sm: 1.1rem;
   --text-body: 1rem;
   --text-sm: 0.75rem;
+  
+  --text-12: 12px;
+  --text-14: 14px;
+  --text-16: 16px;
+  --text-18: 18px;
+  --text-24: 24px;
 }

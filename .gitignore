@@ -39,3 +39,5 @@ yarn-error.log*
 
 *storybook.log
 .history
+/apps/web/.history
+/apps/storybook/storybook-static/
