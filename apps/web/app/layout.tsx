@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
-import "./globals.css";
+import { Analytics } from "../components/analytics";
 import { QueryProvider } from "../providers/react-query/query-provider";
+import "./globals.css";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -21,7 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Analytics />
       <body className={`${lato.variable}`}>
+        <noscript>
+          <iframe
+            title="Google Tag Manager"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WRDDB8RS"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

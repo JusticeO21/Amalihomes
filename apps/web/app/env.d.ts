@@ -16,5 +16,7 @@ declare namespace NodeJS {
     CONTENTFUL_ACCESS_TOKEN: string;
     CONTENTFUL_PREVIEW_ACCESS_TOKEN: string;
     CONTENTFUL_PREVIEW_SECRET: string;
+
+    NEXT_PUBLIC_GTM_ID: string;
   }
 }
