@@ -1,11 +1,18 @@
-import { Footer } from "features/footer";
+import Hero from "../sections/hero";
+import Usp from "../sections/WhyChooseUs";
+import React from "react";
+import Category from "../sections/category";
+import FlashSale from "../sections/flash-sale";
+import {Footer} from "../features/footer";
 import { Header } from "features/header";
-
 export default async function Home() {
   return (
-    <main className="flex flex-col min-h-screen">
+    <main>
       <Header />
-      <div className="text-h1 flex-1"></div>
+      <Hero />
+      <Usp />
+      <Category />
+      <FlashSale />
       <Footer />
     </main>
   );

@@ -22,9 +22,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-      "@amalihomes/ui/*": [
-        "../../packages/ui/src/*"
-      ],
+      "@amalihomes/ui/*": ["../../packages/ui/src/*"]
     }
   },
   "include": [

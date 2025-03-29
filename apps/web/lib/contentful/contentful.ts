@@ -1,22 +1,6 @@
 import type { ContentfulClientApi, CreateClientParams, Entry, EntryCollection, EntrySkeletonType } from "contentful";
 import { createClient } from "contentful";
 
-/**
- * Contentful Configuration
- *
- * This file sets up the Contentful client for fetching content from Contentful CMS.
- *
- * To use Contentful:
- * 1. Create a Contentful account at https://www.contentful.com/
- * 2. Create a new space in Contentful
- * 3. Create content models/types in your space
- * 4. Add the following environment variables to your .env.local file:
- *    - CONTENTFUL_SPACE_ID: Your space ID (found in Settings > API keys)
- *    - CONTENTFUL_ACCESS_TOKEN: Content Delivery API access token (found in Settings > API keys)
- *    - CONTENTFUL_PREVIEW_ACCESS_TOKEN: Content Preview API token (for draft content)
- *    - CONTENTFUL_PREVIEW_SECRET: A secret you define for enabling preview mode
- *    - CONTENTFUL_ENVIRONMENT: Usually 'master' unless you've created custom environments
- */
 
 // Function to get client configuration options based on preview mode
 function getClientOptions(preview: boolean = false): CreateClientParams {

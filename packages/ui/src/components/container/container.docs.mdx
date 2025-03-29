@@ -1,0 +1,52 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs';
+import { Container } from '@amalihomes/ui/components/container';
+import * as ContainerStories from './container.stories';
+
+<Meta title="Components/Container" component={Container} />
+
+# Container
+
+The `Container` component is a layout utility that wraps sections of content with consistent padding, width, border, and background control. It serves as the foundational building block for page and section layout structure in the design system.
+
+---
+
+## ✨ When to use
+
+- To horizontally center and constrain layout width
+- To apply consistent spacing around sections
+- To define a surface background, border, or shadow
+- To visually group content within a card, section, or panel
+
+---
+
+## 📐 Anatomy
+
+```plaintext
+┌──────────────────────────────────────────────┐
+│          marginY (optional spacing)          │
+│   ┌──────────────────────────────────────┐   │
+│   │          maxWidth wrapper            │   │
+│   │ ┌──────────────────────────────────┐ │   │
+│   │ │        paddingX / paddingY      │ │   │
+│   │ │  ┌────────────────────────────┐  │ │   │
+│   │ │  │      Your content here     │  │ │   │
+│   │ │  └────────────────────────────┘  │ │   │
+│   │ └──────────────────────────────────┘ │   │
+│   └──────────────────────────────────────┘   │
+└──────────────────────────────────────────────┘
+
+
+##usage example
+
+```jsx
+    import { Container } from "@amalihomes/ui/components/container";
+
+export default function Example() {
+  return (
+    <Container maxWidth="lg" paddingX={6} paddingY={6}>
+      <h2 className="text-xl font-semibold">Section title</h2>
+      <p className="text-gray-700">This is some content inside the container.</p>
+    </Container>
+  );
+}
+```
