@@ -18,11 +18,15 @@ export const NavLink = ({ href, children, className }: NavLinkProps) => {
     isActive = pathname.startsWith(href);
   }
 
-  const activeClassName = isActive ? "text-brand-text hover:text-brand-text" : "text-[#888";
+  const activeClassName = isActive ? "text-brand-text " : "text-[#888";
 
   return (
     <Link
-      className={cn("inline-block px-24 py-12", className, isActive && "border-b-2 border-brand-stroke-strong")}
+      className={cn(
+        "inline-block px-24 py-12 hover:text-brand-text",
+        className,
+        isActive && "border-b-2 border-brand-stroke-strong",
+      )}
       href={href}
     >
       <Typography

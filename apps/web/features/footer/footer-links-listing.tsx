@@ -1,5 +1,6 @@
 import { Typography } from "@amalihomes/ui/components/typography";
 import { NavLinkProps } from "features/header/nav-links-listing";
+import { resolveLink } from "lib/utils/resolve-link";
 import Link from "next/link";
 
 export const FooterLinksListing = ({ links, title }: { links: NavLinkProps[]; title: string }) => {
@@ -14,16 +15,18 @@ export const FooterLinksListing = ({ links, title }: { links: NavLinkProps[]; ti
         {title}
       </Typography>
       <ul className="flex flex-col items-center justify-center md:items-start md:justify-start">
-        {links.map((link) => (
-          <li key={link.sys.id}>
-            <Link
-              href={link.fields.href}
-              className="py-8 block text-white text-14"
-            >
-              {link.fields.label}
-            </Link>
-          </li>
-        ))}
+        {links.map((link) => {
+          return (
+            <li key={link.sys.id}>
+              <Link
+                href={resolveLink(link.fields.href)}
+                className="py-8 block text-white text-14"
+              >
+                {link.fields.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

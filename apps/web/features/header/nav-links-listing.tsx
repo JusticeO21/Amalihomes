@@ -6,6 +6,7 @@ import { NavLink } from "components/nav-link";
 import { Menu, Search, X } from "lucide-react";
 import { useState } from "react";
 import { AuthVisibleComponents } from "./auth-visible-components";
+import { resolveLink } from "lib/utils/resolve-link";
 
 export interface NavLinkProps {
   sys: {
@@ -24,7 +25,7 @@ export const NavLinksListing = ({ navLinks }: { navLinks: NavLinkProps[] }) => {
 
   const renderNavLinks = () => {
     return navLinks.map(({ sys: { id }, fields: { href, label } }) => {
-      const link = href === "home" ? "/" : `/${href}`;
+      const link = resolveLink(href);
 
       return (
         <li

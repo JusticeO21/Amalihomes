@@ -77,7 +77,7 @@ export const LanguageListing = ({ countries }: LanguageListingProps) => {
       >
         <DrawerContent
           side="right"
-          className="top-112-8 lg:top-144 border-0 rounded-0 bg-white w-full md:w-max py-40 px-16 md:px-40 flex flex-col gap-44"
+          className="top-112-8 lg:top-144 border-0  bg-white w-full sm:max-w-max md:w-549 py-40 px-16 md:px-40 flex flex-col gap-44"
         >
           <DrawerHeader>
             <DrawerTitle>
@@ -85,7 +85,7 @@ export const LanguageListing = ({ countries }: LanguageListingProps) => {
                 size="base"
                 weight="bold"
                 colors="text-grey-text-weak"
-                className="text-left"
+                className="text-left  text-24"
               >
                 Select your language and Country
               </Typography>
@@ -96,7 +96,7 @@ export const LanguageListing = ({ countries }: LanguageListingProps) => {
               className="flex flex-col gap-4"
               htmlFor="country"
             >
-              <span>Country</span>
+              <span className="color-Grey-text-strong font-bold">Country</span>
               <Select
                 onChange={handleSetCountry}
                 className="w-full"
@@ -121,7 +121,7 @@ export const LanguageListing = ({ countries }: LanguageListingProps) => {
               className="flex flex-col gap-4"
               htmlFor="language"
             >
-              <span>Language</span>
+              <span className="color-Grey-text-strong font-bold">Language</span>
               <Select
                 onChange={handleSetLanguage}
                 className="w-full"
@@ -150,7 +150,7 @@ export const LanguageListing = ({ countries }: LanguageListingProps) => {
             <Button
               variant="primary"
               onClick={() => setOpen(false)}
-              className="w-full flex items-center justify-center font-bold"
+              className="w-full flex items-center justify-center font-bold py-12 px-24"
             >
               Cancel
             </Button>

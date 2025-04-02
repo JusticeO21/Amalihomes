@@ -3,6 +3,8 @@ import { Lato } from "next/font/google";
 import { Analytics } from "../components/analytics";
 import { QueryProvider } from "../providers/react-query/query-provider";
 import "./globals.css";
+import { Footer } from "features/footer";
+import { Header } from "features/header";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -33,7 +35,11 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <Header />
+          {children}
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   );
