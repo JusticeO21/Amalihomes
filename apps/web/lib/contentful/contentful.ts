@@ -1,7 +1,6 @@
 import type { ContentfulClientApi, CreateClientParams, Entry, EntryCollection, EntrySkeletonType } from "contentful";
 import { createClient } from "contentful";
 
-
 // Function to get client configuration options based on preview mode
 function getClientOptions(preview: boolean = false): CreateClientParams {
   return {
