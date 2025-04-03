@@ -4,8 +4,7 @@
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
 # Define allowed branch patterns (Fixed)
-ALLOWED_PATTERNS='^(feature|bugfix|hotfix)/[A-Za-z0-9]+-[a-z0-9_-]+$|^(release|setup)/[a-z0-9._-]+$'
-
+ALLOWED_PATTERNS='^(feature|bugfix|hotfix)/[A-Za-z0-9-]+-[a-z0-9_-]+$|^(release|setup)/[A-Za-z0-9._-]+$'
 if ! echo "$BRANCH_NAME" | grep -Eiq "$ALLOWED_PATTERNS"; then
   echo -e "\033[31m🚨 Invalid branch name: '$BRANCH_NAME'\033[0m"
   echo "Branch names must follow the pattern:"

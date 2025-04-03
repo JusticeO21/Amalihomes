@@ -15,7 +15,7 @@ if [[ -z "$COMMIT_MSG" ]]; then
 fi
 
 # Define commit message pattern (Fixed regex)
-ALLOWED_PATTERN='^(chore|feat|fix|refactor|test|docs|style|perf|ci|build)(\([a-z0-9_-]+\))?: [a-zA-Z0-9][a-zA-Z0-9 _-]+$'
+ALLOWED_PATTERN='^(chore|feat|fix|refactor|test|docs|style|perf|ci|build|merge)(\([a-z0-9_-]+\))?: [a-zA-Z0-9][a-zA-Z0-9 _-]+$'
 
 # Validate commit message using grep (more reliable than [[ ... =~ ... ]])
 if ! echo "$COMMIT_MSG" | grep -Eiq "$ALLOWED_PATTERN"; then

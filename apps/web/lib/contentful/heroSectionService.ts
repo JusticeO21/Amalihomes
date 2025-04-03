@@ -5,7 +5,7 @@ export async function fetchHeroSection() {
   try {
     const hero = await getEntry<TypeHeroSkeleton>("hero");
     return hero.fields;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

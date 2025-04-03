@@ -5,7 +5,7 @@ export async function fetchUspSection() {
   try {
     const uspSection = await getEntry<TypeUspuniqueSellingPointSkeleton>("uspuniqueSellingPoint");
     return uspSection.fields;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

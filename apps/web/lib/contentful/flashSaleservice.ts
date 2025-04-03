@@ -5,7 +5,7 @@ export async function fetchFlashSaleSection() {
   try {
     const flashSale = await getEntry<TypeFlashSaleSectionSkeleton>("flashSaleSection");
     return flashSale.fields;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

@@ -24,8 +24,8 @@ export const FooterForm = () => {
               },
             }}
             placeholder="Enter your email"
-            className="p-12 border border-white rounded-md text-body roboto text-white flex-1 w-[357px]"
-            inputClassName="placeholder:text-white"
+            className="p-12 border border-white rounded-md text-body roboto flex-1 w-[357px]"
+            inputClassName="placeholder:text-white text-white"
           />
           <Typography
             size="xs"
