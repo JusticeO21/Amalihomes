@@ -5,6 +5,7 @@ import { Input } from "@amalihomes/ui/components/input";
 import { NavLink } from "components/nav-link";
 import { Menu, Search, X } from "lucide-react";
 import { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { AuthVisibleComponents } from "./auth-visible-components";
 import { resolveLink } from "lib/utils/resolve-link";
 
@@ -22,6 +23,15 @@ export const NavLinksListing = ({ navLinks }: { navLinks: NavLinkProps[] }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [isAuth] = useState(false);
+  const form = useForm<{
+    search: string;
+  }>({
+    defaultValues: {
+      search: "",
+    },
+  });
+
+  const onSubmit = (data: { search: string }) => {};
 
   const renderNavLinks = () => {
     return navLinks.map(({ sys: { id }, fields: { href, label } }) => {
@@ -71,13 +81,18 @@ export const NavLinksListing = ({ navLinks }: { navLinks: NavLinkProps[] }) => {
 
       {isSearch && (
         <div className="absolute top-full left-0  z-50 px-16 md:px-32 w-full flex flex-col py-24 md:py-32 lg:px-64 shadow-sm gap-24 bg-white">
-          <div className="border border-Grey-stroke-weak rounded-md py-12 px-18 flex items-center justify-center gap-4">
-            <Search />
-            <Input
-              className="border-0 flex-1 text-sm"
-              placeholder="Search Products"
-            />
-          </div>
+          <FormProvider {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="w-full flex items-center gap-16"
+            >
+              <Input
+                name="search"
+                type="search"
+                placeholder="Search Products"
+              />
+            </form>
+          </FormProvider>
         </div>
       )}
 

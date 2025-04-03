@@ -1,12 +1,10 @@
-import { Button } from "@amalihomes/ui/components/button";
-import { Input } from "@amalihomes/ui/components/input";
 import { Typography } from "@amalihomes/ui/components/typography";
 import { getEntry } from "lib/contentful/contentful";
 import { TypeFooterSkeleton } from "lib/contentful/types";
-import Link from "next/link";
 import { FooterLinksListing } from "./footer-links-listing";
 import { FooterSocialLinks } from "./footer-social-links";
 import { FooterProps } from "./footer-types";
+import { FooterForm } from "./footer-form";
 import { Container } from "@amalihomes/ui/components/container";
 
 export const Footer = async () => {
@@ -30,37 +28,7 @@ export const Footer = async () => {
               {newsLetter.fields.subTitle}
             </Typography>
           </section>
-          <section className="mt-8 flex flex-col items-center justify-center lg:flex-row md:items-start md:justify-start gap-12 text-14">
-            <div className=" p-0 flex flex-col w-full gap-12 items-center justify-center  md:items-start md:justify-start  text-14">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="p-12 border border-white rounded-md text-body roboto placeholder:text-white text-white flex-1 w-[357px]"
-              />
-              <Typography
-                size="xs"
-                className="text-white flex gap-4"
-              >
-                By subscribing you agree to with our
-                <Link
-                  href="/privacy-policy"
-                  className="underline"
-                >
-                  Privacy Policy
-                </Link>
-                .
-              </Typography>
-            </div>
-            <Button className="bg-white hover:bg-whites py-12 px-24 w-full lg:w-min max-w-357 flex items-center justify-center">
-              <Typography
-                colors={"text-grey-text-strong"}
-                weight="bold"
-                size={"sm"}
-              >
-                Subscribe
-              </Typography>
-            </Button>
-          </section>
+          <FooterForm />
         </div>
         <div className=" p-0 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-20">
           <div>

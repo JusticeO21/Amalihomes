@@ -13,8 +13,8 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Amalizon",
-  description: "Amalizon",
+  title: "Amalihomes",
+  description: "Amalihomes",
 };
 
 export default function RootLayout({
