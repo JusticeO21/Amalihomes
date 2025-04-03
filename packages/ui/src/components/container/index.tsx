@@ -35,7 +35,7 @@ const containerVariants = cva("w-full mx-auto", {
       13: "px-13",
       14: "px-14",
       15: "px-15",
-      default: "px-[16px] sm:px-[32px] md:px-[64px] ",
+      default: "px-[16px] sm:px-[32px] md:px-64",
     },
     paddingY: {
       0: "py-0",

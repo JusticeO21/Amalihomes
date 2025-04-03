@@ -35,7 +35,7 @@ function Card({ imageUrl, title, description }: CardProps) {
         className="grid gap-[16px]"
       >
         <h3 className="text-[20px] font-bold leading-[28px] tracking-[0%]">{title}</h3>
-        <p className="text-body text-[400] leading-[24px] tracking-[0%]">{description}</p>
+        <p className="text-body leading-[24px] tracking-[0%] text-Gray-fill-bright">{description}</p>
       </Container>
     </Container>
   );

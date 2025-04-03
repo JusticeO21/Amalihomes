@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import "./globals.css";
 import { Lato } from "next/font/google";
 import { Analytics } from "../components/analytics";
 import { QueryProvider } from "../providers/react-query/query-provider";
-import "./globals.css";
 import { Footer } from "features/footer";
 import { Header } from "features/header";
 

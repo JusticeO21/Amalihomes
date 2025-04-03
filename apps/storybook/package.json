@@ -10,9 +10,10 @@
         "preview": "storybook preview"
     },
     "dependencies": {
+        "@amalihomes/ui": "workspace:*",
+        "eslint-plugin-regexp": "^2.7.0",
         "react": "^19.0.0",
-        "react-dom": "^19.0.0",
-        "@amalihomes/ui": "workspace:*"
+        "react-dom": "^19.0.0"
     },
     "devDependencies": {
         "@amalihomes/eslint-config": "workspace:*",

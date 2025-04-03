@@ -1,5 +1,5 @@
 import Hero from "../sections/hero";
-import Usp from "../sections/WhyChooseUs";
+import Usp from "../sections/why-choose-us";
 import React from "react";
 import Category from "../sections/category";
 import FlashSale from "../sections/flash-sale";
