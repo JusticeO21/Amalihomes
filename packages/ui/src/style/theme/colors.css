@@ -30,6 +30,11 @@
   --color-Green-stroke-weak: rgba(200, 234, 201, 1);
   --color-Green-stroke-strong: rgba(106, 190, 109, 1);
   --color-Green-text: rgba(52, 133, 55, 1);
+  --color-neutral-500: rgba(109, 109, 109,1);
+  --color-error-100: rgba(255, 226,225,1);
+  --color-success-100: rgba(227,245,227,1);
+  --color-secondary-100: rgba(233, 237,245,1);
+  --color-amber-100: rgba(255,251,197,1);
   
   --color-Neutral-900: rgba(79, 79, 79, 1);
   --color-Gray-border:rgba(231, 231, 231, 1);
