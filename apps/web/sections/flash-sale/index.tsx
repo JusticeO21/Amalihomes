@@ -3,6 +3,7 @@ import { Container } from "@amalihomes/ui/components/container";
 import { fetchFlashSaleSection } from "../../lib/contentful/flashSaleservice";
 import { Asset } from "contentful";
 import { getContentfulImage } from "utils/contentful";
+import { Cta } from "./cta";
 
 async function FlashSale() {
   const flashSaleData = await fetchFlashSaleSection();
@@ -108,13 +109,10 @@ function ContentSection({ title, description, promoCode, ctaLabel, ctaUrl }: Con
         </p>
       </div>
 
-      <a
-        href={ctaUrl}
-        className="px-3 py-3 rounded-sm bg-Amber-text text-black font-medium transition w-[130px] text-center"
-        aria-label={`Learn more about ${title}`}
-      >
-        {ctaLabel}
-      </a>
+      <Cta
+        ctaText={ctaLabel}
+        ctaLink={ctaUrl}
+      />
     </Container>
   );
 }

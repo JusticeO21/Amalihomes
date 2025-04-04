@@ -152,7 +152,7 @@ interface UspImageProps {
 
 function UspImage({ imageUrl, imageAlt }: UspImageProps) {
   return (
-    <div className=" hidden lg:block m-0">
+    <div className=" hidden lg:block m-0 rounded-md overflow-hidden">
       <Image
         src={imageUrl}
         alt={imageAlt}

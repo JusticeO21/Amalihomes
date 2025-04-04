@@ -3,7 +3,7 @@ import { Container } from "@amalihomes/ui/components/container";
 import { fetchHeroSection } from "../../lib/contentful/heroSectionService";
 import { Asset } from "contentful";
 import { getContentfulImage } from "utils/contentful";
-import { Button } from "@amalihomes/ui/components/button";
+import { ButtonGroup } from "./button-group";
 
 async function Hero() {
   const heroData = await fetchHeroSection();
@@ -17,7 +17,9 @@ async function Hero() {
       headline={heroData.headline as string}
       subtext={heroData.subtext as string}
       ctaText={heroData.ctaText as string}
+      ctaLink={heroData.ctaLink as string}
       secondaryCtaText={heroData.secondaryCtaText as string}
+      secondaryCtaLink={heroData.secondaryCtaUrl as string}
       heroImage={heroData.heroImage as Asset}
     />
   );
@@ -27,11 +29,21 @@ interface HeroViewProps {
   headline: string;
   subtext: string;
   ctaText: string;
+  ctaLink: string;
+  secondaryCtaLink: string;
   secondaryCtaText: string;
   heroImage: Asset;
 }
 
-function HeroView({ headline, subtext, ctaText, secondaryCtaText, heroImage }: HeroViewProps) {
+function HeroView({
+  headline,
+  subtext,
+  ctaText,
+  ctaLink,
+  secondaryCtaText,
+  secondaryCtaLink,
+  heroImage,
+}: HeroViewProps) {
   const { imageUrl, imageAlt } = getContentfulImage(heroImage, `/images/hero.png`, `Amali Homes`);
 
   return (
@@ -44,7 +56,9 @@ function HeroView({ headline, subtext, ctaText, secondaryCtaText, heroImage }: H
           headline={headline}
           subtext={subtext}
           ctaText={ctaText}
+          ctaLink={ctaLink}
           secondaryCtaText={secondaryCtaText}
+          secondaryCtaLink={secondaryCtaLink}
         />
         <HeroImage
           imageUrl={imageUrl}
@@ -59,10 +73,12 @@ interface TextContentProps {
   headline: string;
   subtext: string;
   ctaText: string;
+  ctaLink: string;
+  secondaryCtaLink: string;
   secondaryCtaText: string;
 }
 
-function TextContent({ headline, subtext, ctaText, secondaryCtaText }: TextContentProps) {
+function TextContent({ headline, subtext, ctaText, ctaLink, secondaryCtaText, secondaryCtaLink }: TextContentProps) {
   return (
     <Container
       aria-labelledby="hero-heading"
@@ -80,40 +96,10 @@ function TextContent({ headline, subtext, ctaText, secondaryCtaText }: TextConte
       </p>
       <ButtonGroup
         ctaText={ctaText}
+        ctaLink={ctaLink}
+        secondaryCtaLink={secondaryCtaLink}
         secondaryCtaText={secondaryCtaText}
       />
-    </Container>
-  );
-}
-
-interface ButtonGroupProps {
-  ctaText: string;
-  secondaryCtaText: string;
-}
-
-function ButtonGroup({ ctaText, secondaryCtaText }: ButtonGroupProps) {
-  return (
-    <Container
-      paddingX={0}
-      paddingY={0}
-      maxWidth={"sm"}
-      className="grid md:grid-cols-2 gap-x-[23px] gap-y-8 mx-0"
-    >
-      <Button
-        type="button"
-        className="justify-center"
-        aria-label="Get started with Amali Homes"
-      >
-        {ctaText}
-      </Button>
-      <Button
-        type="button"
-        variant={"secondary"}
-        className="justify-center"
-        aria-label="Get started with Amali Homes"
-      >
-        {secondaryCtaText}
-      </Button>
     </Container>
   );
 }
