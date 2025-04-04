@@ -27,14 +27,6 @@ export const FooterLinksListing = ({ links, title }: { links: NavLinkProps[]; ti
             </li>
           );
         })}
-        <li>
-          <Link
-            href={"/ftgyuikl"}
-            className="py-8 block text-white text-14"
-          >
-           goods page
-          </Link>
-        </li>
       </ul>
     </div>
   );
