@@ -1,6 +1,7 @@
 import { getEntry } from "lib/contentful/contentful";
 import { TypeLogoSkeleton } from "lib/contentful/types";
 import Image from "next/image";
+import Link from "next/link";
 
 interface LogoProps {
   fields: {
@@ -26,6 +27,10 @@ export const Logo = async () => {
   const { alt } = response.fields;
 
   return (
+    <Link
+      href="/"
+      className="cursor-pointer"
+    >
     <Image
       src={`https:${url}`}
       alt={alt}
@@ -33,5 +38,6 @@ export const Logo = async () => {
       height={24}
       priority
     />
+   </Link>
   );
 };

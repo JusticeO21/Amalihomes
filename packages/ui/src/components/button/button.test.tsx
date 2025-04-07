@@ -25,11 +25,11 @@ describe("Button Component", () => {
   it("renders button with different sizes", () => {
     render(<Button size="sm">Small</Button>);
     const smallButton = screen.getByRole("button", { name: /small/i });
-    expect(smallButton).toHaveClass("w-[40px]");
+    expect(smallButton).toHaveClass("size-40");
 
     render(<Button size="lg">Large</Button>);
     const largeButton = screen.getByRole("button", { name: /large/i });
-    expect(largeButton).toHaveClass("w-[153px]");
+    expect(largeButton).toHaveClass("w-153");
   });
 
   it("renders button with leading icon", () => {

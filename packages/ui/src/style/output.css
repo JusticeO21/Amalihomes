@@ -92,10 +92,12 @@
     --spacing-12: 0.75rem;
     --spacing-14: 14px;
     --spacing-16: 1rem;
-    --spacing-40: 2.5rem;
+    --spacing-40: 40px;
     --spacing-48: 3rem;
     --spacing-64: 4rem;
     --spacing-1: 1px;
+    --spacing-153: 153px;
+    --spacing-121: 121px;
   }
 }
 @layer base {
@@ -334,11 +336,16 @@
   .flex {
     display: flex;
   }
-  .h-48 {
-    height: var(--spacing-48);
+  .table {
+    display: table;
   }
-  .h-\[40px\] {
-    height: 40px;
+  .size-40 {
+    width: var(--spacing-40);
+    height: var(--spacing-40);
+  }
+  .size-48 {
+    width: var(--spacing-48);
+    height: var(--spacing-48);
   }
   .h-\[58px\] {
     height: 58px;
@@ -352,8 +359,14 @@
   .w-3\/4 {
     width: calc(3/4 * 100%);
   }
-  .w-48 {
-    width: var(--spacing-48);
+  .w-40 {
+    width: var(--spacing-40);
+  }
+  .w-121 {
+    width: var(--spacing-121);
+  }
+  .w-153 {
+    width: var(--spacing-153);
   }
   .w-\[36px\] {
     width: 36px;
@@ -415,8 +428,14 @@
   .flex-1 {
     flex: 1;
   }
+  .flex-shrink {
+    flex-shrink: 1;
+  }
   .flex-shrink-0 {
     flex-shrink: 0;
+  }
+  .border-collapse {
+    border-collapse: collapse;
   }
   .translate-y-0 {
     --tw-translate-y: var(--spacing-0);
@@ -610,6 +629,12 @@
   }
   .bg-\[\#fff\] {
     background-color: #fff;
+  }
+  .bg-black {
+    background-color: var(--color-black);
+  }
+  .bg-black\/80 {
+    background-color: color-mix(in oklab, var(--color-black) 80%, transparent);
   }
   .bg-brand {
     background-color: var(--color-brand);
@@ -882,6 +907,9 @@
   .lowercase {
     text-transform: lowercase;
   }
+  .underline {
+    text-decoration-line: underline;
+  }
   .opacity-0 {
     opacity: 0%;
   }
@@ -915,6 +943,10 @@
   .shadow-xl {
     --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
@@ -1261,6 +1293,11 @@
   syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-blur {
   syntax: "*";
