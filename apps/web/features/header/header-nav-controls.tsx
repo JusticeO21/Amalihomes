@@ -1,6 +1,7 @@
 import { Button } from "@amalihomes/ui/components/button";
 import { Menu, Search, X } from "lucide-react";
 import { AuthVisibleComponents } from "./auth-visible-components";
+import { IconSearch } from "components/icons/icon-search";
 
 interface NavControlsProps {
   isOpen: boolean;
@@ -12,7 +13,7 @@ interface NavControlsProps {
 export const NavControls = ({ isOpen, isAuth, openSearch, openMenu }: NavControlsProps) => (
   <div className="flex items-center gap-24">
     <button onClick={openSearch}>
-      <Search className="cursor-pointer z-0" />
+      <IconSearch className="cursor-pointer z-0" />
     </button>
 
     {isAuth ? (

@@ -1,5 +1,5 @@
 import { Typography } from "@amalihomes/ui/components/typography";
-import { Globe } from "lucide-react";
+import { IconGlobe } from "components/icons/icon-globe";
 
 interface LanguageSelectorButtonProps {
   country: string;
@@ -15,15 +15,12 @@ export const LanguageSelectorButton = ({ country, language, onClick }: LanguageS
   >
     <div className="flex items-center justify-center gap-12">
       <div className="flex items-center gap-4">
-        <Globe
-          aria-hidden="true"
-          className="text-grey-text-weak"
-        />
+        <IconGlobe aria-hidden="true" />
         <Typography
           as="p"
-          color={"text-Grey-text-weak"}
           weight={"bold"}
           size={"sm"}
+          className="text-Grey-text-weak"
         >
           {country}
         </Typography>
@@ -34,7 +31,7 @@ export const LanguageSelectorButton = ({ country, language, onClick }: LanguageS
       ></div>
       <Typography
         as="p"
-        color={"text-grey-text-weak"}
+        className="text-Grey-text-weak"
         weight={"bold"}
         size={"sm"}
       >
