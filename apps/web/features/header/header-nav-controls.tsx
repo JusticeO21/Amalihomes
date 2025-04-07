@@ -1,5 +1,5 @@
 import { Button } from "@amalihomes/ui/components/button";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AuthVisibleComponents } from "./auth-visible-components";
 import { IconSearch } from "components/icons/icon-search";
 

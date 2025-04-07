@@ -33,7 +33,6 @@ export const LanguageDrawer = ({
   onCountryChange,
   onLanguageChange,
 }: LanguageDrawerProps) => {
-  console.log(selectedLanguage);
   return (
     <Drawer
       isOpen={isOpen}
@@ -69,17 +68,17 @@ export const LanguageDrawer = ({
             onChange={onLanguageChange}
           />
         </div>
-        <div className="w-full flex flex-col gap-y-16 border border-info-text rounded-md p-16 bg-info-fill">
+        <div className="w-full flex flex-col gap-y-16 border border-Gray-border-light rounded-md p-16 bg-info-fill">
           <div className="flex items-center gap-8 h-32">
             <IconAlert />
             <p className="text-18 text-info-text font-bold">Countries we operate.</p>
           </div>
           <Typography
             size="sm"
-            className="text-Gray-text"
+            variant="p"
+            className="text-Gray-text max-w-380"
           >
-            The countries we operate in with their default language are;
-            <br />
+            The countries we operate in with their default language are; {" "}
             {countries
               .map((country) => `${country.otherName ? country.otherName : country.country} (${country.languageCode})`)
               .join(", ")}

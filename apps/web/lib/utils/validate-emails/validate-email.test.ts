@@ -23,8 +23,8 @@ describe("isValidEmail", () => {
   });
 
   it("should handle edge cases", () => {
-    expect(isValidEmail("a@b.co")).toBe(true); 
-    expect(isValidEmail('very.unusual."@".unusual.com@example.com')).toBe(false); 
+    expect(isValidEmail("a@b.co")).toBe(true);
+    expect(isValidEmail('very.unusual."@".unusual.com@example.com')).toBe(false);
     expect(isValidEmail("user@localhost")).toBe(false);
   });
 });
