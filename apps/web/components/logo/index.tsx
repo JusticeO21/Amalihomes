@@ -29,8 +29,8 @@ export const Logo = async () => {
     <Image
       src={`https:${url}`}
       alt={alt}
-      width={100}
-      height={100}
+      width={91}
+      height={24}
       priority
     />
   );
