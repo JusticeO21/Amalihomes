@@ -11,8 +11,8 @@ export const FooterForm = () => {
   });
   return (
     <FormProvider {...form}>
-      <form className="mt-8 flex flex-col items-center justify-center lg:flex-row md:items-start md:justify-start gap-12 text-14">
-        <div className="flex flex-col w-full gap-12 items-center justify-center  md:items-start md:justify-start  text-14">
+      <form className="mt-8 flex flex-col items-center justify-center  md:items-start md:justify-start gap-12 text-14">
+        <div className="flex flex-col lg:flex-row  w-full gap-12 items-center justify-center  md:items-start md:justify-start  text-14">
           <Input
             type="email"
             name="email"
@@ -24,32 +24,32 @@ export const FooterForm = () => {
               },
             }}
             placeholder="Enter your email"
-            className="p-12 border border-white rounded-md text-body roboto flex-1 w-[357px]"
+            className="p-12 border-[1.5px] border-white rounded-md text-body roboto flex-1 w-361 md:w-350 lg:w-357 h-48"
             inputClassName="placeholder:text-white text-white"
           />
-          <Typography
-            size="xs"
-            className="text-white flex gap-4"
-          >
-            By subscribing you agree to with our
-            <Link
-              href="/privacy-policy"
-              className="underline"
+          <Button className="bg-white hover:bg-whites py-12 px-24 lg:w-118 h-48 flex items-center justify-center md:w-350 w-361">
+            <Typography
+              weight="bold"
+              size={"sm"}
+              className="text-Neutral-900"
             >
-              Privacy Policy
-            </Link>
-            .
-          </Typography>
+              Subscribe
+            </Typography>
+          </Button>
         </div>
-        <Button className="bg-white hover:bg-whites py-12 px-24 w-full lg:w-min max-w-357 flex items-center justify-center">
-          <Typography
-            colors={"text-grey-text-strong"}
-            weight="bold"
-            size={"sm"}
+        <Typography
+          size="xs"
+          className="text-white flex gap-4"
+        >
+          By subscribing you agree to with our
+          <Link
+            href="/privacy-policy"
+            className="underline"
           >
-            Subscribe
-          </Typography>
-        </Button>
+            Privacy Policy
+          </Link>
+          .
+        </Typography>
       </form>
     </FormProvider>
   );

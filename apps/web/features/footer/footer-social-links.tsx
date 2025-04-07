@@ -1,37 +1,68 @@
-import { IconFacebook } from "components/icons/icon-facebook";
-import { IconInstagram } from "components/icons/icon-instagram";
-import { IconLinkedin } from "components/icons/icon-linkedin";
-import { IconTwitter } from "components/icons/icon-twitter";
-import { IconYoutube } from "components/icons/icon-youtube";
+import Image from "next/image";
 import Link from "next/link";
+import { SocialLinkItem } from "./footer-types";
 
-export const FooterSocialLinks = () => {
+type LegalLink = {
+  text: string;
+  url: string;
+};
+
+type FooterSocialLinksProps = {
+  socialLinks: SocialLinkItem[];
+};
+
+const legalLinks: LegalLink[] = [
+  { text: "Privacy Policy", url: "/privacy-policy" },
+  { text: "Terms of Service", url: "/terms-of-service" },
+  { text: "Cookie Settings", url: "/cookie-settings" },
+];
+
+export const FooterSocialLinks = ({ socialLinks }: FooterSocialLinksProps) => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
-      <div className="flex gap-24 text-14 flex-col md:flex-row items-center justify-center md:items-start md:justify-start">
-        <p className="text-white">© Amali Homes. All rights reserved.</p>
-        <div className="flex gap-24 text-white">
-          <Link href="/privacy-policy">Privacy Policy</Link>
-          <Link href="/terms-of-service">Terms of Service</Link>
-          <Link href="/terms-of-service">Cookie Settings</Link>
-        </div>
+      <div
+        className="
+          flex flex-col gap-24 text-14
+          md:flex-row md:items-start md:justify-start
+          items-center justify-center
+        "
+      >
+        <p className="text-white text-14">© {currentYear} AmaliHomes. All rights reserved.</p>
+
+        <nav
+          className="flex gap-24 text-white"
+          aria-label="Legal links"
+        >
+          {legalLinks.map(({ text, url }) => (
+            <Link
+              key={url}
+              href={url}
+            >
+              {text}
+            </Link>
+          ))}
+        </nav>
       </div>
+
       <div className="flex gap-12">
-        <Link href="/">
-          <IconFacebook />
-        </Link>
-        <Link href="/">
-          <IconInstagram />
-        </Link>
-        <Link href="/">
-          <IconTwitter />
-        </Link>
-        <Link href="/">
-          <IconLinkedin />
-        </Link>
-        <Link href="/">
-          <IconYoutube />
-        </Link>
+        {socialLinks.map(({ fields }) => (
+          <a
+            key={fields.label}
+            href={fields.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={fields.label}
+          >
+            <Image
+              src={fields.icon.fields.file.url}
+              alt={fields.label}
+              width={24}
+              height={24}
+            />
+          </a>
+        ))}
       </div>
     </>
   );

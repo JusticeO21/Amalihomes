@@ -36,6 +36,7 @@ const Input = ({
   validationRules,
   className,
   inputClassName,
+  groupClassName,
   variant,
 }: InputProps & InputContainerType) => {
   const formContext = useFormContext();
@@ -77,7 +78,7 @@ const Input = ({
   };
 
   return (
-    <div className="group flex flex-col gap-4">
+    <div className={cn("group flex flex-col gap-4", groupClassName)}>
       {label && (
         <InputLabel
           name={name}

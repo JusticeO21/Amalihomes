@@ -1,6 +1,6 @@
+import { cva } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "../../lib/utils";
-import { cva } from "class-variance-authority";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -9,9 +9,18 @@ interface DrawerProps {
   className?: string;
   labelledBy?: string;
   describedBy?: string;
+  shadowClassName?: string;
 }
 
-const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, children, className, labelledBy, describedBy }) => {
+const Drawer: React.FC<DrawerProps> = ({
+  isOpen,
+  onClose,
+  children,
+  className,
+  labelledBy,
+  describedBy,
+  shadowClassName,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -24,7 +33,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, children, className, l
       data-testid="drawer-container"
     >
       <div
-        className="fixed inset-0 bg-black/80 transition-opacity"
+        className={cn("fixed inset-0 bg-Gray-drop-shadow transition-opacity", shadowClassName)}
         onClick={onClose}
         role="button"
         tabIndex={0}
@@ -113,4 +122,4 @@ const DrawerDescription = ({ className, ...props }: React.HTMLAttributes<HTMLPar
 );
 DrawerDescription.displayName = "DrawerDescription";
 
-export { Drawer, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription };
+export { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle };

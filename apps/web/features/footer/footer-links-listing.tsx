@@ -1,6 +1,6 @@
 import { Typography } from "@amalihomes/ui/components/typography";
 import { NavLinkProps } from "features/header/nav-links-listing";
-import { resolveLink } from "lib/utils/resolve-link";
+import { resolveLink } from "lib/utils/resolve-link/resolve-link";
 import Link from "next/link";
 
 export const FooterLinksListing = ({ links, title }: { links: NavLinkProps[]; title: string }) => {

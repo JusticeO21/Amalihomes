@@ -76,6 +76,7 @@
     --color-secondary-100: rgba(233, 237,245,1);
     --color-Neutral-900: rgba(79, 79, 79, 1);
     --color-Gray-fill-dark: rgba(93,93,93,1);
+    --color-Gray-drop-shadow: rgba(61, 61, 61, 0.3);
     --text-h3-md: 2.5rem;
     --text-h3-sm: 2rem;
     --text-h5-sm: 1.5rem;
@@ -592,6 +593,9 @@
   .bg-Amber-fill {
     background-color: var(--color-Amber-fill);
   }
+  .bg-Gray-drop-shadow {
+    background-color: var(--color-Gray-drop-shadow);
+  }
   .bg-Green-fill {
     background-color: var(--color-Green-fill);
   }
@@ -606,9 +610,6 @@
   }
   .bg-\[\#fff\] {
     background-color: #fff;
-  }
-  .bg-black\/80 {
-    background-color: color-mix(in oklab, var(--color-black) 80%, transparent);
   }
   .bg-brand {
     background-color: var(--color-brand);

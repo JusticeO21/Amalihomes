@@ -3,6 +3,8 @@ import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleC
 export interface TypeLanguageLocalFields {
   country: EntryFieldTypes.Symbol;
   languages: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+  languageCode: EntryFieldTypes.Symbol;
+  otherName?: EntryFieldTypes.Symbol;
 }
 
 export type TypeLanguageLocalSkeleton = EntrySkeletonType<TypeLanguageLocalFields, "languageLocal">;

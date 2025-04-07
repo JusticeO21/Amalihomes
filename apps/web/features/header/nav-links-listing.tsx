@@ -1,13 +1,11 @@
 "use client";
 
-import { Button } from "@amalihomes/ui/components/button";
-import { Input } from "@amalihomes/ui/components/input";
-import { NavLink } from "components/nav-link";
-import { Menu, Search, X } from "lucide-react";
-import { useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { AuthVisibleComponents } from "./auth-visible-components";
-import { resolveLink } from "lib/utils/resolve-link";
+import { useState, useEffect } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { DesktopNavLinks } from "./header-desktop-nav-links";
+import { MobileMenu } from "./header-mobile-menu";
+import { NavControls } from "./header-nav-controls";
+import { SearchFormValues, SearchPanel } from "./header-search-pannel";
 
 export interface NavLinkProps {
   sys: {
@@ -19,100 +17,69 @@ export interface NavLinkProps {
   };
 }
 
-export const NavLinksListing = ({ navLinks }: { navLinks: NavLinkProps[] }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isSearch, setIsSearch] = useState(false);
-  const [isAuth] = useState(false);
-  const form = useForm<{
-    search: string;
-  }>({
+interface NavLinksListingProps {
+  navLinks: NavLinkProps[];
+}
+
+export const NavLinksListing = ({ navLinks }: NavLinksListingProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isSearch, setIsSearch] = useState<boolean>(false);
+  const [isAuth] = useState<boolean>(false);
+
+  const form = useForm<SearchFormValues>({
     defaultValues: {
       search: "",
     },
   });
 
-  const onSubmit = (data: { search: string }) => {};
+  const onSubmit: SubmitHandler<SearchFormValues> = (data) => {};
 
-  const renderNavLinks = () => {
-    return navLinks.map(({ sys: { id }, fields: { href, label } }) => {
-      const link = resolveLink(href);
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        setIsSearch(false);
+      }
+    };
 
-      return (
-        <li
-          key={id}
-          className="transition-colors w-full"
-        >
-          <button
-            className="w-full text-left"
-            onClick={() => setIsOpen(false)}
-          >
-            <NavLink
-              href={link}
-              className="w-full lf:w-min"
-            >
-              {label}
-            </NavLink>
-          </button>
-        </li>
-      );
-    });
-  };
+    document.addEventListener("keydown", handleEscapeKey);
 
-  const openSearch = () => {
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
+
+  const openSearch = (): void => {
     if (isOpen) setIsOpen(false);
     setIsSearch(!isSearch);
   };
 
-  const openMenu = () => {
+  const openMenu = (): void => {
     if (isSearch) setIsSearch(false);
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = (): void => setIsOpen(false);
+
   return (
     <>
-      <ul className="hidden gap-6 lg:flex">{renderNavLinks()}</ul>
-
-      {isOpen && (
-        <div className="absolute top-full left-0  z-50 px-16 md:px-32 lg:hidden w-full flex flex-col bg-white py-24 md:py-32 shadow-sm gap-24">
-          <ul className="flex flex-col items-start gap-8 pt-12 justify-start">{renderNavLinks()}</ul>
-          <Button className="w-full h-48 lg:flex items-center justify-center">Login</Button>
-        </div>
-      )}
-
-      {isSearch && (
-        <div className="absolute top-full left-0  z-50 px-16 md:px-32 w-full flex flex-col py-24 md:py-32 lg:px-64 shadow-sm gap-24 bg-white">
-          <FormProvider {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full flex items-center gap-16"
-            >
-              <Input
-                name="search"
-                type="search"
-                placeholder="Search Products"
-              />
-            </form>
-          </FormProvider>
-        </div>
-      )}
-
-      <div className="flex items-center gap-24">
-        <Search
-          className="cursor-pointer z-0"
-          onClick={openSearch}
-        />
-        {isAuth ? (
-          <AuthVisibleComponents />
-        ) : (
-          <Button className="w-87 h-48 lg:flex items-center justify-center hidden">Login</Button>
-        )}
-        <button
-          onClick={openMenu}
-          className="lg:hidden z-0"
-        >
-          {isOpen ? <X className="cursor-pointer text-brand" /> : <Menu className="cursor-pointer lg:hidden" />}
-        </button>
-      </div>
+      <DesktopNavLinks navLinks={navLinks} />
+      <MobileMenu
+        isOpen={isOpen}
+        navLinks={navLinks}
+        onLinkClick={closeMenu}
+      />
+      <SearchPanel
+        isVisible={isSearch}
+        formMethods={form}
+        onSubmit={onSubmit}
+      />
+      <NavControls
+        isOpen={isOpen}
+        isAuth={isAuth}
+        openSearch={openSearch}
+        openMenu={openMenu}
+      />
     </>
   );
 };

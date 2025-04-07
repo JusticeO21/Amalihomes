@@ -9,14 +9,13 @@ export const NavigationSection = async () => {
   const typedNavLinks = response.fields.navigationLinks as unknown as NavLinkProps[];
 
   return (
-    <nav className="border-b border-Grey-fill">
+    <nav className=" bg-white has-[div#search-bar]:fixed has-[div#search-bar]:inset-0 has-[div#search-bar]:z-1000 has-[div#search-bar]:h-screen">
       <Container
+        paddingX={0}
         paddingY={0}
-        className="relative flex items-center justify-between py-16 "
+        className="relative flex items-center justify-between py-16 px-16 md:px-32 lg:px-64 border-b border-Grey-fill h-56 lg:h-80 my-0"
       >
-        <span>
-          <Logo />
-        </span>
+        <Logo />
         <NavLinksListing navLinks={typedNavLinks} />
       </Container>
     </nav>

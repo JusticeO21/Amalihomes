@@ -8,6 +8,7 @@ export type InputProps = {
   validationRules?: RegisterOptions;
   className?: string;
   inputClassName?: string;
+  groupClassName?: string;
 };
 
 export type PasswordToggleButtonProps = {

@@ -2,6 +2,7 @@ import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleC
 import type { TypeContactsSkeleton } from "./TypeContacts";
 import type { TypeFooterItemSkeleton } from "./TypeFooterItem";
 import type { TypeNewsLetterSkeleton } from "./TypeNewsLetter";
+import type { TypeSocialLinksSkeleton } from "./TypeSocialLinks";
 
 export interface TypeFooterFields {
   label: EntryFieldTypes.Symbol;
@@ -10,6 +11,7 @@ export interface TypeFooterFields {
   quickLinks?: EntryFieldTypes.EntryLink<TypeFooterItemSkeleton>;
   legalService?: EntryFieldTypes.EntryLink<TypeFooterItemSkeleton>;
   contacts?: EntryFieldTypes.EntryLink<TypeContactsSkeleton>;
+  socialLinks?: EntryFieldTypes.EntryLink<TypeSocialLinksSkeleton>;
 }
 
 export type TypeFooterSkeleton = EntrySkeletonType<TypeFooterFields, "footer">;

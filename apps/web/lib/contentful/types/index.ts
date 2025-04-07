@@ -23,6 +23,8 @@ export type {
   TypeProductCategorySectionFields,
   TypeProductCategorySectionSkeleton,
 } from "./TypeProductCategorySection";
+export type { TypeSocialLinkItem, TypeSocialLinkItemFields, TypeSocialLinkItemSkeleton } from "./TypeSocialLinkItem";
+export type { TypeSocialLinks, TypeSocialLinksFields, TypeSocialLinksSkeleton } from "./TypeSocialLinks";
 export type { TypeUspCardItem, TypeUspCardItemFields, TypeUspCardItemSkeleton } from "./TypeUspCardItem";
 export type {
   TypeUspuniqueSellingPoint,

@@ -1,10 +1,10 @@
+import { Footer } from "features/footer";
+import { Header } from "features/header";
 import type { Metadata } from "next";
-import "./globals.css";
 import { Lato } from "next/font/google";
 import { Analytics } from "../components/analytics";
 import { QueryProvider } from "../providers/react-query/query-provider";
-import { Footer } from "features/footer";
-import { Header } from "features/header";
+import "./globals.css";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Analytics />
-      <body className={`${lato.variable}`}>
+      <body className={`relative ${lato.variable}`}>
         <noscript>
           <iframe
             title="Google Tag Manager"
@@ -36,7 +36,9 @@ export default function RootLayout({
           />
         </noscript>
         <QueryProvider>
-          <Header />
+          <div className="sticky top-0">
+            <Header />
+          </div>
           {children}
           <Footer />
         </QueryProvider>

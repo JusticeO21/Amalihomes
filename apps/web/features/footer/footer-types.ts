@@ -25,10 +25,32 @@ interface FooterItem {
   };
 }
 
+export interface SocialLinkItem {
+  fields: {
+    label: string;
+    href: string;
+    icon: {
+      fields: {
+        file: {
+          url: string;
+        };
+      };
+    };
+  };
+}
+
+interface SocialLinkItemFields {
+  fields: {
+    label: string;
+    links: SocialLinkItem[];
+  };
+}
+
 export interface FooterProps {
   contacts: Contacts;
   newsLetter: Newsletter;
   aboutUs: FooterItem;
   quickLinks: FooterItem;
   legalService: FooterItem;
+  socialLinks: SocialLinkItemFields;
 }
