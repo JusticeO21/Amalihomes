@@ -1,142 +1,163 @@
-import "@testing-library/jest-dom";
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { ProductCarousel } from "./product-carousel";
 
-window.matchMedia = jest.fn().mockImplementation((query) => ({
-  matches: false,
-  media: query,
-  onchange: null,
-  addListener: jest.fn(),
-  removeListener: jest.fn(),
-  addEventListener: jest.fn(),
-  removeEventListener: jest.fn(),
-  dispatchEvent: jest.fn(),
+jest.mock("./carousel-controls", () => ({
+  CarouselControls: jest.fn(({ previousSlide, nextSlide }) => (
+    <div>
+      <button onClick={previousSlide}>Previous</button>
+      <button onClick={nextSlide}>Next</button>
+    </div>
+  )),
 }));
 
-const TestItems = Array.from({ length: 5 }, (_, i) => (
-  <div
-    key={i}
-    data-testid={`carousel-item-${i}`}
-  >
-    Item {i + 1}
-  </div>
-));
+window.HTMLElement.prototype.scrollBy = jest.fn();
 
-describe("Product Carousel Component", () => {
-  it("should render items correctly", () => {
-    render(<ProductCarousel>{TestItems}</ProductCarousel>);
+beforeAll(() => {
+  Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    value: jest.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    })),
+  });
+});
 
-    TestItems.forEach((_, index) => {
-      expect(screen.getByTestId(`carousel-item-${index}`)).toBeInTheDocument();
-    });
+describe("ProductCarousel", () => {
+  const mockChildren = [<div key="1">Item 1</div>, <div key="2">Item 2</div>, <div key="3">Item 3</div>];
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    (window.matchMedia as jest.Mock).mockImplementation((query) => ({
+      matches: query === "(min-width: 768px)",
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
   });
 
-  it("shows heading when provided", () => {
-    const headingText = "Test Heading";
-    render(<ProductCarousel heading={headingText}>{TestItems}</ProductCarousel>);
-    expect(screen.getByText(headingText)).toBeInTheDocument();
+  it("renders without crashing", () => {
+    render(<ProductCarousel>{mockChildren}</ProductCarousel>);
+    expect(screen.getByText("Item 1")).toBeInTheDocument();
   });
 
-  it("shows controls when showControls is true", () => {
-    render(<ProductCarousel showControls>{TestItems}</ProductCarousel>);
-    expect(screen.getByLabelText("Previous slide")).toBeInTheDocument();
-    expect(screen.getByLabelText("Next slide")).toBeInTheDocument();
+  it("displays children correctly", () => {
+    render(<ProductCarousel>{mockChildren}</ProductCarousel>);
+    expect(screen.getByText("Item 1")).toBeInTheDocument();
+    expect(screen.getByText("Item 2")).toBeInTheDocument();
+    expect(screen.getByText("Item 3")).toBeInTheDocument();
+  });
+
+  it("shows controls by default", () => {
+    render(<ProductCarousel>{mockChildren}</ProductCarousel>);
+    expect(screen.getByText("Previous")).toBeInTheDocument();
+    expect(screen.getByText("Next")).toBeInTheDocument();
   });
 
   it("hides controls when showControls is false", () => {
-    render(<ProductCarousel showControls={false}>{TestItems}</ProductCarousel>);
-    expect(screen.queryByLabelText("Previous slide")).not.toBeInTheDocument();
-    expect(screen.queryByLabelText("Next slide")).not.toBeInTheDocument();
+    render(<ProductCarousel showControls={false}>{mockChildren}</ProductCarousel>);
+    expect(screen.queryByText("Previous")).not.toBeInTheDocument();
+    expect(screen.queryByText("Next")).not.toBeInTheDocument();
   });
 
-  it("navigates between slides", () => {
-    render(<ProductCarousel showControls>{TestItems}</ProductCarousel>);
-
-    // Initial state
-    expect(screen.getByTestId("carousel-item-0")).toBeVisible();
-
-    // Click next
-    fireEvent.click(screen.getByLabelText("Next slide"));
-    expect(screen.getByTestId("carousel-item-1")).toBeVisible();
-
-    // Click prev
-    fireEvent.click(screen.getByLabelText("Previous slide"));
-    expect(screen.getByTestId("carousel-item-0")).toBeVisible();
+  it("displays heading when provided", () => {
+    const headingText = "Featured Products";
+    render(<ProductCarousel heading={headingText}>{mockChildren}</ProductCarousel>);
+    expect(screen.getByText(headingText)).toBeInTheDocument();
   });
 
-  it("loops back to first slide when reaching end", () => {
-    render(<ProductCarousel showControls>{TestItems}</ProductCarousel>);
+  it("calls scrollBy with correct amount when clicking controls", () => {
+    render(<ProductCarousel>{mockChildren}</ProductCarousel>);
 
-    // Go to last slide
-    for (let i = 0; i < 5; i++) {
-      fireEvent.click(screen.getByLabelText("Next slide"));
-    }
-
-    expect(screen.getByTestId("carousel-item-0")).toBeVisible();
-  });
-
-  it("loops to last slide when going before first", () => {
-    render(<ProductCarousel showControls>{TestItems}</ProductCarousel>);
-
-    // Go to previous from first
-    fireEvent.click(screen.getByLabelText("Previous slide"));
-
-    expect(screen.getByTestId("carousel-item-4")).toBeVisible();
-  });
-
-  it("handles autoPlay correctly", () => {
-    jest.useFakeTimers();
-    render(
-      <ProductCarousel
-        autoPlay
-        interval={1000}
-      >
-        {TestItems}
-      </ProductCarousel>,
-    );
-
-    act(() => {
-      jest.advanceTimersByTime(1000);
+    fireEvent.click(screen.getByText("Next"));
+    expect(window.HTMLElement.prototype.scrollBy).toHaveBeenCalledWith({
+      left: 361,
+      behavior: "smooth",
     });
 
-    expect(screen.getByTestId("carousel-item-1")).toBeVisible();
-    jest.useRealTimers();
+    fireEvent.click(screen.getByText("Previous"));
+    expect(window.HTMLElement.prototype.scrollBy).toHaveBeenCalledWith({
+      left: -361,
+      behavior: "smooth",
+    });
   });
 
-  it("pauses on hover", () => {
-    jest.useFakeTimers();
-    const { container } = render(
-      <ProductCarousel
-        autoPlay
-        interval={1000}
-      >
-        {TestItems}
-      </ProductCarousel>,
-    );
+  describe("responsive behavior", () => {
+    it("uses 361px scroll amount for desktop", () => {
+      (window.matchMedia as jest.Mock).mockImplementation((query) => ({
+        matches: query === "(min-width: 768px)",
+      }));
 
-    fireEvent.mouseEnter(container.firstChild!);
-    act(() => {
-      jest.advanceTimersByTime(2000);
+      render(<ProductCarousel>{mockChildren}</ProductCarousel>);
+      fireEvent.click(screen.getByText("Next"));
+      expect(window.HTMLElement.prototype.scrollBy).toHaveBeenCalledWith({
+        left: 361,
+        behavior: "smooth",
+      });
     });
 
-    expect(screen.getByTestId("carousel-item-0")).toBeVisible();
-    jest.useRealTimers();
+    it("uses 270px scroll amount for tablet", () => {
+      (window.matchMedia as jest.Mock).mockImplementation((query) => ({
+        matches: query === "(min-width: 640px)",
+      }));
+
+      render(<ProductCarousel>{mockChildren}</ProductCarousel>);
+      fireEvent.click(screen.getByText("Next"));
+      expect(window.HTMLElement.prototype.scrollBy).toHaveBeenCalledWith({
+        left: 270,
+        behavior: "smooth",
+      });
+    });
+
+    it("uses 203px scroll amount for mobile (400px)", () => {
+      (window.matchMedia as jest.Mock).mockImplementation((query) => ({
+        matches: query === "(min-width: 400px)",
+      }));
+
+      render(<ProductCarousel>{mockChildren}</ProductCarousel>);
+      fireEvent.click(screen.getByText("Next"));
+      expect(window.HTMLElement.prototype.scrollBy).toHaveBeenCalledWith({
+        left: 203,
+        behavior: "smooth",
+      });
+    });
+
+    it("uses 200px scroll amount for small mobile", () => {
+      (window.matchMedia as jest.Mock).mockImplementation(() => ({
+        matches: false,
+      }));
+
+      render(<ProductCarousel>{mockChildren}</ProductCarousel>);
+      fireEvent.click(screen.getByText("Next"));
+      expect(window.HTMLElement.prototype.scrollBy).toHaveBeenCalledWith({
+        left: 200,
+        behavior: "smooth",
+      });
+    });
   });
 
-  it("applies custom class names", () => {
-    const containerClass = "custom-container";
-    const itemClass = "custom-item";
+  it("cleans up event listeners on unmount", () => {
+    const removeEventListener = jest.spyOn(window, "removeEventListener");
+    const { unmount } = render(<ProductCarousel>{mockChildren}</ProductCarousel>);
 
-    render(
-      <ProductCarousel
-        className={containerClass}
-        itemClassName={itemClass}
-      >
-        {TestItems}
-      </ProductCarousel>,
-    );
+    unmount();
+    expect(removeEventListener).toHaveBeenCalledWith("resize", expect.any(Function));
+  });
 
-    expect(document.querySelector(`.${containerClass}`)).toBeInTheDocument();
-    expect(document.querySelector(`.${itemClass}`)).toBeInTheDocument();
+  it("applies custom className", () => {
+    const customClass = "custom-class";
+    render(<ProductCarousel className={customClass}>{mockChildren}</ProductCarousel>);
+    const container = screen.getByText("Item 1").parentElement?.parentElement;
+    expect(container).toHaveClass(customClass);
   });
 });

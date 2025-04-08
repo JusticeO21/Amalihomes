@@ -1,9 +1,10 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CarouselControlsProps } from "./types";
+import { cn } from "../../lib/utils";
 
-export const CarouselControls = ({ previousSlide, nextSlide }: CarouselControlsProps) => {
+export const CarouselControls = ({ previousSlide, nextSlide, className }: CarouselControlsProps) => {
   return (
-    <div className="flex items-center gap-8 ml-auto">
+    <div className={cn("flex items-center gap-8 ml-auto", className)}>
       <button
         onClick={previousSlide}
         className="cursor-pointer p-12 rounded-full bg-Grey-fill-weaker"

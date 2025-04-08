@@ -36,9 +36,7 @@ export default function RootLayout({
           />
         </noscript>
         <QueryProvider>
-          <div className="sticky top-0">
-            <Header />
-          </div>
+          <Header />
           {children}
           <Footer />
         </QueryProvider>

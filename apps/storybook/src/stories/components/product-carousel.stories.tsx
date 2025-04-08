@@ -9,30 +9,6 @@ const meta: Meta<typeof ProductCarousel> = {
     showControls: true,
   },
   argTypes: {
-    gap: {
-      control: { type: "number", min: 0, max: 32, step: 4 },
-      description: "The spacing between carousel items in pixels",
-      table: {
-        type: { summary: "number" },
-        defaultValue: { summary: "16" },
-      },
-    },
-    autoPlay: {
-      control: "boolean",
-      description: "Enables automatic cycling of carousel items",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-      },
-    },
-    interval: {
-      control: { type: "number", min: 1000, max: 10000, step: 1000 },
-      description: "Duration between auto-rotation transitions in milliseconds",
-      table: {
-        type: { summary: "number" },
-        defaultValue: { summary: "5000" },
-      },
-    },
     showControls: {
       control: "boolean",
       description: "Shows navigation arrows on the sides",
@@ -86,6 +62,7 @@ const createCarouselItems = (count: number) =>
         justifyContent: "center",
         alignItems: "center",
         borderRadius: "20px",
+        minWidth: "316px",
       }}
     >
       Item {i + 1}
@@ -102,13 +79,5 @@ export const WithHeading: Story = {
   args: {
     children: createCarouselItems(5),
     heading: "Product Category",
-  },
-};
-
-export const AutoPlay: Story = {
-  args: {
-    children: createCarouselItems(5),
-    autoPlay: true,
-    interval: 3000,
   },
 };

@@ -10,7 +10,7 @@ interface ButtonGroupProps {
   secondaryCtaText: string;
 }
 
-export function ButtonGroup({ ctaText, ctaLink, secondaryCtaText, secondaryCtaLink }: ButtonGroupProps) {
+export const ButtonGroup = ({ ctaText, ctaLink, secondaryCtaText, secondaryCtaLink }: ButtonGroupProps) => {
   const router = useRouter();
   const handleButtonClick = (link: string) => {
     router.push(link);
@@ -43,4 +43,4 @@ export function ButtonGroup({ ctaText, ctaLink, secondaryCtaText, secondaryCtaLi
       </Button>
     </Container>
   );
-}
+};

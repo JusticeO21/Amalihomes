@@ -78,7 +78,7 @@ export const LanguageDrawer = ({
             variant="p"
             className="text-Gray-text max-w-380"
           >
-            The countries we operate in with their default language are; {" "}
+            The countries we operate in with their default language are;{" "}
             {countries
               .map((country) => `${country.otherName ? country.otherName : country.country} (${country.languageCode})`)
               .join(", ")}

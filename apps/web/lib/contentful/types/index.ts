@@ -17,6 +17,11 @@ export type { TypeLanguages, TypeLanguagesFields, TypeLanguagesSkeleton } from "
 export type { TypeLogo, TypeLogoFields, TypeLogoSkeleton } from "./TypeLogo";
 export type { TypeNavigation, TypeNavigationFields, TypeNavigationSkeleton } from "./TypeNavigation";
 export type { TypeNavLink, TypeNavLinkFields, TypeNavLinkSkeleton } from "./TypeNavLink";
+export type {
+  TypeNewArrivalSection,
+  TypeNewArrivalSectionFields,
+  TypeNewArrivalSectionSkeleton,
+} from "./TypeNewArrivalSection";
 export type { TypeNewsLetter, TypeNewsLetterFields, TypeNewsLetterSkeleton } from "./TypeNewsLetter";
 export type {
   TypeProductCategorySection,

@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "@amalihomes/ui/components/container";
 import Image from "next/image";
 
@@ -12,7 +11,7 @@ function CategoryCard({ imageURL, title }: CategoryCardProps) {
     <Container
       paddingX={0}
       paddingY={0}
-      className="grid grid-cols-1 gap-[24px] w-[203.06px] sm:w-[270.75px] lg:w-[361px] "
+      className="grid grid-cols-1 gap-[24px] text-center min-w-[203px] sm:min-w-[240px] md:min-w-[361px]"
     >
       <Container
         paddingX={0}

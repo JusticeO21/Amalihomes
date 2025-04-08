@@ -39,6 +39,7 @@ export type SelectItemProps = {
 export type SelectLabelProps = {
   children: ReactNode;
   className?: string;
+  htmlFor?:string;
 };
 
 //* Select Content Props

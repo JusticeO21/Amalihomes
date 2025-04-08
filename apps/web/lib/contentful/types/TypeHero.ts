@@ -5,7 +5,7 @@ export interface TypeHeroFields {
   subtext?: EntryFieldTypes.Text;
   ctaText?: EntryFieldTypes.Symbol;
   ctaLink?: EntryFieldTypes.Symbol;
-  heroImage?: EntryFieldTypes.AssetLink;
+  heroImages?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
   secondaryCtaText?: EntryFieldTypes.Symbol;
   secondaryCtaUrl?: EntryFieldTypes.Symbol;
 }

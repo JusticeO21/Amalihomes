@@ -5,7 +5,7 @@ interface IconGlobeProps extends React.SVGProps<SVGSVGElement> {
   strokeWidth?: number | string;
 }
 
-export const IconGlobe= ({
+export const IconGlobe = ({
   width = 20,
   height = 20,
   strokeColor = "#5D5D5D",

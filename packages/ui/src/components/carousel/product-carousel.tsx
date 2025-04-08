@@ -1,39 +1,31 @@
 "use client";
 
-import { Children, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "../../lib/utils";
+import { Container } from "../container";
 import { CarouselControls } from "./carousel-controls";
 import { ProductCarouselProps } from "./types";
 
 export const ProductCarousel = ({
   children,
-  gap = 16,
-  autoPlay = false,
-  interval = 5000,
   showControls = true,
   className = "",
-  itemClassName = "",
   heading = "",
   isCategory = false,
 }: ProductCarouselProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [itemsPerView, setItemsPerView] = useState(1);
-
-  const totalItems = children.length;
-  const maxIndex = Math.max(totalItems - itemsPerView, 0);
-
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollAmount, setScrollAmount] = useState(361);
   const updateItemsPerView = useCallback(() => {
     if (typeof window === "undefined") return;
 
     if (window.matchMedia("(min-width: 768px)").matches) {
-      setItemsPerView(3.5);
+      setScrollAmount(361);
     } else if (window.matchMedia("(min-width: 640px)").matches) {
-      setItemsPerView(2.5);
+      setScrollAmount(270);
     } else if (window.matchMedia("(min-width: 400px)").matches) {
-      setItemsPerView(1.5);
+      setScrollAmount(203);
     } else {
-      setItemsPerView(1);
+      setScrollAmount(200);
     }
   }, []);
 
@@ -43,62 +35,42 @@ export const ProductCarousel = ({
     return () => window.removeEventListener("resize", updateItemsPerView);
   }, [updateItemsPerView]);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1));
-  }, [maxIndex]);
-
-  const previousSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex <= 0 ? maxIndex : prevIndex - 1));
-  }, [maxIndex]);
-
-  useEffect(() => {
-    if (!autoPlay || isPaused) return;
-
-    const timer = setInterval(nextSlide, interval);
-    return () => clearInterval(timer);
-  }, [autoPlay, interval, isPaused, nextSlide]);
-
-  const itemWidth = `calc((100% - ${(itemsPerView - 1) * gap}px) / ${itemsPerView})`;
+  const handleScroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <section
+    <Container
+      paddingY={0}
+      marginY={0}
       className={cn(`relative m-auto w-full flex flex-col gap-40 overflow-hidden`, className)}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {showControls && (
         <div className="flex justify-between items-center w-full">
           {heading && (
-            <h5 className={`${isCategory ? "text-h6-sm sm:text-h5-sm" : "text-h3-sm"} md:text-h3-md font-bold`}>
+            <h4
+              className={`${isCategory ? "!text-18 sm:!text-24 font-bold md:font-semibold" : "!text-h3-sm font-semibold"} md:!text-h3-md`}
+            >
               {heading}
-            </h5>
+            </h4>
           )}
-          {totalItems > itemsPerView && (
-            <CarouselControls
-              previousSlide={previousSlide}
-              nextSlide={nextSlide}
-            />
-          )}
+          <CarouselControls
+            previousSlide={() => handleScroll("left")}
+            nextSlide={() => handleScroll("right")}
+          />
         </div>
       )}
 
       <div
-        className="flex transition-transform duration-500 ease-in-out"
-        style={{
-          transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
-          gap: `${gap}px`,
-        }}
+        className="flex gap-16 md:gap-24 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        ref={scrollRef}
       >
-        {Children.map(children, (child) => (
-          <div
-            key={child?.toString()}
-            className={cn(`flex-shrink-0`, itemClassName)}
-            style={{ width: itemWidth }}
-          >
-            {child}
-          </div>
-        ))}
+        {children}
       </div>
-    </section>
+    </Container>
   );
 };

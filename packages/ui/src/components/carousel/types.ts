@@ -1,10 +1,7 @@
 import { ReactNode } from "react";
 
 export type ProductCarouselProps = {
-  children: ReactNode[];
-  gap?: number;
-  autoPlay?: boolean;
-  interval?: number;
+  children: ReactNode;
   showControls?: boolean;
   className?: string;
   itemClassName?: string;
@@ -15,4 +12,10 @@ export type ProductCarouselProps = {
 export type CarouselControlsProps = {
   nextSlide: () => void;
   previousSlide: () => void;
+  className?: string;
+};
+
+export type HeroCarouselProps = {
+  images: { imageUrl: string; imageAlt: string }[];
+  className?: string;
 };

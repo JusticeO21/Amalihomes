@@ -1,19 +1,19 @@
 import { Container } from "@amalihomes/ui/components/container";
+import { WhyChooseUsCard } from "@amalihomes/ui/components/card";
 import Image from "next/image";
-import { fetchUspSection } from "../../lib/contentful/why-choose-us-service";
-import { Asset, Entry, EntrySkeletonType } from "contentful";
-import Card from "../../component/card";
-import { getContentfulImage } from "utils/contentful";
+import { Asset, Entry } from "contentful";
+import {
+  UspCardListProps,
+  UspCardSkeleton,
+  UspContentProps,
+  UspHeaderProps,
+  UspImageProps,
+  UspSectionViewProps,
+} from "@/sections/types";
+import { fetchUspSection } from "@/lib/contentful/why-choose-us-service";
+import { getContentfulImage } from "@/utils/contentful";
 
-interface UspCardFields {
-  title: string;
-  description: string;
-  icon: Asset;
-}
-
-type UspCardSkeleton = EntrySkeletonType<UspCardFields, "uspCard">;
-
-async function Usp() {
+const Usp = async () => {
   const uspData = await fetchUspSection();
 
   if (!uspData?.heading || !uspData?.cards?.length || !uspData?.image) {
@@ -28,16 +28,9 @@ async function Usp() {
       image={uspData.image as Asset}
     />
   );
-}
+};
 
-interface UspSectionViewProps {
-  heading: string;
-  description: string;
-  cards: Entry<UspCardSkeleton>[];
-  image: Asset;
-}
-
-function UspSectionView({ heading, description, cards, image }: UspSectionViewProps) {
+const UspSectionView = ({ heading, description, cards, image }: UspSectionViewProps) => {
   const { imageUrl, imageAlt } = getContentfulImage(
     image,
     "/images/usp-image.png",
@@ -63,15 +56,9 @@ function UspSectionView({ heading, description, cards, image }: UspSectionViewPr
       </Container>
     </section>
   );
-}
+};
 
-interface UspContentProps {
-  heading: string;
-  description: string;
-  cards: Entry<UspCardSkeleton>[];
-}
-
-function UspContent({ heading, description, cards }: UspContentProps) {
+const UspContent = ({ heading, description, cards }: UspContentProps) => {
   return (
     <Container
       paddingX={0}
@@ -85,14 +72,9 @@ function UspContent({ heading, description, cards }: UspContentProps) {
       <UspCardList cards={cards} />
     </Container>
   );
-}
+};
 
-interface UspHeaderProps {
-  heading: string;
-  description: string;
-}
-
-function UspHeader({ heading, description }: UspHeaderProps) {
+const UspHeader = ({ heading, description }: UspHeaderProps) => {
   return (
     <div className="p-0">
       <h2
@@ -104,13 +86,9 @@ function UspHeader({ heading, description }: UspHeaderProps) {
       <p className="leading-26 text-18 text-muted-foreground mb-24  text-Gray-fill-bright">{description}</p>
     </div>
   );
-}
+};
 
-interface UspCardListProps {
-  cards: Entry<UspCardSkeleton>[];
-}
-
-function UspCardList({ cards }: UspCardListProps) {
+const UspCardList = ({ cards }: UspCardListProps) => {
   return (
     <Container
       paddingX={0}
@@ -119,38 +97,31 @@ function UspCardList({ cards }: UspCardListProps) {
       role="list"
     >
       {cards.map((cardEntry) => (
-        <UspCard
+        <WhyChooseUsCard
           key={cardEntry.sys.id}
-          cardEntry={cardEntry}
+          title={cardEntry.fields.title as unknown as string}
+          description={cardEntry.fields.description as unknown as string}
+          src={
+            getContentfulImage(
+              cardEntry.fields.icon as unknown as Asset,
+              `/images/usp-${cardEntry.fields.title}.png`,
+              `${cardEntry.fields.title} card`,
+            ).imageUrl
+          }
+          alt={
+            getContentfulImage(
+              cardEntry.fields.icon as unknown as Asset,
+              `/images/usp-${cardEntry.fields.title}.png`,
+              `${cardEntry.fields.title} card`,
+            ).imageAlt
+          }
         />
       ))}
     </Container>
   );
-}
+};
 
-interface UspCardProps {
-  cardEntry: Entry<UspCardSkeleton>;
-}
-
-function UspCard({ cardEntry }: UspCardProps) {
-  const { title, description, icon } = cardEntry.fields as { title: string; description: string; icon: unknown };
-  const { imageUrl: cardImageUrl } = getContentfulImage(icon as Asset, `/images/usp-${title}.png`, `${title} card`);
-
-  return (
-    <Card
-      imageUrl={cardImageUrl}
-      title={title}
-      description={description}
-    />
-  );
-}
-
-interface UspImageProps {
-  imageUrl: string;
-  imageAlt: string;
-}
-
-function UspImage({ imageUrl, imageAlt }: UspImageProps) {
+const UspImage = ({ imageUrl, imageAlt }: UspImageProps) => {
   return (
     <div className=" hidden lg:block m-0 rounded-md overflow-hidden">
       <Image
@@ -163,6 +134,6 @@ function UspImage({ imageUrl, imageAlt }: UspImageProps) {
       />
     </div>
   );
-}
+};
 
 export default Usp;
