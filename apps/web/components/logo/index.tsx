@@ -31,13 +31,13 @@ export const Logo = async () => {
       href="/"
       className="cursor-pointer"
     >
-    <Image
-      src={`https:${url}`}
-      alt={alt}
-      width={91}
-      height={24}
-      priority
-    />
-   </Link>
+      <Image
+        src={`https:${url}`}
+        alt={alt}
+        width={91}
+        height={24}
+        priority
+      />
+    </Link>
   );
 };

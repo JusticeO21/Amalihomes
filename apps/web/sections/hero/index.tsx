@@ -59,7 +59,7 @@ const TextContent = ({ headline, subtext, ctaText, ctaLink, secondaryCtaText, se
     <Container
       aria-labelledby="hero-heading"
       paddingX={0}
-      paddingY={0}      
+      paddingY={0}
       className="lg:max-w-[531px] mx-0"
     >
       <h1

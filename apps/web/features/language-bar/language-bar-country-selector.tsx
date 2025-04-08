@@ -20,7 +20,10 @@ export const CountrySelector = ({ countries, selectedCountry, onChange }: Countr
     className="w-full"
     defaultValue={selectedCountry}
   >
-    <SelectLabel className="color-Grey-text-strong font-bold" htmlFor="country">
+    <SelectLabel
+      className="color-Grey-text-strong font-bold"
+      htmlFor="country"
+    >
       Country
       <SelectTrigger id="country">
         <SelectValue placeholder="Select country" />

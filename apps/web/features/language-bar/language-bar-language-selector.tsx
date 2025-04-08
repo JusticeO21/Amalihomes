@@ -1,4 +1,11 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@amalihomes/ui/components/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@amalihomes/ui/components/select";
 
 interface LanguageSelectorProps {
   languages: string[];
@@ -7,32 +14,32 @@ interface LanguageSelectorProps {
 }
 
 export const LanguageSelector = ({ languages, selectedLanguage, onChange }: LanguageSelectorProps) => (
-  <label
-    className="flex flex-col gap-4"
-    htmlFor="language"
+  <Select
+    onChange={onChange}
+    className="w-full"
+    defaultValue={selectedLanguage}
   >
-    <span className="color-Grey-text-strong font-bold">Language</span>
-    <Select
-      onChange={onChange}
-      className="w-full"
-      defaultValue={selectedLanguage}
+    <SelectLabel
+      className="color-Grey-text-strong font-bold"
+      htmlFor="language"
     >
+      Language
       <SelectTrigger
         id="language"
         disabled={languages.length === 0}
       >
         <SelectValue placeholder="Select Language" />
       </SelectTrigger>
-      <SelectContent>
-        {languages.map((lang) => (
-          <SelectItem
-            key={lang}
-            value={lang}
-          >
-            {lang}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-  </label>
+    </SelectLabel>
+    <SelectContent>
+      {languages.map((lang) => (
+        <SelectItem
+          key={lang}
+          value={lang}
+        >
+          {lang}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
 );

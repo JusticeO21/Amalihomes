@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ["@amalihomes/ui"],
+  trailingSlash: true,
   images: {
     remotePatterns: [
       {
