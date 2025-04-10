@@ -1,5 +1,6 @@
 import { cva } from "class-variance-authority";
 import * as React from "react";
+import { usePreventBodyScroll } from "../../hooks/use-prevent-scroll/use-prevent-scroll";
 import { cn } from "../../lib/utils";
 
 interface DrawerProps {
@@ -21,6 +22,7 @@ const Drawer: React.FC<DrawerProps> = ({
   describedBy,
   shadowClassName,
 }) => {
+  usePreventBodyScroll(isOpen);
   if (!isOpen) return null;
 
   return (

@@ -347,6 +347,9 @@
   .flex {
     display: flex;
   }
+  .hidden {
+    display: none;
+  }
   .size-40 {
     width: var(--spacing-40);
     height: var(--spacing-40);
