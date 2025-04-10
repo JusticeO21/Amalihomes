@@ -10,7 +10,7 @@ import { Container } from "@amalihomes/ui/components/container";
 
 export const Footer = async () => {
   const response = await getEntry<TypeFooterSkeleton>("footer", { include: 5 });
-  const { contacts, newsLetter, aboutUs, quickLinks, legalService, socialLinks } =
+  const { contacts, newsLetter, aboutUs, quickLinks, legalService, socialLinks ,copyright } =
     response.fields as unknown as FooterProps;
 
   return (
@@ -25,7 +25,12 @@ export const Footer = async () => {
             title={newsLetter.fields.title}
             subTitle={newsLetter.fields.subTitle}
           />
-          <FooterForm />
+          <FooterForm
+            buttonText={newsLetter.fields.buttonText}
+            inputPlaceholder={newsLetter.fields.inputText}
+            description={newsLetter.fields.subscriptionDescription}
+            privacyLink={newsLetter.fields.privacyLink.fields}
+          />
         </div>
         <div className="p-0 grid grid-cols-1 gap-20 md:grid-cols-4 md:justify-between lg:justify-normal lg:grid-cols-5 lg:gap-24">
           {[aboutUs, quickLinks, legalService].map((section) => (
@@ -42,7 +47,7 @@ export const Footer = async () => {
           />
         </div>
         <div className="p-0 border-t border-white pt-32 mt-4 flex lg:flex-row flex-col items-center justify-center lg:justify-between gap-y-16">
-          <FooterSocialLinks socialLinks={socialLinks.fields.links} />
+          <FooterSocialLinks copyright={copyright} socialLinks={socialLinks.fields.links} />
         </div>
       </Container>
     </footer>

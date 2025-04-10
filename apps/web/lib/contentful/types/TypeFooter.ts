@@ -5,18 +5,15 @@ import type { TypeNewsLetterSkeleton } from "./TypeNewsLetter";
 import type { TypeSocialLinksSkeleton } from "./TypeSocialLinks";
 
 export interface TypeFooterFields {
-  label: EntryFieldTypes.Symbol;
-  newsLetter?: EntryFieldTypes.EntryLink<TypeNewsLetterSkeleton>;
-  aboutUs?: EntryFieldTypes.EntryLink<TypeFooterItemSkeleton>;
-  quickLinks?: EntryFieldTypes.EntryLink<TypeFooterItemSkeleton>;
-  legalService?: EntryFieldTypes.EntryLink<TypeFooterItemSkeleton>;
-  contacts?: EntryFieldTypes.EntryLink<TypeContactsSkeleton>;
-  socialLinks?: EntryFieldTypes.EntryLink<TypeSocialLinksSkeleton>;
+    label: EntryFieldTypes.Symbol;
+    newsLetter?: EntryFieldTypes.EntryLink<TypeNewsLetterSkeleton>;
+    aboutUs?: EntryFieldTypes.EntryLink<TypeFooterItemSkeleton>;
+    quickLinks?: EntryFieldTypes.EntryLink<TypeFooterItemSkeleton>;
+    legalService?: EntryFieldTypes.EntryLink<TypeFooterItemSkeleton>;
+    contacts?: EntryFieldTypes.EntryLink<TypeContactsSkeleton>;
+    socialLinks?: EntryFieldTypes.EntryLink<TypeSocialLinksSkeleton>;
+    copyright: EntryFieldTypes.Symbol;
 }
 
 export type TypeFooterSkeleton = EntrySkeletonType<TypeFooterFields, "footer">;
-export type TypeFooter<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<
-  TypeFooterSkeleton,
-  Modifiers,
-  Locales
->;
+export type TypeFooter<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeFooterSkeleton, Modifiers, Locales>;

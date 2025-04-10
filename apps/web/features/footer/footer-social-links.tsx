@@ -9,6 +9,7 @@ type LegalLink = {
 
 type FooterSocialLinksProps = {
   socialLinks: SocialLinkItem[];
+  copyright: string;
 };
 
 const legalLinks: LegalLink[] = [
@@ -17,9 +18,7 @@ const legalLinks: LegalLink[] = [
   { text: "Cookie Settings", url: "/cookie-settings" },
 ];
 
-export const FooterSocialLinks = ({ socialLinks }: FooterSocialLinksProps) => {
-  const currentYear = new Date().getFullYear();
-
+export const FooterSocialLinks = ({ socialLinks, copyright }: FooterSocialLinksProps) => {
   return (
     <>
       <div
@@ -29,7 +28,7 @@ export const FooterSocialLinks = ({ socialLinks }: FooterSocialLinksProps) => {
           items-center justify-center
         "
       >
-        <p className="text-white text-14">© {currentYear} AmaliHomes. All rights reserved.</p>
+        <p className="text-white text-14">{copyright}</p>
 
         <nav
           className="flex gap-24 text-white"

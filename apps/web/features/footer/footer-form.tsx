@@ -5,7 +5,17 @@ import { Typography } from "@amalihomes/ui/components/typography";
 import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
 
-export const FooterForm = () => {
+interface Props {
+  buttonText: string;
+  inputPlaceholder: string;
+  privacyLink: {
+    href: string;
+    label: string;
+  };
+  description: string;
+}
+
+export const FooterForm = ({ buttonText, inputPlaceholder, privacyLink, description }: Props) => {
   const form = useForm<{ email: string }>({
     defaultValues: { email: "" },
   });
@@ -23,7 +33,7 @@ export const FooterForm = () => {
                 message: "Invalid email address",
               },
             }}
-            placeholder="Enter your email"
+            placeholder={inputPlaceholder}
             className="p-12 border-[1.5px] !text-16 border-white rounded-md text-body roboto flex-1 w-361 md:w-350 lg:w-357 h-48"
             inputClassName="placeholder:text-white text-white"
           />
@@ -33,7 +43,7 @@ export const FooterForm = () => {
               size={"sm"}
               className="text-Neutral-700"
             >
-              Subscribe
+              {buttonText}
             </Typography>
           </Button>
         </div>
@@ -41,12 +51,12 @@ export const FooterForm = () => {
           size="xs"
           className="text-white flex gap-4"
         >
-          By subscribing you agree to with our
+          {description}
           <Link
-            href="/privacy-policy"
-            className="underline text-12"
+            href={privacyLink.href}
+            className="underline text-12 hover:text-gray-300 hover:no-underline"
           >
-            Privacy Policy
+            {privacyLink.label}
           </Link>
         </Typography>
       </form>

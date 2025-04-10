@@ -12,6 +12,11 @@ interface Contacts {
 interface NewsletterFields {
   title: string;
   subTitle: string;
+  buttonText: string;
+  inputText: string;
+  subscriptionDescription: string;
+  privacyLink:  NavLinkProps
+  
 }
 
 interface Newsletter {
@@ -46,6 +51,8 @@ interface SocialLinkItemFields {
   };
 }
 
+
+
 export interface FooterProps {
   contacts: Contacts;
   newsLetter: Newsletter;
@@ -53,4 +60,5 @@ export interface FooterProps {
   quickLinks: FooterItem;
   legalService: FooterItem;
   socialLinks: SocialLinkItemFields;
+  copyright: string;
 }

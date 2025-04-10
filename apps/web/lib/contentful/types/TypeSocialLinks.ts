@@ -2,13 +2,9 @@ import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleC
 import type { TypeSocialLinkItemSkeleton } from "./TypeSocialLinkItem";
 
 export interface TypeSocialLinksFields {
-  links?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeSocialLinkItemSkeleton>>;
-  label: EntryFieldTypes.Symbol;
+    links?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeSocialLinkItemSkeleton>>;
+    label: EntryFieldTypes.Symbol;
 }
 
 export type TypeSocialLinksSkeleton = EntrySkeletonType<TypeSocialLinksFields, "socialLinks">;
-export type TypeSocialLinks<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<
-  TypeSocialLinksSkeleton,
-  Modifiers,
-  Locales
->;
+export type TypeSocialLinks<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeSocialLinksSkeleton, Modifiers, Locales>;
