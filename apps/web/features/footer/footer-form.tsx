@@ -24,14 +24,14 @@ export const FooterForm = () => {
               },
             }}
             placeholder="Enter your email"
-            className="p-12 border-[1.5px] border-white rounded-md text-body roboto flex-1 w-361 md:w-350 lg:w-357 h-48"
+            className="p-12 border-[1.5px] !text-16 border-white rounded-md text-body roboto flex-1 w-361 md:w-350 lg:w-357 h-48"
             inputClassName="placeholder:text-white text-white"
           />
           <Button className="bg-white hover:bg-whites py-12 px-24 lg:w-118 h-48 flex items-center justify-center md:w-350 w-361">
             <Typography
               weight="bold"
               size={"sm"}
-              className="text-Neutral-900"
+              className="text-Neutral-700"
             >
               Subscribe
             </Typography>
@@ -44,11 +44,10 @@ export const FooterForm = () => {
           By subscribing you agree to with our
           <Link
             href="/privacy-policy"
-            className="underline"
+            className="underline text-12"
           >
             Privacy Policy
           </Link>
-          .
         </Typography>
       </form>
     </FormProvider>

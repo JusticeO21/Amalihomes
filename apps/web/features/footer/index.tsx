@@ -18,7 +18,7 @@ export const Footer = async () => {
       <Container
         paddingX={0}
         paddingY={0}
-        className="flex flex-col gap-y-32 md:gap-y-80 px-16 py-24 md:p-32 lg:p-64 bg-transparent my-0"
+        className="flex flex-col gap-y-32 md:gap-y-80 px-16 py-24 md:p-32 lg:p-64 bg-transparent my-0 md:w-834 lg:w-full"
       >
         <div className="p-0 flex flex-col lg:flex-row w-full justify-between gap-16">
           <FooterNewsletter
@@ -27,7 +27,7 @@ export const Footer = async () => {
           />
           <FooterForm />
         </div>
-        <div className="p-0 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-20">
+        <div className="p-0 grid grid-cols-1 gap-20 md:grid-cols-4 md:justify-between lg:justify-normal lg:grid-cols-5 lg:gap-24">
           {[aboutUs, quickLinks, legalService].map((section) => (
             <div key={section.fields.label}>
               <FooterLinksListing

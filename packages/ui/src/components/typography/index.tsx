@@ -38,8 +38,8 @@ const sizesTypes = {
   xs: "text-sm",
   sm: "text-[1rem]",
   base: "text-[1.5rem]",
-  lg: "text-[2rem]",
-  xl: "text-[2.5rem]",
+  lg: "text-h5-lg",
+  xl: "text-h4-lg",
   "text-2xl": "text-[3rem]",
   "text-3xl": "text-[3.5rem]",
   "text-4xl": "text-[4rem]",
@@ -88,13 +88,13 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement>, Typo
 }
 
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
-  ({ className, size, weight, variant, as, children, colors, ...props }, ref) => {
+  ({ size, weight, variant, as, children, colors, className, ...props }, ref) => {
     const Component: React.ElementType = as ?? (variant as React.ElementType) ?? "p";
 
     return (
       <Component
         ref={ref}
-        className={cn(typographyVariants({ size, weight, colors, className }))}
+        className={cn(typographyVariants({ size, weight, colors }), className)}
         {...props}
       >
         {children}

@@ -37,6 +37,7 @@ export const Logo = async () => {
         width={91}
         height={24}
         priority
+        className="w-91 h-24"
       />
     </Link>
   );

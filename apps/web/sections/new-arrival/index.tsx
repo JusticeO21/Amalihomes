@@ -20,12 +20,12 @@ const NewArrival = async () => {
       {[
         ...(arrivalData.arrivals as Entry<CategorySkeleton>[]),
         ...(arrivalData.arrivals as Entry<CategorySkeleton>[]),
-      ].map((arrivalEntry) => {
+      ].map((arrivalEntry, id) => {
         const { title, image } = arrivalEntry.fields as CategoryFields;
         const { imageUrl, imageAlt } = getContentfulImage(image, `/images/category-${title}.png`, `${title} category`);
         return (
           <ProductCard
-            key={arrivalEntry.sys.id}
+            key={`${arrivalEntry.sys.id}-${id}`}
             src={imageUrl}
             alt={imageAlt}
             caption={title as unknown as string}

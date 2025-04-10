@@ -1,10 +1,19 @@
+import { formatPhoneNumber } from "@/lib/utils/format-tel-number/format-tel-number";
+import { isValidTelNumber } from "@/lib/utils/valdate-tel-number.ts/is-valid-tel-number";
 import { Typography } from "@amalihomes/ui/components/typography";
 import { isValidEmail } from "lib/utils/validate-emails/validate-email";
 import { isValidUrl } from "lib/utils/validate-url/validate-url";
 
 const renderContact = (contact: string) => {
   if (isValidEmail(contact)) {
-    return <a href={`mailto:${contact}`}>{contact}</a>;
+    return (
+      <a
+        href={`mailto:${contact}`}
+        className="hover:text-gray-300"
+      >
+        {contact}
+      </a>
+    );
   }
 
   if (isValidUrl(contact)) {
@@ -13,8 +22,22 @@ const renderContact = (contact: string) => {
         href={contact}
         target="_blank"
         rel="noopener noreferrer"
+        className="hover:text-gray-300"
       >
         {contact}
+      </a>
+    );
+  }
+
+  if (isValidTelNumber(contact)) {
+    return (
+      <a
+        href={`tel:${contact}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-gray-300"
+      >
+        {formatPhoneNumber(contact)}
       </a>
     );
   }
@@ -26,7 +49,7 @@ export const FooterContacts = ({ label, contacts }: { label: string; contacts: s
   <div className="p-0 flex flex-col gap-16 items-center justify-center md:items-start md:justify-start">
     <Typography
       as="h3"
-      weight={"semibold"}
+      weight="semibold"
       size="sm"
       className="text-white"
     >

@@ -1,6 +1,5 @@
 "use client";
 
-import { Typography } from "@amalihomes/ui/components/typography";
 import { cn } from "@amalihomes/ui/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,24 +17,16 @@ export const NavLink = ({ href, children, className }: NavLinkProps) => {
     isActive = pathname.startsWith(href);
   }
 
-  const activeClassName = isActive ? "text-brand-text " : "text-Gray-text group-hover:text-brand-text";
-
   return (
     <Link
       className={cn(
-        "inline-block px-24 py-12 hover:text-brand-text group hover:border-transparent cursor-pointer",
+        "inline-block px-24 py-12 text-Grey-stroke-weaker hover:text-brand group hover:border-transparent cursor-pointer disabled:text-Grey-fill",
         className,
-        isActive && "border-b-2 border-brand-stroke-strong",
+        isActive && "border-b-2 text-brand border-brand-stroke-strong",
       )}
       href={href}
     >
-      <Typography
-        as="span"
-        size="sm"
-        className={cn("cursor-pointer", activeClassName)}
-      >
-        {children}
-      </Typography>
+      {children}
     </Link>
   );
 };

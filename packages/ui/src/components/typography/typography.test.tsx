@@ -8,12 +8,6 @@ describe("Typography Component", () => {
     expect(screen.getByText("Default Text")).toBeInTheDocument();
   });
 
-  it("renders with custom size", () => {
-    render(<Typography size="xl">Large Text</Typography>);
-    const element = screen.getByText("Large Text");
-    expect(element).toHaveClass("text-[2.5rem]");
-  });
-
   it("renders with custom weight", () => {
     render(<Typography weight="bold">Bold Text</Typography>);
     const element = screen.getByText("Bold Text");

@@ -39,6 +39,7 @@ export const FooterSocialLinks = ({ socialLinks }: FooterSocialLinksProps) => {
             <Link
               key={url}
               href={url}
+              className="hover:text-gray-300"
             >
               {text}
             </Link>
@@ -60,6 +61,7 @@ export const FooterSocialLinks = ({ socialLinks }: FooterSocialLinksProps) => {
               alt={fields.label}
               width={24}
               height={24}
+              className="hover:opacity-65"
             />
           </a>
         ))}

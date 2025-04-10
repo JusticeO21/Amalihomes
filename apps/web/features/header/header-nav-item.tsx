@@ -15,18 +15,14 @@ export const NavItem = ({ id, href, label, onClick }: NavItemProps) => {
     <li
       key={id}
       className="transition-colors w-full"
+      onClick={onClick}
     >
-      <button
-        className="w-full text-left"
-        onClick={onClick}
+      <NavLink
+        href={link}
+        className="w-full lf:w-min"
       >
-        <NavLink
-          href={link}
-          className="w-full lf:w-min"
-        >
-          {label}
-        </NavLink>
-      </button>
+        {label}
+      </NavLink>
     </li>
   );
 };

@@ -20,7 +20,7 @@ export const FooterLinksListing = ({ links, title }: { links: NavLinkProps[]; ti
             <li key={link.sys.id}>
               <Link
                 href={resolveLink(link.fields.href)}
-                className="py-8 block text-white text-14"
+                className="py-8 block text-white text-14 hover:text-gray-300"
               >
                 {link.fields.label}
               </Link>
