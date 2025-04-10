@@ -5,7 +5,7 @@ import NewArrival from "@/sections/new-arrival";
 import Usp from "@/sections/why-choose-us";
 export default async function Home() {
   return (
-    <main>
+    <main className="font-lato">
       <Hero />
       <Usp />
       <Category />

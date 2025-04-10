@@ -36,8 +36,13 @@ const HeroView = ({
   heroImages,
 }: HeroViewProps) => {
   return (
-    <section aria-label="Amali Homes Hero Section">
-      <Container className="grid lg:grid-cols-2 md:gap-12 h-[802.06px] sm:h-[1053px] lg:h-[687px]">
+    <section
+      role="banner"
+      aria-label="hero-heading"
+    >
+      <Container
+        className="flex flex-col lg:flex-row gap-y-80 lg:gap-x-[57px] min-h-[80vh]"
+      >
         <TextContent
           headline={headline}
           subtext={subtext}
@@ -47,7 +52,9 @@ const HeroView = ({
           secondaryCtaLink={secondaryCtaLink}
         />
         <HeroCarousel
-          images={heroImages.map((image) => getContentfulImage(image, `/images/hero.png`, `Amali Homes`))}
+          images={heroImages.map((image, index) =>
+            getContentfulImage(image, `/images/hero.png`, `${headline} - Image ${index + 1}`),
+          )}
         />
       </Container>
     </section>
@@ -57,18 +64,17 @@ const HeroView = ({
 const TextContent = ({ headline, subtext, ctaText, ctaLink, secondaryCtaText, secondaryCtaLink }: TextContentProps) => {
   return (
     <Container
-      aria-labelledby="hero-heading"
       paddingX={0}
       paddingY={0}
       className="lg:max-w-[531px] mx-0"
     >
       <h1
         id="hero-heading"
-        className="leading-32 text-h6 sm:text-h4 md:text-56 lg:text-48 font-semibold md:leading-56 tracking-tight mb-24 text-black"
+        className="leading-32 break-words text-24 md:text-56 lg:text-48 font-bold md:leading-56 tracking-[0%] mb-24 text-black"
       >
         {headline}
       </h1>
-      <p className="leading-24 md:leading-26 text-body sm:text-18 text-muted-foreground mb-40 max-w-prose text-Gray-fill-bright">
+      <p className="leading-24 md:leading-26 text-16 md:text-18 text-muted-foreground mb-40 text-Gray-fill-bright font-normal">
         {subtext}
       </p>
       <ButtonGroup

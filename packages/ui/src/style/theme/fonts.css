@@ -1,5 +1,36 @@
+@font-face {
+  font-family: 'Lato';
+  src: url('/assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/assets/fonts/Lato/Lato-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/assets/fonts/Rubik/Rubik-VariableFont_opsz,wght.ttf')
+    format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/assets/fonts/Rubik/Rubik-Italic-VariableFont_opsz,wght.ttf')
+    format('truetype');
+  font-weight: 400 700;
+  font-style: italic;
+}
+
 @theme {
-  --text-*: initial;
+ --font-lato: 'Lato', sans-serif;
+  --font-rubik: 'Rubik', sans-serif;
   --text-h1-lg: 4rem;
   --text-h1-md: 3.5rem;
   --text-h1-sm: 3rem;
