@@ -40,9 +40,7 @@ const HeroView = ({
       role="banner"
       aria-label="hero-heading"
     >
-      <Container
-        className="flex flex-col lg:flex-row gap-y-80 lg:gap-x-[57px] min-h-[80vh]"
-      >
+      <Container className="flex flex-col lg:flex-row gap-y-80 lg:gap-x-[57px]">
         <TextContent
           headline={headline}
           subtext={subtext}

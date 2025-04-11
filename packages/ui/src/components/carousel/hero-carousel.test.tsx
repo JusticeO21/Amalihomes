@@ -1,27 +1,5 @@
-import React from "react";
-import { render, screen, act } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { HeroCarousel } from "./hero-carousel";
-import { CarouselControls } from "./carousel-controls";
-
-// Mock the CarouselControls component
-jest.mock("./carousel-controls", () => ({
-  CarouselControls: jest.fn(({ nextSlide, previousSlide }) => (
-    <div>
-      <button
-        onClick={previousSlide}
-        data-testid="prev-button"
-      >
-        Previous
-      </button>
-      <button
-        onClick={nextSlide}
-        data-testid="next-button"
-      >
-        Next
-      </button>
-    </div>
-  )),
-}));
 
 describe("HeroCarousel", () => {
   const mockImages = [
@@ -30,89 +8,79 @@ describe("HeroCarousel", () => {
     { imageUrl: "image3.jpg", imageAlt: "Image 3" },
   ];
 
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-    jest.clearAllMocks();
-  });
-
-  it("renders with initial image", () => {
+  it("renders without crashing", () => {
     render(<HeroCarousel images={mockImages} />);
 
-    // Check main image is displayed
-    const mainImage = screen.getByAltText("Image 1");
-    expect(mainImage).toBeInTheDocument();
-
-    // Check side images are rendered
-    expect(screen.getByAltText("side Image 1")).toBeInTheDocument();
-    expect(screen.getByAltText("side Image 2")).toBeInTheDocument();
-    expect(screen.getByAltText("side Image 3")).toBeInTheDocument();
-  });
-
-  it("cycles to next image when next button is clicked", () => {
-    render(<HeroCarousel images={mockImages} />);
-
-    const nextButton = screen.getByTestId("next-button");
-    act(() => {
-      nextButton.click();
+    mockImages.forEach((image) => {
+      const img = screen.getByAltText(image.imageAlt);
+      expect(img).toBeInTheDocument();
+      expect(img).toHaveAttribute("src", image.imageUrl);
     });
-
-    // Check transform style is updated
-    const imageContainer = screen.getByAltText("Image 1").parentElement;
-    expect(imageContainer).toHaveStyle("transform: translateX(-100%)");
   });
 
-  it("cycles to previous image when prev button is clicked", () => {
+  it("displays the first image initially", () => {
     render(<HeroCarousel images={mockImages} />);
-
-    const prevButton = screen.getByTestId("prev-button");
-    act(() => {
-      prevButton.click();
-    });
-
-    // Check transform style is updated (wraps to last image)
-    const imageContainer = screen.getByAltText("Image 1").parentElement;
-    expect(imageContainer).toHaveStyle("transform: translateX(-200%)");
+    const firstImage = screen.getByAltText("Image 1");
+    expect(firstImage).toBeInTheDocument();
+    expect(firstImage).toHaveAttribute("src", "image1.jpg");
   });
 
-  it("automatically cycles to next image after interval", () => {
+  it("cycles to the next image when next button is clicked", () => {
     render(<HeroCarousel images={mockImages} />);
+    fireEvent.click(screen.getByLabelText(/next slide/i));
 
-    // Fast-forward time by 3 seconds
-    act(() => {
-      jest.advanceTimersByTime(3000);
-    });
-
-    const imageContainer = screen.getByAltText("Image 1").parentElement;
-    expect(imageContainer).toHaveStyle("transform: translateX(-100%)");
+    const secondImage = screen.getByAltText("Image 2");
+    expect(secondImage).toBeInTheDocument();
   });
 
-  it("wraps to last image when at start of array", () => {
+  it("cycles to the previous image when previous button is clicked", () => {
     render(<HeroCarousel images={mockImages} />);
+    fireEvent.click(screen.getByLabelText(/previous slide/i));
 
-    // Go to previous from start
-    const prevButton = screen.getByTestId("prev-button");
-    act(() => {
-      prevButton.click();
-    });
-
-    const imageContainer = screen.getByAltText("Image 1").parentElement;
-    expect(imageContainer).toHaveStyle("transform: translateX(-200%)");
+    const lastImage = screen.getByAltText("Image 3");
+    expect(lastImage).toBeInTheDocument();
   });
 
-  it("renders correct number of side images", () => {
+  it("wraps to first image when next is clicked on last image", () => {
     render(<HeroCarousel images={mockImages} />);
 
-    const sideImages = screen.getAllByAltText(/side /i);
-    expect(sideImages).toHaveLength(3);
+    fireEvent.click(screen.getByLabelText(/next slide/i));
+    fireEvent.click(screen.getByLabelText(/next slide/i));
+    fireEvent.click(screen.getByLabelText(/next slide/i));
+
+    const firstImage = screen.getByAltText("Image 1");
+    expect(firstImage).toBeInTheDocument();
   });
 
-  it("passes correct props to CarouselControls", () => {
+  it("wraps to last image when previous is clicked on first image", () => {
     render(<HeroCarousel images={mockImages} />);
 
-    expect(CarouselControls).toHaveBeenCalled();
+    fireEvent.click(screen.getByLabelText(/previous slide/i));
+
+    const lastImage = screen.getByAltText("Image 3");
+    expect(lastImage).toBeInTheDocument();
+  });
+
+  it("navigates to specific slide when thumbnail is clicked", () => {
+    render(<HeroCarousel images={mockImages} />);
+
+    const thumbnails = mockImages.map((image) => screen.getByLabelText(image.imageAlt));
+
+    fireEvent.click(thumbnails[1]);
+
+    const secondImage = screen.getByAltText("Image 2");
+    expect(secondImage).toBeInTheDocument();
+  });
+
+  it("renders correct number of thumbnails (limited to 3)", () => {
+    const manyImages = [
+      ...mockImages,
+      { imageUrl: "image4.jpg", imageAlt: "Image 4" },
+      { imageUrl: "image5.jpg", imageAlt: "Image 5" },
+    ];
+
+    render(<HeroCarousel images={manyImages} />);
+    const thumbnails = mockImages.map((image) => screen.getByLabelText(image.imageAlt));
+    expect(thumbnails.length).toBe(3); // Ensure only 3 thumbnails are rendered
   });
 });

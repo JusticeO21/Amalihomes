@@ -17,10 +17,7 @@ const NewArrival = async () => {
       heading={arrivalData.heading as string}
       className="!mb-64"
     >
-      {[
-        ...(arrivalData.arrivals as Entry<CategorySkeleton>[]),
-        ...(arrivalData.arrivals as Entry<CategorySkeleton>[]),
-      ].map((arrivalEntry, id) => {
+      {[...(arrivalData.arrivals as Entry<CategorySkeleton>[])].map((arrivalEntry, id) => {
         const { title, image } = arrivalEntry.fields as CategoryFields;
         const { imageUrl, imageAlt } = getContentfulImage(image, `/images/category-${title}.png`, `${title} category`);
         return (
