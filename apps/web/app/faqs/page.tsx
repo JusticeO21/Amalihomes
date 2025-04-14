@@ -1,8 +1,12 @@
 import { Typography } from "@amalihomes/ui/components/typography";
 import { Container } from "@amalihomes/ui/components/container";
+import { getSeoTags } from "@/lib/seo/seo";
 
-import React from "react";
-
+export const generateMetadata = async () =>
+  getSeoTags({
+    title: "FAQs",
+    description: "Frequently Asked Questions",
+  });
 const FAQs = async () => {
   return (
     <main>

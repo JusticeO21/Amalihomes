@@ -1,6 +1,6 @@
+import { getSeoTags } from "@/lib/seo/seo";
 import { Footer } from "features/footer";
 import { Header } from "features/header";
-import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import { Analytics } from "../components/analytics";
 import { QueryProvider } from "../providers/react-query/query-provider";
@@ -12,11 +12,19 @@ const lato = Lato({
   variable: "--font-lato",
 });
 
-export const metadata: Metadata = {
-  title: "Amalihomes",
-  description: "Amalihomes",
-};
-
+export const metadata = getSeoTags({
+  title: {
+    default: "AmaliHomes",
+    template: "%s | AmaliHomes",
+  },
+  description: "Quality furniture for every home & office",
+  keywords: "home, office, furniture, amalihome",
+  openGraph: {
+    title: "AmaliHomes",
+    description: "Quality furniture for every home & office",
+  },
+  canonicalUrlRelative: "/",
+});
 export default function RootLayout({
   children,
 }: Readonly<{

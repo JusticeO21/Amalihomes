@@ -1,13 +1,16 @@
 import { NavLinkProps } from "features/header/nav-links-listing";
 
+interface Sys {
+  id: string;
+  updatedAt: string;
+}
 interface ContactsFields {
   label: string;
   contacts: string[];
 }
 
 interface Contacts {
-  fields: ContactsFields;
-}
+  fields: ContactsFields;}
 
 interface NewsletterFields {
   title: string;
@@ -28,6 +31,7 @@ interface FooterItem {
     label: string;
     links: NavLinkProps[];
   };
+  sys: Sys;
 }
 
 export interface SocialLinkItem {

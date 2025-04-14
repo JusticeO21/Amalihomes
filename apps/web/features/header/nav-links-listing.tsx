@@ -10,6 +10,7 @@ import { SearchFormValues, SearchPanel } from "./header-search-pannel";
 export interface NavLinkProps {
   sys: {
     id: string;
+    updatedAt: string;
   };
   fields: {
     href: string;

@@ -1,7 +1,12 @@
-import { Typography } from "@amalihomes/ui/components/typography";
+import { getSeoTags } from "@/lib/seo/seo";
 import { Container } from "@amalihomes/ui/components/container";
-import React from "react";
+import { Typography } from "@amalihomes/ui/components/typography";
 
+export const generateMetadata = async () =>
+  getSeoTags({
+    title: "Shop",
+    description: "Shop for quality furniture",
+  });
 const Shop = () => {
   return (
     <main>
