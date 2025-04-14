@@ -1,38 +1,38 @@
-import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import { FlashSaleCardProps } from "./types";
 import FlashSaleCard from "./flash-sale-card";
 
-describe("flashsale component", () => {
-  const onClick = jest.fn();
-  it("should render flashsale component correctly", () => {
-    render(
-      <FlashSaleCard
-        src="imageUrl"
-        alt="an image"
-        title="title"
-        description="description"
-        onClick={onClick}
-      />,
-    );
+describe("FlashSaleCard", () => {
+  const defaultProps: FlashSaleCardProps = {
+    imageAlt: "Test Product",
+    imageUrl: "test-image.jpg",
+    ctaLabel: "Shop Now",
+    ctaUrl: "https://example.com/shop",
+    promoCode: "DISCOUNT20",
+    title: "Flash Sale Item",
+    description: "Limited time offer on this amazing product",
+  };
 
-    expect(screen.getByAltText(/an image/i)).toBeInTheDocument();
-    expect(screen.getByText(/title/i)).toBeInTheDocument();
-    expect(screen.getByText(/description/i)).toBeInTheDocument();
-    expect(screen.getByRole("button")).toBeInTheDocument();
+  it("renders correctly with all props", () => {
+    render(<FlashSaleCard {...defaultProps} />);
+
+    const image = screen.getByAltText(defaultProps.imageAlt);
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute("src", defaultProps.imageUrl);
+
+    expect(screen.getByText(defaultProps.title)).toBeInTheDocument();
+    expect(screen.getByText(defaultProps.description)).toBeInTheDocument();
+    expect(screen.getByText(defaultProps.ctaLabel)).toBeInTheDocument();
+
+    const ctaLink = screen.getByRole("link", { name: defaultProps.ctaLabel });
+    expect(ctaLink).toHaveAttribute("href", `${defaultProps.ctaUrl}?code=${defaultProps.promoCode}`);
   });
 
-  it("should run onClick function when button is clicked", () => {
-    render(
-      <FlashSaleCard
-        src="imageUrl"
-        alt="an image"
-        title="title"
-        description="description"
-        onClick={onClick}
-      />,
-    );
+  it("renders correctly without promo code", () => {
+    const propsWithoutPromo = { ...defaultProps, promoCode: undefined };
+    render(<FlashSaleCard {...propsWithoutPromo} />);
 
-    fireEvent.click(screen.getByRole("button"));
-    expect(onClick).toHaveBeenCalled();
+    const ctaLink = screen.getByRole("link", { name: defaultProps.ctaLabel });
+    expect(ctaLink).toHaveAttribute("href", defaultProps.ctaUrl);
   });
 });

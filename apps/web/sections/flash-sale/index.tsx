@@ -1,6 +1,8 @@
 import { fetchFlashSaleSection } from "@/lib/contentful/flashSaleservice";
+import { getContentfulImage } from "@/utils/contentful";
+import { FlashSaleCard } from "@amalihomes/ui/components/card";
+import { Container } from "@amalihomes/ui/components/container";
 import { Asset } from "contentful";
-import { FlashSaleView } from "./flash-sale-view";
 
 const FlashSale = async () => {
   const flashSaleData = await fetchFlashSaleSection();
@@ -9,13 +11,24 @@ const FlashSale = async () => {
     return null;
   }
 
+  const { imageUrl, imageAlt } = getContentfulImage(
+    flashSaleData.image as Asset,
+    `/images/flashsale-image.png`,
+    `Flash sale promotion`,
+  );
+
   return (
-    <FlashSaleView
-      title={flashSaleData.title as string}
-      description={flashSaleData.description as string}
-      ctaUrl={flashSaleData.ctaUrl as string}
-      image={flashSaleData.image as Asset}
-    />
+    <Container>
+      <FlashSaleCard
+        title={flashSaleData.title as string}
+        description={flashSaleData.description as string}
+        imageUrl={imageUrl}
+        imageAlt={imageAlt}
+        ctaLabel={flashSaleData.ctaLabel as string}
+        ctaUrl={flashSaleData.ctaUrl as string}
+        promoCode={flashSaleData.promoCode as string}
+      />
+    </Container>
   );
 };
 

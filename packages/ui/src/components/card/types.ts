@@ -7,11 +7,13 @@ export type FigureProps = {
 };
 
 export type FlashSaleCardProps = {
-  src: string;
-  alt: string;
+  imageUrl: string;
+  imageAlt: string;
   title: string;
   description: string;
-  onClick: () => void;
+  ctaLabel: string;
+  ctaUrl: string;
+  promoCode?: string;
 };
 
 export type WhyChooseUsCardProps = {

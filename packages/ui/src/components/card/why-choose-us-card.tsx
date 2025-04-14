@@ -13,7 +13,7 @@ const WhyChooseUsCard = ({ title, description, src, alt }: WhyChooseUsCardProps)
           className="w-full object-cover"
         />
       </figure>
-      <h6 className="text-20 text-Grey-text-strong">{title}</h6>
+      <h6 className="text-20 text-Grey-text-strong font-semibold">{title}</h6>
       <p className="text-body text-Grey-text-weak">{description}</p>
     </div>
   );

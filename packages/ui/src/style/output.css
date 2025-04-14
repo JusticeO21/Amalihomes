@@ -100,6 +100,7 @@
     --text-h6-lg: 1.5rem;
     --text-body: 1rem;
     --text-14: 14px;
+    --text-16: 16px;
     --text-18: 1.125rem;
     --text-20: 1.25rem;
     --text-24: 24px;
@@ -886,6 +887,9 @@
   }
   .text-14 {
     font-size: var(--text-14);
+  }
+  .text-16 {
+    font-size: var(--text-16);
   }
   .text-18 {
     font-size: var(--text-18);
