@@ -9,7 +9,7 @@ interface LanguageSelectorButtonProps {
 
 export const LanguageSelectorButton = ({ country, language, onClick }: LanguageSelectorButtonProps) => (
   <button
-    className="bg-white rounded-sm px-8 py-4 min-w-155 h-32"
+    className="bg-white rounded-sm px-8 py-4 min-w-155 h-32 cursor-pointer"
     aria-label={`Select language: ${language}, Country: ${country}`}
     onClick={onClick}
   >

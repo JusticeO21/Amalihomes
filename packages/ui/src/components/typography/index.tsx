@@ -62,7 +62,7 @@ export type TypographyElement =
 export type TypographySize = "xs" | "sm" | "base" | "lg" | "xl" | "text-2xl" | "text-3xl" | "text-4xl";
 
 export type TypographyWeight = "normal" | "medium" | "semibold" | "bold";
-const typographyVariants = cva("text-grey-text-strong", {
+const typographyVariants = cva("text-grey-text-strong font-lato", {
   variants: {
     size: sizesTypes,
     weight: {
