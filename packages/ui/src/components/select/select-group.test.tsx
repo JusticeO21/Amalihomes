@@ -30,4 +30,15 @@ describe("SelectGroup", () => {
     expect(screen.getByText("Item 1")).toBeInTheDocument();
     expect(screen.getByText("Item 2")).toBeInTheDocument();
   });
+
+  it("renders label when passed", () => {
+    render(
+      <SelectGroup groupLabel="Fruits">
+        <div>Child 1</div>
+        <div>Child 2</div>
+      </SelectGroup>,
+    );
+
+    expect(screen.getByText("Fruits")).toBeInTheDocument();
+  });
 });

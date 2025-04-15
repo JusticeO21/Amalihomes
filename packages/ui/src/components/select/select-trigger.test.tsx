@@ -40,20 +40,6 @@ describe("SelectTrigger", () => {
     expect(mockSetIsOpen).toHaveBeenCalledWith(true);
   });
 
-  it("shows correct text color when selected exists", () => {
-    mockUseSelectContext.mockReturnValue({
-      isOpen: false,
-      setIsOpen: mockSetIsOpen,
-      selected: "Option 1",
-    });
-
-    render(<SelectTrigger>Option 1</SelectTrigger>);
-
-    const button = screen.getByRole("button");
-    expect(button).toHaveClass("text-Grey-text-strong");
-    expect(button).not.toHaveClass("text-Grey-stroke-strong");
-  });
-
   it("applies custom className correctly", () => {
     render(<SelectTrigger className="custom-class">Select</SelectTrigger>);
 

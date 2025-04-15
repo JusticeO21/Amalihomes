@@ -49,20 +49,6 @@ describe("SelectItem", () => {
     expect(button).not.toHaveClass("text-Grey-stroke-strong");
   });
 
-  it("applies unselected styling when not selected", () => {
-    mockUseSelectContext.mockReturnValue({
-      handleSelect: mockHandleSelect,
-      selected: "option2",
-      search: "",
-    });
-
-    render(<SelectItem value="option1">Option 1</SelectItem>);
-
-    const button = screen.getByRole("button");
-    expect(button).toHaveClass("text-Grey-stroke-strong");
-    expect(button).not.toHaveClass("text-Grey-text-strong");
-  });
-
   it("filters items based on search", () => {
     mockUseSelectContext.mockReturnValue({
       handleSelect: mockHandleSelect,

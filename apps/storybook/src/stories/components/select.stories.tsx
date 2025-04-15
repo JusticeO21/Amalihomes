@@ -3,7 +3,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@amalihomes/ui/components/select";
@@ -48,32 +47,46 @@ type Story = StoryObj<typeof Select>;
 export const Default: Story = {
   render: (args) => (
     <Select {...args}>
-      <SelectTrigger>
+      <SelectTrigger id="select">
         <SelectValue placeholder="Select country" />
       </SelectTrigger>
       <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Africa</SelectLabel>
-          <SelectItem value="Ghana">Ghana</SelectItem>
-          <SelectItem value="Togo">Togo</SelectItem>
-        </SelectGroup>
+        <SelectItem value="Ghana">Ghana</SelectItem>
+        <SelectItem value="Togo">Togo</SelectItem>
       </SelectContent>
     </Select>
   ),
 };
+
+export const WithLabel: Story = {
+  args: { label: "Language" },
+  render: (args) => {
+    return (
+      <Select {...args}>
+        <SelectTrigger>
+          <SelectValue placeholder="Select language" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="English">English</SelectItem>
+          <SelectItem value="French">French</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+  },
+};
 export const WithSearch: Story = {
   args: { hasSearch: true },
   render: (args) => (
-    <Select {...args}>
+    <Select
+      {...args}
+      label="Select a country"
+    >
       <SelectTrigger>
         <SelectValue placeholder="Select country" />
       </SelectTrigger>
       <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Africa</SelectLabel>
-          <SelectItem value="Ghana">Ghana</SelectItem>
-          <SelectItem value="Togo">Togo</SelectItem>
-        </SelectGroup>
+        <SelectItem value="Ghana">Ghana</SelectItem>
+        <SelectItem value="Togo">Togo</SelectItem>
       </SelectContent>
     </Select>
   ),
@@ -81,15 +94,35 @@ export const WithSearch: Story = {
 export const WithSearchDelay: Story = {
   args: { hasSearch: true, delay: 1000 },
   render: (args) => (
-    <Select {...args}>
+    <Select
+      {...args}
+      label="Select a country"
+    >
       <SelectTrigger>
         <SelectValue placeholder="Select country" />
       </SelectTrigger>
       <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Africa</SelectLabel>
-          <SelectItem value="Ghana">Ghana</SelectItem>
-          <SelectItem value="Togo">Togo</SelectItem>
+        <SelectItem value="Ghana">Ghana</SelectItem>
+        <SelectItem value="Togo">Togo</SelectItem>
+      </SelectContent>
+    </Select>
+  ),
+};
+
+export const WithGroupings: Story = {
+  render: (args) => (
+    <Select {...args}>
+      <SelectTrigger>
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup groupLabel="Fruits">
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+        </SelectGroup>
+        <SelectGroup groupLabel="Vegetables">
+          <SelectItem value="carrot">Carrot</SelectItem>
+          <SelectItem value="broccoli">Broccoli</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

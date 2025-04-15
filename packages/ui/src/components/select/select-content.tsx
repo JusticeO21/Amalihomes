@@ -15,12 +15,12 @@ export const SelectContent = ({ children, className }: SelectContentProps) => {
   return isOpen ? (
     <div
       className={cn(
-        "absolute mt-2 w-full bg-[#fff] border border-Grey-fill rounded-md shadow-md flex flex-col items-center p-12 z-50",
+        "absolute top-[100%] mt-2 w-full bg-[#fff] border border-Grey-fill rounded-md shadow-md flex flex-col items-center p-12 z-50",
         className,
       )}
     >
       {hasSearch && <SelectSearch onSearch={handleSearch} />}
-      <div className="w-full">{children}</div>
+      <div className="w-full max-h-288 overflow-y-auto">{children}</div>
     </div>
   ) : null;
 };

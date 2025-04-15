@@ -116,6 +116,7 @@
     --spacing-40: 40px;
     --spacing-48: 3rem;
     --spacing-64: 4rem;
+    --spacing-288: 18rem;
     --spacing-1: 1px;
     --spacing-153: 153px;
   }
@@ -283,6 +284,9 @@
   }
   .top-4 {
     top: var(--spacing-4);
+  }
+  .top-\[100\%\] {
+    top: 100%;
   }
   .right-0 {
     right: var(--spacing-0);
@@ -578,6 +582,9 @@
   }
   .overflow-x-auto {
     overflow-x: auto;
+  }
+  .overflow-y-auto {
+    overflow-y: auto;
   }
   .rounded {
     border-radius: 0.25rem;
@@ -884,6 +891,9 @@
   }
   .\!text-h3-sm {
     font-size: var(--text-h3-sm) !important;
+  }
+  .text-12 {
+    font-size: var(--text-12);
   }
   .text-14 {
     font-size: var(--text-14);

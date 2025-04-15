@@ -10,6 +10,7 @@ export type SelectContextType = {
   handleSearch: (value: string) => void;
   hasSearch: boolean;
   delay: number;
+  label: string;
 };
 
 //* Select Props
@@ -20,6 +21,7 @@ export type SelectProps = {
   onChange?: (value: string) => void;
   hasSearch?: boolean;
   delay?: number;
+  label?: string;
 };
 
 //* Select Trigger Props
@@ -57,6 +59,7 @@ export type SelectSearchProps = {
 //* Select Group Props
 export type SelectGroupProps = {
   children: ReactNode;
+  groupLabel?: string;
   className?: string;
 };
 

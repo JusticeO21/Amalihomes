@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from ".";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".";
 
 jest.useFakeTimers();
 
@@ -12,18 +12,14 @@ describe("Select component", () => {
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
-          <SelectGroup>
-            <SelectLabel>Fruits</SelectLabel>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-          </SelectGroup>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
         </SelectContent>
       </Select>,
     );
 
     expect(screen.getByRole("button")).toBeInTheDocument();
     expect(screen.getByText("Select a fruit")).toBeInTheDocument();
-    expect(screen.queryByText("Fruits")).not.toBeInTheDocument();
     expect(screen.queryByText("apple")).not.toBeInTheDocument();
     expect(screen.queryByText("banana")).not.toBeInTheDocument();
     expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
@@ -36,18 +32,14 @@ describe("Select component", () => {
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
-          <SelectGroup>
-            <SelectLabel>Fruits</SelectLabel>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-          </SelectGroup>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
         </SelectContent>
       </Select>,
     );
 
     fireEvent.click(screen.getByRole("button"));
 
-    expect(screen.getByText("Fruits")).toBeInTheDocument();
     expect(screen.getByText("Apple")).toBeInTheDocument();
     expect(screen.getByText("Banana")).toBeInTheDocument();
     expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
@@ -60,11 +52,8 @@ describe("Select component", () => {
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
-          <SelectGroup>
-            <SelectLabel>Fruits</SelectLabel>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-          </SelectGroup>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
         </SelectContent>
       </Select>,
     );

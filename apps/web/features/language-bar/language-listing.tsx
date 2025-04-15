@@ -9,13 +9,17 @@ export interface LanguageListingProps {
 }
 
 export const LanguageListing = ({ countries }: LanguageListingProps) => {
-  const [language, setLanguage] = useState<string>("English");
-  const [country, setCountry] = useState<string>("USA");
+  const [language, setLanguage] = useState<string>(countries[0]?.languages[0] ?? "");
+  const [country, setCountry] = useState<string>(
+    `${countries[0]?.country ?? ""} (${countries[0]?.languageCode ?? ""})`,
+  );
   const [languages, setLanguages] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
 
   const handleSetCountry = (country: string) => {
-    const val = countries.find((tempCountry) => tempCountry.country.toLowerCase() === country.toLowerCase());
+    const val = countries?.find(
+      (tempCountry) => tempCountry.country.toLowerCase() === (country?.split(" ")[0]?.toLowerCase() ?? ""),
+    );
 
     if (val) {
       setCountry(val.country);

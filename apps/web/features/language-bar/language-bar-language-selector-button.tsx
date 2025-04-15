@@ -22,7 +22,7 @@ export const LanguageSelectorButton = ({ country, language, onClick }: LanguageS
           size={"sm"}
           className="text-Grey-text-weak"
         >
-          {country}
+          {country.split(" ")[0]}
         </Typography>
       </div>
       <div
