@@ -3,35 +3,45 @@
 import Link from "next/link";
 import { Button, Typography } from "../../atoms";
 import { cn } from "../../../lib/utils";
+import { useState } from "react";
+import { IconCancel } from "../../icons";
 export const FooterForm = ({
   buttonText,
   inputPlaceholder,
   privacyLink,
   description,
-  value,
-  onChange,
-  onSubmit,
-  error,
   className,
 }: {
   buttonText: string;
   inputPlaceholder: string;
   privacyLink: { href: string; label: string };
   description: string;
-  value?: string;
-  onChange?: (value: string) => void;
-  onSubmit?: () => void;
-  error?: string;
   className?: string;
-}) => {
+  }) => {
+  
+  const [value, setValue] = useState("")
+  const [hasError, setHasError] = useState(false);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
+    const value = e.target.value;
+    setValue(value);
+
+    if (value && hasError) {
+      setHasError(false)
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit?.();
+    
+    if (!value.trim()) {
+      setHasError(true);
+    }
   };
+
+  const handleReset = () => {
+    setHasError(false)
+  }
 
   return (
     <form
@@ -51,7 +61,7 @@ export const FooterForm = ({
         />
         <Button
           type="submit"
-          className="bg-white hover:bg-whites py-12 px-24 lg:w-118 h-48 flex items-center justify-center md:w-350 w-361"
+          className="bg-white hover:bg-whites py-12 px-24 lg:w-118 h-48 flex items-center justify-center md:w-350 w-361 focus:bg-white hover:bg-gray-200"
         >
           <Typography
             weight="bold"
@@ -62,7 +72,7 @@ export const FooterForm = ({
           </Typography>
         </Button>
       </div>
-      {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+      {hasError && <p className="text-red-300 text-xs mt-2 flex items-center justify-center gap-2 nowrap">Provide a valid email to proceed. <button onClick={handleReset} className="cursor-pointer"><IconCancel size={12}/></button></p>}
       <Typography
         size="xs"
         className="text-white flex gap-4 mt-2"

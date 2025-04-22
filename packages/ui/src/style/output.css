@@ -6,6 +6,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-300: #ffa4a2;
     --color-red-500: #f4433f;
     --color-amber-100: rgba(255,251,197,1);
     --color-green-100: #e3f5e3;
@@ -161,6 +162,9 @@
     --spacing-770: 770px;
     --spacing-834: 834px;
     --spacing-668: 668px;
+    --breakpoint-sm: 481px;
+    --breakpoint-md: 834px;
+    --breakpoint-lg: 1024px;
   }
 }
 @layer base {
@@ -462,6 +466,9 @@
   .inline-block {
     display: inline-block;
   }
+  .table {
+    display: table;
+  }
   .size-20 {
     width: var(--spacing-20);
     height: var(--spacing-20);
@@ -654,8 +661,14 @@
   .flex-1 {
     flex: 1;
   }
+  .flex-shrink {
+    flex-shrink: 1;
+  }
   .flex-shrink-0 {
     flex-shrink: 0;
+  }
+  .border-collapse {
+    border-collapse: collapse;
   }
   .translate-y-0 {
     --tw-translate-y: var(--spacing-0);
@@ -1358,6 +1371,9 @@
   .text-neutral-500 {
     color: var(--color-neutral-500);
   }
+  .text-red-300 {
+    color: var(--color-red-300);
+  }
   .text-red-500 {
     color: var(--color-red-500);
   }
@@ -1409,6 +1425,10 @@
   .shadow-xl {
     --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
   .blur {
     --tw-blur: blur(8px);
@@ -1551,6 +1571,13 @@
       }
     }
   }
+  .hover\:bg-gray-200 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-gray-200);
+      }
+    }
+  }
   .hover\:bg-white {
     &:hover {
       @media (hover: hover) {
@@ -1616,6 +1643,11 @@
   .focus\:bg-brand-darker {
     &:focus {
       background-color: var(--color-brand-darker);
+    }
+  }
+  .focus\:bg-white {
+    &:focus {
+      background-color: var(--color-white);
     }
   }
   .focus\:text-brand-dark {
@@ -2347,6 +2379,11 @@
   syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-blur {
   syntax: "*";
