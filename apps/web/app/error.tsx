@@ -1,8 +1,6 @@
 "use client";
+import { Button, Container, Typography } from "@amalihomes/ui";
 import { useRouter } from "next/navigation";
-import { Container } from "@amalihomes/ui/components/container";
-import { Typography } from "@amalihomes/ui/components/typography";
-import { Button } from "@amalihomes/ui/components/button";
 
 type ErrorPageProps = {
   error: Error & { digest?: string };

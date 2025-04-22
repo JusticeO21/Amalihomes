@@ -1,16 +1,5 @@
-import Category from "@/sections/category";
-import FlashSale from "@/sections/flash-sale";
-import Hero from "@/sections/hero";
-import NewArrival from "@/sections/new-arrival";
-import Usp from "@/sections/why-choose-us";
-export default async function Home() {
-  return (
-    <main className="font-lato">
-      <Hero />
-      <Usp />
-      <Category />
-      <FlashSale />
-      <NewArrival />
-    </main>
-  );
+import Home from "@/features/home/home";
+
+export default async function AppHome() {
+  return <Home />;
 }

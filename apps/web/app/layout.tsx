@@ -1,10 +1,10 @@
-import { getSeoTags } from "@/lib/seo/seo";
-import { Footer } from "features/footer";
-import { Header } from "features/header";
-import { Lato } from "next/font/google";
-import { Analytics } from "../components/analytics";
-import { QueryProvider } from "../providers/react-query/query-provider";
 import "./globals.css";
+import { getSeoTags } from "@/lib/seo/seo";
+import { Lato } from "next/font/google";
+import { QueryProvider } from "../providers/react-query/query-provider";
+import { AppFooter } from "@/features/footer/footer";
+import { AppHeader } from "@/features/header/header";
+import { Analytics } from "@/features/analytics";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -44,9 +44,9 @@ export default function RootLayout({
           />
         </noscript>
         <QueryProvider>
-          <Header />
+          <AppHeader />
           {children}
-          <Footer />
+          <AppFooter />
         </QueryProvider>
       </body>
     </html>

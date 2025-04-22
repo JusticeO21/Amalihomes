@@ -16,7 +16,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@chromatic-com/storybook"),
   ],
   framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
+    name: getAbsolutePath("@storybook/experimental-nextjs-vite"),
     options: {},
   },
 };

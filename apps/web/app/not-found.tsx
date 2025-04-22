@@ -1,8 +1,5 @@
-import { Typography } from "@amalihomes/ui/components/typography";
-import { Container } from "@amalihomes/ui/components/container";
-import React from "react";
+import { Button, Container, Typography } from "@amalihomes/ui";
 import Link from "next/link";
-import { Button } from "@amalihomes/ui/components/button";
 
 const Custom404 = () => {
   return (

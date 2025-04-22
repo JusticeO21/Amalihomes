@@ -1,0 +1,11 @@
+export { IconAlert } from "./icon-alert";
+export { IconCancel } from "./icon-cancel";
+export { IconCart } from "./icon-cart";
+export { IconFacebook } from "./icon-facebook";
+export { IconGlobe } from "./icon-globe";
+export { IconInstagram } from "./icon-instagram";
+export { IconLinkedin } from "./icon-linkedin";
+export { IconMenu } from "./icon-menu";
+export { IconSearch } from "./icon-search";
+export { IconTwitter } from "./icon-twitter";
+export { IconYoutube } from "./icon-youtube";

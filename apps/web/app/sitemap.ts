@@ -1,17 +1,15 @@
-import { NavLinkProps } from "features/header/nav-links-listing";
-import { getEntry } from "lib/contentful/contentful";
-import { TypeNavigationSkeleton } from "lib/contentful/types";
+import { TypeLinkSkeleton } from "@/lib/contentful/types";
+import { getEntries } from "lib/contentful/contentful";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const navigation = await getEntry<TypeNavigationSkeleton>("navigation");
-  const typedNavLinks = navigation.fields.navigationLinks as unknown as NavLinkProps[];
+  const navigation = await getEntries<TypeLinkSkeleton>("link");
 
-  const navLinks: MetadataRoute.Sitemap = typedNavLinks.map(({ sys: { updatedAt }, fields: { href } }) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/${href === "home" ? "" : href}`,
+  const navLinks: MetadataRoute.Sitemap = navigation.items.map(({ sys: { updatedAt }, fields: { link } }) => ({
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/${link === "home" ? "" : link}`,
     lastModified: new Date(updatedAt),
   }));
-  
+
   return [
     {
       url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,

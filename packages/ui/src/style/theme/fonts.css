@@ -1,36 +1,36 @@
 @font-face {
-  font-family: 'Lato';
-  src: url('/assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Lato';
-  src: url('/assets/fonts/Lato/Lato-Bold.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Rubik';
-  src: url('/assets/fonts/Rubik/Rubik-VariableFont_opsz,wght.ttf')
-    format('truetype');
+  font-family: "Rubik";
+  src: url("/assets/fonts/Rubik/Rubik-VariableFont_opsz,wght.ttf") format("truetype");
   font-weight: 400 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Rubik';
-  src: url('/assets/fonts/Rubik/Rubik-Italic-VariableFont_opsz,wght.ttf')
-    format('truetype');
+  font-family: "Rubik";
+  src: url("/assets/fonts/Rubik/Rubik-Italic-VariableFont_opsz,wght.ttf") format("truetype");
   font-weight: 400 700;
   font-style: italic;
 }
 
 @theme {
- --font-lato: 'Lato', sans-serif;
-  --font-rubik: 'Rubik', sans-serif;
+  --font-lato: "Lato", sans-serif;
+  --font-rubik: "Rubik", sans-serif;
+
+
   --text-h1-lg: 4rem;
   --text-h1-md: 3.5rem;
   --text-h1-sm: 3rem;
@@ -62,4 +62,55 @@
   --text-48: 48px;
   --text-64: 64px;
   --text-56: 56px;
+
+  /*Font weight*/
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /*Line height*/
+  --leading-6xl: 4.625rem;
+  --leading-5xl: 4rem;
+  --leading-4xl: 3.5rem;
+  --leading-xxl: 3rem;
+  --leading-3xl: 2.5rem;
+  --leading-2xl: 2.2rem;
+  --leading-xl: 2rem;
+  --leading-lg: 1.8rem;
+  --leading-md: 1.5rem; /*default*/
+  --leading-sm: 1.2rem;
+  --leading-xs: 1rem;
+  --leadiing-xxs: 0.8rem;
+
+  /*Letter spacings*/
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
+  --letter-spacing-widest: 0.2em;
+}
+
+/*For larger screens*/
+@media (min-width: var(--breakpoint-lg)) {
+  body {
+    @apply font-lato text-sm leading-md;
+  }
+}
+
+/*For medium or regualar screens*/
+@media (min-width: var(--breakpoint-md)) {
+  body {
+    @apply font-lato text-sm leading-md;
+  }
+}
+
+/*For smaller screens*/
+@media (min-width: var(--breakpoint-sm)) {
+  body {
+    @apply font-lato text-xs leading-md;
+  }
+  p {
+    @apply font-lato text-xs leading-xs;
+  }
 }

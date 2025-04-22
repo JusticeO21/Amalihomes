@@ -1,4 +1,83 @@
 @theme {
+
+    --colorf-*: initial;
+    --colorf-: initial;
+
+    /* Basic Colors */
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    /* Brand Colors */
+    --color-brand-50: #fff8ed;
+    --color-brand-100: #fff0d5;
+    --color-brand-200: #feddaa;
+    --color-brand-300: #fdc474;
+    --color-brand-400: #fba03c;
+    --color-brand-500: #f98416; /*default, primary colors*/
+    --color-brand-600: #ea690c;
+    --color-brand-700: #c24f0c;
+    --color-brand-800: #9a3e12;
+    --color-brand-900: #7c3512;
+    --color-brand-950: #431807;
+
+    /*Info Colors */
+    --color-info-50: #f4f6fb;
+    --color-info-100: #e9edf5;
+    --color-info-200: #ced9e9;
+    --color-info-300: #a3bad6;
+    --color-info-400: #7194bf;
+    --color-info-500: #4f76a8;
+    --color-info-600: #3c5d8d;
+    --color-info-700: #324b72;
+    --color-info-800: #2c4160;
+    --color-info-900: #253349;
+    --color-info-950: #1b2436;
+
+    /*Amber Colors */
+    --color-amber-200: rgba(255, 255, 234, 1);
+    --color-amber-300: rgba(255, 248, 133, 1);
+    --color-amber-600: rgba(255, 223, 27, 1);
+    --color-amber-950: rgba(226, 148, 0, 1);
+
+    /*Gray Colors */
+    --color-gray-50: #f6f6f6;
+    --color-gray-100: #e7e7e7;
+    --color-gray-200: #d1d1d1;
+    --color-gray-300: #b0b0b0;
+    --color-gray-400: #888888;
+    --color-gray-500: #6d6d6d;
+    --color-gray-600: #5d5d5d;
+    --color-gray-700: #4f4f4f;
+    --color-gray-800: #454545;
+    --color-gray-900: #3d3d3d;
+    --color-gray-950: #262626;
+
+    /*Red Colors */
+    --color-red-50: #fef2f2;
+    --color-red-100: #ffe2e1;
+    --color-red-200: #ffc9c8;
+    --color-red-300: #ffa4a2;
+    --color-red-400: #fc706d;
+    --color-red-500: #f4433f; /*default, primary colors*/
+    --color-red-600: #e22420;
+    --color-red-700: #be1b17;
+    --color-red-800: #9d1a17;
+    --color-red-900: #821c1a;
+    --color-red-950: #470908;
+
+    /*Green Colors */
+    --color-green-50: #f3faf3;
+    --color-green-100: #e3f5e3;
+    --color-green-200: #c8eac9;
+    --color-green-300: #9dd89e;
+    --color-green-400: #6abe6d;
+    --color-green-500: #45a248; /*Primiary green color*/
+    --color-green-600: #348537;
+    --color-green-700: #2c692f;
+    --color-green-800: #275429;
+    --color-green-900: #224524;
+    --color-green-950: #0e2510;
+
   --color-brand: rgba(234, 105, 12, 1);
   --color-brand-darker: rgb(194, 79, 12);
   --color-brand-dark: rgb(249, 132, 22);

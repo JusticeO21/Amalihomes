@@ -1,5 +1,4 @@
-import { Typography } from "@amalihomes/ui/components/typography";
-import { Container } from "@amalihomes/ui/components/container";
+import { Typography, Container } from "@amalihomes/ui";
 import { getSeoTags } from "@/lib/seo/seo";
 
 export const generateMetadata = async () =>

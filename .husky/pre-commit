@@ -1,2 +1,4 @@
 ./scripts/branch-validation.sh
+pnpm format
 pnpm lint
+pnpm test

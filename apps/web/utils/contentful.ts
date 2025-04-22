@@ -10,8 +10,8 @@ export function getContentfulImage(
 
   if (image && typeof image === "object" && "fields" in image) {
     const imageAsset = image;
-    if (imageAsset.fields && imageAsset.fields.file && imageAsset.fields.file.url) {
-      imageUrl = `https:${imageAsset.fields.file.url}`;
+    if (imageAsset.fields?.file?.url) {
+      imageUrl = `https:${String(imageAsset?.fields?.file?.url)}`;
 
       if (imageAsset.fields.description) {
         imageAlt = imageAsset.fields.description as string;
