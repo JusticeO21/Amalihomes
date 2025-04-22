@@ -1,5 +1,6 @@
 "use client";
 
+
 import { Button } from "../../atoms/button";
 import { Image } from "../../atoms/Image";
 import { FlashSaleViewProps } from "../../organisms";

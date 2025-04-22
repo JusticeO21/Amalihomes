@@ -5,6 +5,8 @@ import { QueryProvider } from "../providers/react-query/query-provider";
 import { AppFooter } from "@/features/footer/footer";
 import { AppHeader } from "@/features/header/header";
 import { Analytics } from "@/features/analytics";
+import ConsentBanner from "@/features/analytics/consent-banner";
+import ConsentInitScript from "@/features/analytics/consent-init-script";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -32,8 +34,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Analytics />
       <body className={`relative ${lato.variable}`}>
+        <ConsentInitScript />
+        <Analytics />
+        <ConsentBanner />
         <noscript>
           <iframe
             title="Google Tag Manager"

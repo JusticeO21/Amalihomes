@@ -4,3 +4,4 @@ export * from "./footer-section";
 export * from "./header-section";
 export * from "./usp-section";
 export * from "./flash-sales";
+export * from "./gdpr-banner";

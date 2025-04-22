@@ -9,3 +9,5 @@ export { IconMenu } from "./icon-menu";
 export { IconSearch } from "./icon-search";
 export { IconTwitter } from "./icon-twitter";
 export { IconYoutube } from "./icon-youtube";
+export { IconGooglePartner } from "./icon-google-partner";
+export { IconChecked } from "./icon-checked";
