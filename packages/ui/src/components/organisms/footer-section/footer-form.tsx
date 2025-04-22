@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Button, Typography } from "../../atoms";
 import { cn } from "../../../lib/utils";
 import { useState } from "react";
-import { IconCancel } from "../../icons";
+import { isValidEmail } from "../../../lib/validate-emails/validate-email";
+import { toast } from "../../molecules";
 export const FooterForm = ({
   buttonText,
   inputPlaceholder,
@@ -17,9 +18,8 @@ export const FooterForm = ({
   privacyLink: { href: string; label: string };
   description: string;
   className?: string;
-  }) => {
-  
-  const [value, setValue] = useState("")
+}) => {
+  const [value, setValue] = useState("");
   const [hasError, setHasError] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,21 +27,22 @@ export const FooterForm = ({
     setValue(value);
 
     if (value && hasError) {
-      setHasError(false)
+      setHasError(false);
     }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!value.trim()) {
+
+    if (!value.trim() || !isValidEmail(value.trim())) {
       setHasError(true);
+    } else {
+      toast.success("Thank you for joining our newsletter");
+      setValue("");
     }
   };
 
-  const handleReset = () => {
-    setHasError(false)
-  }
+
 
   return (
     <form
@@ -57,7 +58,10 @@ export const FooterForm = ({
           value={value}
           onChange={handleInputChange}
           placeholder={inputPlaceholder}
-          className="p-12 border-[1.5px] !text-16 border-white rounded-md text-body roboto flex-1 w-361 md:w-350 lg:w-357 h-48 placeholder:text-white text-white"
+          className={cn(
+            "p-12 border-[1.5px] !text-16 border-white rounded-md text-body roboto flex-1 w-361 md:w-350 lg:w-357 h-48 placeholder:text-white text-white",
+            hasError && "border-red-400",
+          )}
         />
         <Button
           type="submit"
@@ -72,7 +76,11 @@ export const FooterForm = ({
           </Typography>
         </Button>
       </div>
-      {hasError && <p className="text-red-300 text-xs mt-2 flex items-center justify-center gap-2 nowrap">Provide a valid email to proceed. <button onClick={handleReset} className="cursor-pointer"><IconCancel size={12}/></button></p>}
+      {hasError && (
+        <p className="text-red-300 text-xs mt-2 flex items-center justify-center gap-2 nowrap">
+          Provide a valid email to proceed{" "}
+        </p>
+      )}
       <Typography
         size="xs"
         className="text-white flex gap-4 mt-2"

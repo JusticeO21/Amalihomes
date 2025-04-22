@@ -7,6 +7,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-300: #ffa4a2;
+    --color-red-400: #fc706d;
     --color-red-500: #f4433f;
     --color-amber-100: rgba(255,251,197,1);
     --color-green-100: #e3f5e3;
@@ -925,6 +926,9 @@
   }
   .border-info-stroke-weak {
     border-color: var(--color-info-stroke-weak);
+  }
+  .border-red-400 {
+    border-color: var(--color-red-400);
   }
   .border-secondary-100 {
     border-color: var(--color-secondary-100);

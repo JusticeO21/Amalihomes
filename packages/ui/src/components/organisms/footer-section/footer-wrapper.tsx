@@ -1,4 +1,5 @@
 import { Container } from "../../atoms";
+import { ToastContainer } from "../../molecules";
 
 export const FooterWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,6 +11,7 @@ export const FooterWrapper = ({ children }: { children: React.ReactNode }) => {
       >
         {children}
       </Container>
+      <ToastContainer position={"bottom-right"} />
     </footer>
   );
 };
