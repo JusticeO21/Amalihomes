@@ -53,7 +53,7 @@ export const HeaderLanguageDrawer = ({
     >
       <DrawerContent
         side="right"
-        className="top-0 border-0  bg-white w-full sm:max-w-max md:w-549 py-40 px-16 md:px-40 flex flex-col gap-44 overflow-y-auto"
+        className="top-0 border-0  bg-white w-full sm:w-549 py-40 px-16 sm:px-40 flex flex-col gap-44 overflow-y-auto"
       >
         <DrawerHeader>
           <DrawerTitle>
@@ -87,7 +87,7 @@ export const HeaderLanguageDrawer = ({
           <Typography
             size="sm"
             variant="p"
-            className="text-Gray-text max-w-380"
+            className="text-Gray-text"
           >
             The countries we operate in with their default language are;{" "}
             {countries

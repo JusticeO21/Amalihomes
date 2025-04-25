@@ -59,8 +59,8 @@ const drawerVariants = cva("absolute bottom-0 z-[1000] gap-4 bg-white p-6 shadow
     side: {
       top: "top-0",
       bottom: "bottom-0",
-      left: "left-0 h-full w-3/4 sm:max-w-sm",
-      right: "right-0 h-full w-3/4 sm:max-w-sm",
+      left: "left-0 h-full w-3/4",
+      right: "right-0 h-full w-3/4",
     },
   },
   defaultVariants: {

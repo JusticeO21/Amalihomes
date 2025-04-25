@@ -6,6 +6,10 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+
+    --color-red-200: #ffc9c8;
+    --color-red-300: #ffa4a2;
+
     --color-red-400: #fc706d;
     --color-red-500: #f4433f;
     --color-amber-100: rgba(255,251,197,1);
@@ -598,6 +602,12 @@
   .w-\[346px\] {
     width: 346px;
   }
+  .w-\[469px\] {
+    width: 469px;
+  }
+  .w-\[549px\] {
+    width: 549px;
+  }
   .w-\[900px\] {
     width: 900px;
   }
@@ -1003,6 +1013,9 @@
   }
   .bg-info-fill {
     background-color: var(--color-info-fill);
+  }
+  .bg-red-200 {
+    background-color: var(--color-red-200);
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
@@ -1498,6 +1511,11 @@
   .\[scrollbar-width\:none\] {
     scrollbar-width: none;
   }
+  .\*\:w-full {
+    :is(& > *) {
+      width: 100%;
+    }
+  }
   .group-focus-within\:border-brand-text {
     &:is(:where(.group):focus-within *) {
       border-color: var(--color-brand-text);
@@ -1786,6 +1804,17 @@
       max-height: 559px;
     }
   }
+
+  .sm\:\!w-\[549px\] {
+    @media (width >= 481px) {
+      width: 549px !important;
+    }
+  }
+  .sm\:w-549 {
+    @media (width >= 481px) {
+      width: var(--spacing-54)
+    }
+  }
   .sm\:min-h-\[314px\] {
     @media (width >= 481px) {
       min-height: 314px;
@@ -1794,6 +1823,7 @@
   .sm\:w-\[50\%\] {
     @media (width >= 481px) {
       width: 50%;
+
     }
   }
   .sm\:w-\[87px\] {
@@ -1804,6 +1834,11 @@
   .sm\:w-\[355px\] {
     @media (width >= 481px) {
       width: 355px;
+    }
+  }
+  .sm\:w-\[549px\] {
+    @media (width >= 481px) {
+      width: 549px;
     }
   }
   .sm\:w-fit {
@@ -1864,6 +1899,11 @@
   .sm\:px-32 {
     @media (width >= 481px) {
       padding-inline: var(--spacing-32);
+    }
+  }
+  .sm\:px-40 {
+    @media (width >= 481px) {
+      padding-inline: var(--spacing-40);
     }
   }
   .sm\:px-\[32px\] {
@@ -1942,6 +1982,27 @@
   .md\:w-834 {
     @media (width >= 834px) {
       width: var(--spacing-834);
+    }
+  }
+
+  .md\:w-\[50\%\] {
+    @media (width >= 834px) {
+      width: 50%;
+    }
+  }
+  .md\:w-\[549\] {
+    @media (width >= 834px) {
+      width: 549;
+    }
+  }
+  .md\:w-\[549px\] {
+    @media (width >= 834px) {
+      width: 549px;
+    }
+  }
+  .md\:w-fit {
+    @media (width >= 834px) {
+      width: fit-content;
     }
   }
   .md\:w-full {
