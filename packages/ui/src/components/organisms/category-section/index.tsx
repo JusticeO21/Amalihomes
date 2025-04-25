@@ -22,7 +22,6 @@ export const CategorySection = ({ heading, categories, className = "mb-4" }: Cat
   return (
     <ProductCarousel
       heading={heading}
-      isCategory
       className={className}
     >
       {categories.map((category) => (

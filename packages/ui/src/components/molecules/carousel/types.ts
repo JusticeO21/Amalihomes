@@ -4,14 +4,14 @@ export type ProductCarouselProps = {
   children: ReactNode;
   showControls?: boolean;
   className?: string;
-  itemClassName?: string;
   heading?: string;
-  isCategory?: boolean;
 };
 
 export type CarouselControlsProps = {
   nextSlide: () => void;
   previousSlide: () => void;
+  disableNextButton?: boolean;
+  disablePrevButton?: boolean;
   className?: string;
 };
 

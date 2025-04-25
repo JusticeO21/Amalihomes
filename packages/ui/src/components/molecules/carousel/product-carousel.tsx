@@ -2,19 +2,44 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "../../../lib/utils";
+import { Container, Typography } from "../../atoms";
 import { CarouselControls } from "./carousel-controls";
 import { ProductCarouselProps } from "./types";
-import { Container } from "../../atoms";
 
 export const ProductCarousel = ({
   children,
   showControls = true,
   className = "",
   heading = "",
-  isCategory = false,
 }: ProductCarouselProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollAmount, setScrollAmount] = useState(361);
+  const [scrollState, setScrollState] = useState<"start" | "middle" | "all" | "last">("start");
+
+  const checkScrollPosition = useCallback(() => {
+    if (!scrollRef.current) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    const isAtStart = scrollLeft === 0;
+    const isAtEnd = Math.abs(scrollLeft + clientWidth - scrollWidth) <= 1;
+
+    if (clientWidth >= scrollWidth) {
+      if (scrollState !== "all") {
+        setScrollState("all");
+      }
+    } else if (isAtEnd) {
+      if (scrollState !== "last") {
+        setScrollState("last");
+      }
+    } else if (isAtStart) {
+      if (scrollState !== "start") {
+        setScrollState("start");
+      }
+    } else if (scrollState !== "middle") {
+      setScrollState("middle");
+    }
+  }, [scrollState]);
+
   const updateItemsPerView = useCallback(() => {
     if (typeof window === "undefined") return;
 
@@ -27,13 +52,30 @@ export const ProductCarousel = ({
     } else {
       setScrollAmount(200);
     }
-  }, []);
+
+    setTimeout(checkScrollPosition, 100);
+  }, [checkScrollPosition]);
 
   useEffect(() => {
     updateItemsPerView();
     window.addEventListener("resize", updateItemsPerView);
     return () => window.removeEventListener("resize", updateItemsPerView);
   }, [updateItemsPerView]);
+
+  useEffect(() => {
+    const currentRef = scrollRef.current;
+    if (!currentRef) return;
+
+    checkScrollPosition();
+
+    currentRef.addEventListener("scroll", checkScrollPosition);
+
+    return () => {
+      if (currentRef) {
+        currentRef.removeEventListener("scroll", checkScrollPosition);
+      }
+    };
+  }, [checkScrollPosition]);
 
   const handleScroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -47,23 +89,26 @@ export const ProductCarousel = ({
     <Container
       paddingY={0}
       marginY={0}
-      className={cn(`relative m-auto w-full flex flex-col gap-40 overflow-hidden`, className)}
+      className={cn(`relative m-auto w-full flex flex-col gap-16 md:gap-24 overflow-hidden`, className)}
     >
-      {showControls && (
-        <div className="flex justify-between items-center w-full">
-          {heading && (
-            <h4
-              className={`${isCategory ? "!text-18 sm:!text-24 font-bold md:font-semibold" : "!text-h3-sm font-semibold"} md:!text-h3-md`}
-            >
-              {heading}
-            </h4>
-          )}
+      <div className="flex justify-between items-center w-full text-24 sm:text-h3-sm md:text-40">
+        {heading && (
+          <Typography
+            variant="h4"
+            className={`text-gray-950 font-bold `}
+          >
+            {heading}
+          </Typography>
+        )}
+        {showControls && scrollState !== "all" && (
           <CarouselControls
             previousSlide={() => handleScroll("left")}
             nextSlide={() => handleScroll("right")}
+            disableNextButton={scrollState === "last"}
+            disablePrevButton={scrollState === "start"}
           />
-        </div>
-      )}
+        )}
+      </div>
 
       <div
         className="flex gap-16 md:gap-24 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"

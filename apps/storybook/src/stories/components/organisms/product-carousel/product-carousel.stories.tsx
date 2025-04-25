@@ -2,7 +2,7 @@ import { ProductCarousel } from "@amalihomes/ui";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ProductCarousel> = {
-  title: "Components/Organisms/Carousels/ProductCarousel",
+  title: "Components/Molecules/Carousels/ProductCarousel",
   component: ProductCarousel,
   tags: ["autodocs"],
   args: {
@@ -20,14 +20,6 @@ const meta: Meta<typeof ProductCarousel> = {
     className: {
       control: "text",
       description: "Additional CSS classes for the carousel container",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: '""' },
-      },
-    },
-    itemClassName: {
-      control: "text",
-      description: "Additional CSS classes for individual carousel items",
       table: {
         type: { summary: "string" },
         defaultValue: { summary: '""' },
