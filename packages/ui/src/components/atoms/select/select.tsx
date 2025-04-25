@@ -1,15 +1,19 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useClickOutside } from "../../../hooks/use-click-outside/use-click-outside";
 import { cn } from "../../../lib/utils";
 import { SelectContext } from "./select-context";
 import { SelectProps } from "./types";
-import { useClickOutside } from "../../../hooks/use-click-outside/use-click-outside";
 
 export const Select = ({ children, className, defaultValue, hasSearch, delay, onChange, label }: SelectProps) => {
   const [selected, setSelected] = useState(defaultValue ?? "");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+
+  useEffect(() => {
+    if (defaultValue) setSelected(defaultValue);
+  }, [defaultValue]);
 
   const handleSelect = useCallback(
     (value: string) => {
