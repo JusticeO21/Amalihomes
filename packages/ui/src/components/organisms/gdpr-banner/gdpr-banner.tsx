@@ -14,7 +14,7 @@ export interface GdprBannerState {
   performance: boolean;
   targeting: boolean;
   functionality: boolean;
-  uncategorised: boolean;
+  unclassified: boolean;
 }
 
 const defaultGdprBanner: GdprBannerState = {
@@ -22,7 +22,7 @@ const defaultGdprBanner: GdprBannerState = {
   performance: true,
   targeting: true,
   functionality: true,
-  uncategorised: true,
+  unclassified: true,
 };
 
 const checkboxOptions = [
@@ -30,7 +30,7 @@ const checkboxOptions = [
   { id: "performance", label: "Performance" },
   { id: "targeting", label: "Targeting" },
   { id: "functionality", label: "Functionality" },
-  { id: "uncategorised", label: "Unclassified" },
+  { id: "unclassified", label: "Unclassified" },
 ];
 
 export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
@@ -46,7 +46,7 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
       performance: false,
       targeting: false,
       functionality: false,
-      uncategorised: false,
+      unclassified: false,
     });
   };
 

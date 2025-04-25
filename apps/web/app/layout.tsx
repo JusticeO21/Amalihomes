@@ -1,12 +1,12 @@
-import "./globals.css";
+import { Analytics } from "@/features/analytics";
+import { AnalyticsProvider } from "@/features/analytics/analytics-provider";
+import ConsentBanner from "@/features/analytics/consent-banner";
+import { AppFooter } from "@/features/footer/footer";
+import { AppHeader } from "@/features/header/header";
 import { getSeoTags } from "@/lib/seo/seo";
 import { Lato } from "next/font/google";
 import { QueryProvider } from "../providers/react-query/query-provider";
-import { AppFooter } from "@/features/footer/footer";
-import { AppHeader } from "@/features/header/header";
-import { Analytics } from "@/features/analytics";
-import ConsentBanner from "@/features/analytics/consent-banner";
-import ConsentInitScript from "@/features/analytics/consent-init-script";
+import "./globals.css";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -35,9 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`relative ${lato.variable}`}>
-        <ConsentInitScript />
-        <Analytics />
-        <ConsentBanner />
+        <AnalyticsProvider>
+          <Analytics />
+          <ConsentBanner />
+        </AnalyticsProvider>
         <noscript>
           <iframe
             title="Google Tag Manager"

@@ -23,7 +23,7 @@ describe("GdprBanner", () => {
       performance: false,
       targeting: false,
       functionality: false,
-      uncategorised: false,
+      unclassified: false,
     });
 
     expect(screen.queryByText("We value your privacy")).not.toBeInTheDocument();
@@ -49,7 +49,7 @@ describe("GdprBanner", () => {
       performance: true,
       targeting: true,
       functionality: true,
-      uncategorised: true,
+      unclassified: true,
     });
   });
 
@@ -78,5 +78,5 @@ const checkboxOptions = [
   { id: "performance", label: "Performance" },
   { id: "targeting", label: "Targeting" },
   { id: "functionality", label: "Functionality" },
-  { id: "uncategorised", label: "Unclassified" },
+  { id: "unclassified", label: "Unclassified" },
 ];
