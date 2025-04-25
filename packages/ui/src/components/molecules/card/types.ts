@@ -1,9 +1,10 @@
 export type FigureProps = {
-  src: string;
-  alt: string;
+  imageUrl: string;
+  imageAlt: string;
   caption?: string;
-  className?: string;
-  isCategory?: boolean;
+  captionClassName?: string;
+  cardClassName?: string;
+  imageClassName?: string;
 };
 
 export type FlashSaleCardProps = {
@@ -19,6 +20,6 @@ export type FlashSaleCardProps = {
 export type WhyChooseUsCardProps = {
   title: string;
   description: string;
-  src: string;
-  alt?: string;
+  iconUrl: string;
+  iconAlt?: string;
 };

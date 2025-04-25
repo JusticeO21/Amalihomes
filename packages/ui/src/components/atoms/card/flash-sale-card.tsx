@@ -1,16 +1,17 @@
 "use client";
 
-import { Button } from "../../atoms/button";
-import { Image } from "../../atoms/Image";
 import { FlashSaleViewProps } from "../../organisms";
+import { Button } from "../button";
+import { Image } from "../Image";
+import { Typography } from "../typography";
 
 const FlashSaleCard = ({ title, description, ctaUrl, imageUrl, imageAlt, ctaLabel, promoCode }: FlashSaleViewProps) => {
   return (
     <div
-      className="flex !flex-col rounded-lg items-between overflow-hidden min-h-[616px] md:min-h-[314px] md:h-[314px] lg:h-[442px] w-full md:!flex-row
+      className="flex !flex-col rounded-lg items-between overflow-hidden min-h-[616px] sm:min-h-[314px] sm:h-[314px] md:min-h-[442px] w-full sm:!flex-row
     "
     >
-      <figure className="h-[312px] md:h-full md:w-[50%] relative">
+      <figure className="h-[312px] sm:h-full sm:w-[50%] relative">
         <Image
           className="object-cover w-full h-full"
           alt={imageAlt}
@@ -18,10 +19,17 @@ const FlashSaleCard = ({ title, description, ctaUrl, imageUrl, imageAlt, ctaLabe
         />
       </figure>
       <div className="bg-Grey-fill-strong flex-1 flex flex-col justify-center gap-40 px-24 py-40 text-white">
-        <h6 className="font-bold text-20 md:text-h6-lg">{title}</h6>
-        <p className="text-body">{description}</p>
+        <div className="space-y-8">
+          <Typography
+            variant="h6"
+            className="font-bold leading-28 sm:leading-32 text-20 sm:text-24"
+          >
+            {title}
+          </Typography>
+          <Typography className="text-16 leading-24 font-normal">{description}</Typography>
+        </div>
         <Button
-          className="md:w-fit"
+          className="sm:w-fit text-16 font-bold justify-center leading-24 py-12 px-24"
           href={promoCode ? `${ctaUrl}?code=${promoCode}` : ctaUrl}
         >
           {ctaLabel}

@@ -1,20 +1,41 @@
+import { Image, Typography } from "../../atoms";
 import { WhyChooseUsCardProps } from "./types";
 
-const WhyChooseUsCard = ({ title, description, src, alt }: WhyChooseUsCardProps) => {
+const WhyChooseUsCard = ({ title, description, iconUrl, iconAlt }: WhyChooseUsCardProps) => {
   return (
-    <div className="space-y-24 w-full">
+    <div
+      className="space-y-24 w-full"
+      aria-label={title}
+    >
       <figure
-        id={`src-${alt ?? title}`}
+        id={`src-${iconAlt ?? title}`}
         className="bg-brand-fill rounded-lg p-14 w-[64px] h-[64px] relative"
+        aria-label={iconAlt ?? title}
+        role="figure"
       >
-        <img
-          src={src}
-          alt={alt ?? title}
+        <Image
+          src={iconUrl}
+          alt={iconAlt ?? title}
+          width={64}
+          height={64}
+          id={`img-${iconUrl}`}
           className="w-full object-cover"
         />
       </figure>
-      <h6 className="text-20 text-Grey-text-strong font-semibold">{title}</h6>
-      <p className="text-body text-Grey-text-weak">{description}</p>
+      <div className="space-y-16">
+        <Typography
+          variant="h6"
+          className="text-20 text-gray-950 font-semibold"
+        >
+          {title}
+        </Typography>
+        <Typography
+          variant="p"
+          className="text-16 text-gray-600"
+        >
+          {description}
+        </Typography>
+      </div>
     </div>
   );
 };

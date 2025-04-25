@@ -24,8 +24,8 @@ export const UspCardList = ({ cards }: UspCardListProps) => {
           key={id}
           title={title as unknown as string}
           description={description as unknown as string}
-          src={iconUrl}
-          alt={iconAlt}
+          iconUrl={iconUrl}
+          iconAlt={iconAlt}
         />
       ))}
     </Container>

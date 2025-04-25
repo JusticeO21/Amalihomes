@@ -73,9 +73,11 @@ export default async function Home() {
           return (
             <ProductCard
               key={arrival.key}
-              src={arrival.src}
-              alt={arrival.alt}
+              imageUrl={arrival.src}
+              imageAlt={arrival.alt}
               caption={arrival.caption}
+              imageClassName="min-w-[236px] h-[316px] sm:min-w-[316px] sm:h-[422px] md:min-w-[421px] md:h-[526px]"
+              captionClassName="text-18 sm:text-18 md:text-20 text-gray-600"
             />
           );
         })}

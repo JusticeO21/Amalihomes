@@ -5,20 +5,15 @@ const meta: Meta<typeof ProductCard> = {
   title: "Components/Molecules/Cards/ProductCard",
   component: ProductCard,
   argTypes: {
-    isCategory: {
-      control: { type: "boolean" },
-      defaultValue: true,
-      description: "flag to determine if card is a category or a new arrival item",
-    },
     borderRadius: {
       control: { type: "select" },
       options: ["default", "none", "md", "lg", "full"],
     },
-    src: {
+    imageUrl: {
       control: { type: "text" },
       description: "url of image to be displayed",
     },
-    alt: {
+    imageAlt: {
       control: { type: "text" },
       description: "alternative description of image when it cannot be displayed",
     },
@@ -26,12 +21,23 @@ const meta: Meta<typeof ProductCard> = {
       control: { type: "text" },
       description: "label for image description",
     },
+    captionClassName: {
+      control: { type: "text" },
+      description: "class name for caption",
+    },
+    cardClassName: {
+      control: { type: "text" },
+      description: "class name for card container",
+    },
+    imageClassName: {
+      control: { type: "text" },
+      description: "class name for image",
+    },
   },
   args: {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV1RlrbxJfEqwRJACDSVzfUmCqSdrP8QUkYA&s",
-    alt: "image of a dog",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV1RlrbxJfEqwRJACDSVzfUmCqSdrP8QUkYA&s",
+    imageAlt: "image of a dog",
     borderRadius: "default",
-    isCategory: true,
   },
   tags: ["autodocs"],
   parameters: {
@@ -53,9 +59,15 @@ export const Default: Story = {
 };
 export const NewArrival: Story = {
   args: {
-    isCategory: false,
     caption: "image of a dog",
   },
+
+  render: (args) => (
+    <ProductCard
+      {...args}
+      imageClassName="min-w-[236px] h-[316px] sm:min-w-[316px] sm:h-[422px] md:min-w-[421px] md:h-[526px]"
+    />
+  ),
 };
 export const WithoutCaption: Story = {
   args: {

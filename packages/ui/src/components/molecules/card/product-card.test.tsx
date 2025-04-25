@@ -3,10 +3,9 @@ import { render, screen } from "@testing-library/react";
 import ProductCard from "./product-card";
 describe("product card component", () => {
   const defaultProps = {
-    alt: "an image",
-    src: "imageUrl",
+    imageAlt: "an image",
+    imageUrl: "/imageUrl.png",
     caption: "this is a product category",
-    isCategory: true,
   };
   it("should render card component correcly", () => {
     render(<ProductCard {...defaultProps} />);
@@ -20,11 +19,11 @@ describe("product card component", () => {
     expect(screen.getByText(/this is a product category/i)).toBeInTheDocument();
   });
 
-  it("should not render a caption if one is provided", () => {
+  it("should not render a caption if not provided", () => {
     render(
       <ProductCard
-        src="imageUrl"
-        alt="an image"
+        imageUrl="/imageUrl.png"
+        imageAlt="an image"
       />,
     );
     expect(screen.queryByText(/this is a product category/i)).not.toBeInTheDocument();
@@ -43,11 +42,8 @@ describe("product card component", () => {
   it("should render card with custom classNames", () => {
     render(
       <ProductCard
-        alt="an image"
-        src="imageUrl"
-        caption="this is a product category"
-        isCategory
-        className="w-[900px]"
+        {...defaultProps}
+        imageClassName="w-[900px]"
       />,
     );
 

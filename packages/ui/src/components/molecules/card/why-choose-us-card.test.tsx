@@ -6,8 +6,8 @@ describe("why choose us card", () => {
   it("should render why choose us card component correctly", () => {
     render(
       <WhyChooseUsCard
-        src="imageUrl"
-        alt="an image"
+        iconUrl="/imageUrl.png"
+        iconAlt="an image"
         title="title"
         description="description"
       />,
