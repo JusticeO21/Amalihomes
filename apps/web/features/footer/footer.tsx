@@ -40,6 +40,10 @@ export const AppFooter = async () => {
             href: privacyLink.fields.link,
             label: privacyLink.fields.label,
           }}
+          errorMessages={{
+            invalid: "Invalid email address",
+            required: "Email is required",
+          }}
         />
       </FooterNewsletterComponent>
       <FooterLinks>

@@ -1,98 +1,82 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { Button, Typography } from "../../atoms";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 import { cn } from "../../../lib/utils";
-import { useState } from "react";
-import { isValidEmail } from "../../../lib/validate-emails/validate-email";
+import { Button, Input, Typography } from "../../atoms";
 import { toast } from "../../molecules";
+import { FooterFormProps } from "./footer.types";
+
 export const FooterForm = ({
   buttonText,
   inputPlaceholder,
   privacyLink,
   description,
   className,
-}: {
-  buttonText: string;
-  inputPlaceholder: string;
-  privacyLink: { href: string; label: string };
-  description: string;
-  className?: string;
-}) => {
-  const [value, setValue] = useState("");
-  const [hasError, setHasError] = useState(false);
+  errorMessages,
+}: FooterFormProps) => {
+  const schema = z.object({
+    email: z
+      .string()
+      .nonempty({ message: errorMessages?.required ?? "" })
+      .email({ message: errorMessages?.invalid ?? "" }),
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setValue(value);
+  type formType = z.infer<typeof schema>;
+  const form = useForm({ resolver: zodResolver(schema) });
 
-    if (value && hasError) {
-      setHasError(false);
-    }
+  const handleSubmit = (val: formType) => {
+    toast.success(`Newsletter subscription successful \n ${val.email}`);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!value.trim() || !isValidEmail(value.trim())) {
-      setHasError(true);
-    } else {
-      toast.success("Thank you for joining our newsletter");
-      setValue("");
-    }
-  };
-
-
+  const { errors } = form.formState;
+  const isValid = errors.email?.message !== undefined;
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={cn(
-        "mt-8 flex flex-col items-center justify-center md:items-start md:justify-start gap-12 text-14",
-        className,
-      )}
-    >
-      <div className="flex flex-col lg:flex-row w-full gap-12 items-center justify-center md:items-start md:justify-start text-14">
-        <input
-          type="email"
-          value={value}
-          onChange={handleInputChange}
-          placeholder={inputPlaceholder}
-          className={cn(
-            "p-12 border-[1.5px] !text-16 border-white rounded-md text-body roboto flex-1 w-361 md:w-350 lg:w-357 h-48 placeholder:text-white text-white",
-            hasError && "border-red-400",
-          )}
-        />
-        <Button
-          type="submit"
-          className="bg-white hover:bg-whites py-12 px-24 lg:w-118 h-48 flex items-center justify-center md:w-350 w-361 focus:bg-white hover:bg-gray-200"
-        >
-          <Typography
-            weight="bold"
-            size={"sm"}
-            className="text-Neutral-700"
-          >
-            {buttonText}
-          </Typography>
-        </Button>
-      </div>
-      {hasError && (
-        <p className="text-red-300 text-xs mt-2 flex items-center justify-center gap-2 nowrap">
-          Provide a valid email to proceed{" "}
-        </p>
-      )}
-      <Typography
-        size="xs"
-        className="text-white flex gap-4 mt-2"
+    <FormProvider {...form}>
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)}
+        className={cn(
+          "mt-8 flex flex-col items-center justify-center md:items-start md:justify-start gap-12 text-14",
+          className,
+        )}
       >
-        {description}
-        <Link
-          href={privacyLink.href}
-          className="underline text-12 hover:text-gray-300 hover:no-underline"
+        <div className="flex flex-col lg:flex-row w-full gap-12 items-center justify-center md:items-start md:justify-start text-14">
+          <Input
+            name="email"
+            area-label="email"
+            placeholder={inputPlaceholder}
+            inputClassName={`px-12 border-[1.5px] rounded-md flex-1 w-361 md:w-350 lg:w-357 placeholder:text-white text-white h-24`}
+            className={`h-48 ${isValid && "border-red-400"}`}
+          />
+          <Button
+            type="submit"
+            className="bg-white hover:bg-whites py-12 px-124 lg:w-118 h-48 flex items-center justify-center md:w-350 w-361 focus:bg-white hover:bg-gray-200"
+          >
+            <Typography
+              weight="bold"
+              size={"sm"}
+              className="text-Neutral-700"
+            >
+              {buttonText}
+            </Typography>
+          </Button>
+        </div>
+        <Typography
+          size="xs"
+          className="text-white flex gap-4 mt-2"
         >
-          {privacyLink.label}
-        </Link>
-      </Typography>
-    </form>
+          {description}
+          <Link
+            href={privacyLink.href}
+            className="underline text-12 hover:text-gray-300 hover:no-underline"
+          >
+            {privacyLink.label}
+          </Link>
+        </Typography>
+      </form>
+    </FormProvider>
   );
 };

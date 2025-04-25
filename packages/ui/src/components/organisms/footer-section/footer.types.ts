@@ -18,10 +18,12 @@ export interface NavLinkProps {
 export interface FooterFormProps {
   buttonText: string;
   inputPlaceholder: string;
+  privacyLink: { href: string; label: string };
   description: string;
-  privacyLink: {
-    href: string;
-    label: string;
+  className?: string;
+  errorMessages?: {
+    required?: string;
+    invalid?: string;
   };
 }
 

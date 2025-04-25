@@ -1249,6 +1249,9 @@
   .break-words {
     overflow-wrap: break-word;
   }
+  .\!text-white {
+    color: var(--color-white) !important;
+  }
   .text-Amber-fill {
     color: var(--color-Amber-fill);
   }
@@ -1377,9 +1380,6 @@
   }
   .text-red-300 {
     color: var(--color-red-300);
-  }
-  .text-red-500 {
-    color: var(--color-red-500);
   }
   .text-white {
     color: var(--color-white);
