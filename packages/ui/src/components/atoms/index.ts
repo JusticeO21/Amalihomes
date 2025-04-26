@@ -9,4 +9,5 @@ export * from "./avatar";
 export * from "./logo";
 export * from "./nav-link";
 export * from "./checkbox";
+export * from "./tab";
 export * from "./accordion";
