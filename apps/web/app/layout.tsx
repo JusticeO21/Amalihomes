@@ -1,6 +1,5 @@
 import { Analytics } from "@/features/analytics";
 import { AnalyticsProvider } from "@/features/analytics/analytics-provider";
-import ConsentBanner from "@/features/analytics/consent-banner";
 import { AppFooter } from "@/features/footer/footer";
 import { AppHeader } from "@/features/header/header";
 import { getSeoTags } from "@/lib/seo/seo";
@@ -37,22 +36,21 @@ export default function RootLayout({
       <body className={`relative ${lato.variable}`}>
         <AnalyticsProvider>
           <Analytics />
-          <ConsentBanner />
+          <noscript>
+            <iframe
+              title="Google Tag Manager"
+              src="https://www.googletagmanager.com/ns.html?id=GTM-WRDDB8RS"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+          <QueryProvider>
+            <AppHeader />
+            {children}
+            <AppFooter />
+          </QueryProvider>
         </AnalyticsProvider>
-        <noscript>
-          <iframe
-            title="Google Tag Manager"
-            src="https://www.googletagmanager.com/ns.html?id=GTM-WRDDB8RS"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        <QueryProvider>
-          <AppHeader />
-          {children}
-          <AppFooter />
-        </QueryProvider>
       </body>
     </html>
   );

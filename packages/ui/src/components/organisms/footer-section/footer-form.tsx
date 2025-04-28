@@ -34,6 +34,7 @@ export const FooterForm = ({
   const { errors } = form.formState;
   const isValid = errors.email?.message !== undefined;
 
+
   return (
     <FormProvider {...form}>
       <form

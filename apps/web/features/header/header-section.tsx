@@ -9,6 +9,7 @@ import {
   SearchFormValues,
 } from "@amalihomes/ui";
 import { useState } from "react";
+import ConsentBanner from "../analytics/consent-banner";
 export interface AppHeaderNavigation {
   logo: string;
   links: NavLinkProps[];
@@ -33,6 +34,7 @@ export const AppHearNavigation = ({ links, logo, countries, languages }: AppHead
   const isAuth = false;
   return (
     <HeaderWrapper className="flex flex-col gap-0 sticky top-0 z-50">
+      <ConsentBanner />
       <HeaderLanguageBar
         countries={countries}
         languages={languages}

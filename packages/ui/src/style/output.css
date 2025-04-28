@@ -61,9 +61,7 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --color-brand-50: #fff8ed;
-    --color-brand-100: #fff0d5;
     --color-brand-600: #ea690c;
-    --color-brand-700: #c24f0c;
     --color-gray-750: #454540;
     --color-gray-980: #545f71;
     --color-brand: rgba(234, 105, 12, 1);
@@ -366,9 +364,6 @@
   .z-100 {
     z-index: 100;
   }
-  .z-10000 {
-    z-index: 10000;
-  }
   .z-\[1000\] {
     z-index: 1000;
   }
@@ -575,9 +570,6 @@
   }
   .w-361 {
     width: var(--spacing-361);
-  }
-  .w-668 {
-    width: var(--spacing-668);
   }
   .w-\[36px\] {
     width: 36px;
@@ -1558,20 +1550,6 @@
       }
     }
   }
-  .hover\:bg-brand-100 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-brand-100);
-      }
-    }
-  }
-  .hover\:bg-brand-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-brand-700);
-      }
-    }
-  }
   .hover\:bg-brand-dark {
     &:hover {
       @media (hover: hover) {
@@ -1820,6 +1798,11 @@
   .sm\:w-549 {
     @media (width >= 481px) {
       width: var(--spacing-549);
+    }
+  }
+  .sm\:w-668 {
+    @media (width >= 481px) {
+      width: var(--spacing-668);
     }
   }
   .sm\:w-\[50\%\] {

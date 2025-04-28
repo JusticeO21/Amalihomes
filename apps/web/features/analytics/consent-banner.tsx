@@ -1,6 +1,5 @@
 "use client";
-
-import { GdprBanner } from "@amalihomes/ui";
+import { GdprBanner, GdprWrapper } from "@amalihomes/ui";
 import { useAnalytics } from "./analytics-provider";
 
 export default function ConsentBanner() {
@@ -8,5 +7,10 @@ export default function ConsentBanner() {
 
   if (!isBannerVisible) return null;
 
-  return <GdprBanner getBanner={saveConsent} />;
+  return (
+    <GdprWrapper>
+      <GdprBanner getBanner={saveConsent} />;
+    </GdprWrapper>
+  );
+
 }

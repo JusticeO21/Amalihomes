@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Checkbox, Container } from "../../atoms";
+import { Button, Checkbox, Container } from "../../atoms";
 import { IconCancel, IconGooglePartner } from "../../icons";
 import { cn } from "../../../lib/utils";
 
@@ -70,14 +70,14 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="bg-brand-50 fixed top-0 z-10000 w-full shadow-overlay">
+    <div className="bg-brand-50 w-full shadow-overlay">
       <Container
         paddingX={0}
         paddingY={0}
         className="px-16 sm:px-32 lg:px-64 py-24 my-0 bg-brand-50"
       >
         <div className="flex flex-col-reverse sm:flex-row gap-16 sm:gap-0 items-start justify-between">
-          <div className="w-668 flex flex-col sm:flex-row items-start justify-start gap-24">
+          <div className="w-full sm:w-668 flex flex-col sm:flex-row items-start justify-start gap-24">
             <div>
               <IconGooglePartner />
             </div>
@@ -112,19 +112,20 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
                 ))}
               </form>
 
-              <div className="flex gap-16">
-                <button
-                  className="bg-brand-600 text-white text-16 rounded-sm hover:bg-brand-700 font-bold font-lato px-24 py-12"
+              <div className="flex gap-16 flex-col sm:flex-row">
+                <Button
+                  className="bg-brand-600 text-white font-bold font-lato px-24 py-12 flex items-center justify-center"
                   onClick={isCustomise ? handleSave : () => setIsCustomise(true)}
                 >
-                  {isCustomise ? "Save and Close" : "Customise Settings"}
-                </button>
-                <button
-                  className="bg-white text-brand-600 border border-brand-600 font-bold text-16 py-12 px-24 font-lato rounded-sm hover:bg-brand-100"
+                  <span className="text-16">{isCustomise ? "Save and Close" : "Customise Settings"}</span>
+                </Button>
+                <Button
+                  variant={"secondary"}
+                  className="text-brand-600 border border-brand-600 font-bold py-12 px-24 font-lato flex items-center justify-center"
                   onClick={handleReject}
                 >
-                  Reject All
-                </button>
+                  <span className="text-16">Reject All</span>
+                </Button>
               </div>
             </div>
           </div>
