@@ -6,6 +6,7 @@ import { getSeoTags } from "@/lib/seo/seo";
 import { Lato } from "next/font/google";
 import { QueryProvider } from "../providers/react-query/query-provider";
 import "./globals.css";
+import TawkChat from "@/features/live-chat";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -51,6 +52,7 @@ export default function RootLayout({
             <AppFooter />
           </QueryProvider>
         </AnalyticsProvider>
+        <TawkChat />
       </body>
     </html>
   );

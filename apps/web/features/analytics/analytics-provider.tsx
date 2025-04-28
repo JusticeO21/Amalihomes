@@ -43,58 +43,64 @@ const useAnalyticsProvider = (): ConsentContextProps => {
     }
   }, []);
 
-  const saveConsent = useCallback((consent: GdprBannerState): void => {
-    const hasConsent = Object.values(consent).some(Boolean);
-
-    if (hasConsent) {
-      setCookie(COOKIE_NAME, JSON.stringify(consent), {
-        maxAge: COOKIE_MAX_AGE,
-        path: "/",
-      });
-      setIsConsentProvided(true);
-      window.gtag?.("consent", "update", {
-        ad_storage: consent.targeting ? "granted" : "denied",
-        analytics_storage: consent.performance ? "granted" : "denied",
-        functionality_storage: consent.functionality ? "granted" : "denied",
-        personalization_storage: consent.targeting ? "granted" : "denied",
-        security_storage: "granted",
-      });
-    } else {
-      localStorage.setItem("consent_rejected", "true");
-    }
+  const handleConsentUpdate = useCallback((consent: GdprBannerState) => {
+    window.gtag?.("consent", "update", {
+      ad_storage: consent.targeting ? "granted" : "denied",
+      analytics_storage: consent.performance ? "granted" : "denied",
+      functionality_storage: consent.functionality ? "granted" : "denied",
+      personalization_storage: consent.targeting ? "granted" : "denied",
+      security_storage: "granted",
+    });
   }, []);
+
+  const saveConsent = useCallback(
+    (consent: GdprBannerState): void => {
+      const hasConsent = Object.values(consent).some(Boolean);
+
+      if (hasConsent) {
+        setCookie(COOKIE_NAME, JSON.stringify(consent), {
+          maxAge: COOKIE_MAX_AGE,
+          path: "/",
+        });
+        setIsConsentProvided(true);
+        handleConsentUpdate(consent);
+      } else {
+        localStorage.setItem("consent_rejected", "true");
+      }
+    },
+    [handleConsentUpdate],
+  );
 
   const clearConsent = useCallback((): void => {
     deleteCookie(COOKIE_NAME);
     setIsConsentProvided(false);
   }, []);
 
+  const initializeAnalytics = useCallback(
+    (storedConsent: GdprBannerState) => {
+      const canTriggerEvent = Object.values(storedConsent).some(Boolean);
+      if (!canTriggerEvent) return;
+
+      setIsConsentProvided(true);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag(...args: unknown[]) {
+        window.dataLayer?.push(...(args as object[]));
+      };
+      handleConsentUpdate(storedConsent);
+    },
+    [handleConsentUpdate],
+  );
+
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const storedConsent = getConsent();
-
     if (storedConsent) {
-      const canTriggerEvent = Object.values(storedConsent).some(Boolean);
-
-      if (canTriggerEvent) {
-        setIsConsentProvided(true);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function gtag(...args: unknown[]) {
-          window.dataLayer?.push(...(args as object[]));
-        };
-        window.gtag("consent", "update", {
-          ad_storage: storedConsent?.targeting ? "granted" : "denied",
-          analytics_storage: storedConsent?.performance ? "granted" : "denied",
-          functionality_storage: storedConsent?.functionality ? "granted" : "denied",
-          personalization_storage: storedConsent?.targeting ? "granted" : "denied",
-          security_storage: "granted",
-        });
-      }
+      initializeAnalytics(storedConsent);
     } else {
       setIsBannerVisible(true);
     }
-  }, [getConsent]);
+  }, [getConsent, initializeAnalytics]);
 
   return {
     saveConsent,
