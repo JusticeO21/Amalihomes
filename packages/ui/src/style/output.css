@@ -10,7 +10,7 @@
     --color-red-500: #f4433f;
     --color-amber-100: rgba(255, 251, 197, 1);
     --color-green-100: #e3f5e3;
-    --color-blue-300: oklch(80.9% 0.105 251.813);
+    --color-blue-300: oklch(0.809 0.105 251.813);
     --color-gray-50: #f6f6f6;
     --color-gray-100: #e7e7e7;
     --color-gray-200: #d1d1d1;
@@ -270,7 +270,7 @@
   }
   @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
     ::placeholder {
-      color: color-mix(in oklab, currentcolor 50%, transparent);
+      color: color-mix(in oklab, currentColor 50%, transparent);
     }
   }
   textarea {
@@ -753,6 +753,9 @@
   }
   .gap-44 {
     gap: var(--spacing-44);
+  }
+  .gap-\[16px\] {
+    gap: 16px;
   }
   .gap-\[47px\] {
     gap: 47px;
@@ -1835,6 +1838,11 @@
   .sm\:w-\[355px\] {
     @media (width >= 481px) {
       width: 355px;
+    }
+  }
+  .sm\:w-\[379px\] {
+    @media (width >= 481px) {
+      width: 379px;
     }
   }
   .sm\:w-fit {

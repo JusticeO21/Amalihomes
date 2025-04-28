@@ -22,7 +22,7 @@ const WhyChooseUsCard = ({ title, description, iconUrl, iconAlt }: WhyChooseUsCa
           className="w-full object-cover"
         />
       </figure>
-      <div className="space-y-16">
+      <div className="space-y-16 sm:w-[379px]">
         <Typography
           variant="h6"
           className="text-20 text-gray-950 font-semibold"
