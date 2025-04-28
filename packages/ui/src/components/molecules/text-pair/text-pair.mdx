@@ -1,0 +1,152 @@
+```mdx
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs';
+import { TextPair } from './TextPair';
+
+<Meta title="Components/TextPair" component={TextPair} />
+
+# TextPair
+
+The `TextPair` component displays a header and optional description with customizable styling and accessibility features. It’s ideal for hero sections, content blocks, or CMS-driven content (e.g., Contentful entries). Built with Tailwind CSS, `class-variance-authority` (CVA), and `forwardRef`, it supports flexible layouts and ARIA attributes for screen reader compatibility.
+
+## Props
+
+<Props of={TextPair} />
+
+### Prop Details
+- **`header`**: Required. Text or JSX for the heading (e.g., "AmaliHomes").
+- **`description`**: Optional. Text or JSX for the description. Omitted if not provided.
+- **`spacing`**: Controls vertical gap (`sm`, `md`, `lg`, `xl`). Default: `md` (24px).
+- **`align`**: Text alignment (`left`, `center`, `right`). Default: `center`.
+- **`className`**: Custom classes for the wrapper `div`.
+- **`headerClass`**: Custom classes for the header element.
+- **`descriptionClass`**: Custom classes for the description element.
+- **`headerAs`**: Element or component for the header (e.g., `h2`, `h3`). Default: `h2`.
+- **`descriptionAs`**: Element or component for the description (e.g., `p`, `div`). Default: `p`.
+- **`ariaLabel`**: Optional. Custom ARIA label for screen readers (e.g., "About page introduction").
+- **`id`**: Optional. Unique ID for `aria-labelledby`. Auto-generated (e.g., `text-pair-xyz789`) if omitted. **Recommendation**: Provide explicit IDs for major sections (e.g., `about-hero`).
+- **`role`**: Optional. ARIA role (e.g., `region`, `article`, `group`). Omit for minor uses. See Accessibility section.
+- **`ref`**: Forwarded to the wrapper `div` for DOM access.
+
+## Usage Examples
+
+### Hero Section (About Page)
+A centered hero section with a significant role for accessibility.
+
+```jsx
+import { TextPair } from './TextPair';
+
+export default function AboutHero() {
+  return (
+    <section>
+      <TextPair
+        header="AmaliHomes"
+        headerAs="h2"
+        headerClass="text-56 text-gray-800"
+        description="Discover a wide range of high-quality furniture designed to fit your style and space."
+        ariaLabel="About page introduction"
+        id="about-hero"
+        role="region"
+        spacing="lg"
+        align="center"
+      />
+    </section>
+  );
+}
+```
+
+<Preview>
+  <TextPair
+    header="AmaliHomes"
+    headerAs="h2"
+    headerClass="text-56 text-gray-800"
+    description="Discover a wide range of high-quality furniture designed to fit your style and space."
+    ariaLabel="About page introduction"
+    id="about-hero"
+    role="region"
+    spacing="lg"
+    align="center"
+  />
+</Preview>
+
+### Blog Post Preview
+A standalone article for CMS-driven content.
+
+```jsx
+<TextPair
+  header="Furniture Trends 2025"
+  headerAs="h3"
+  headerClass="text-24"
+  description="Explore the latest in cozy minimalism with our new collection."
+  id="article-1"
+  role="article"
+  spacing="md"
+  align="left"
+/>
+```
+
+<Preview>
+  <TextPair
+    header="Furniture Trends 2025"
+    headerAs="h3"
+    headerClass="text-24"
+    description="Explore the latest in cozy minimalism with our new collection."
+    id="article-1"
+    role="article"
+    spacing="md"
+    align="left"
+  />
+</Preview>
+
+### Footer Contact Info
+A minor block with minimal ARIA.
+
+```jsx
+<TextPair
+  header="Contact Us"
+  headerAs="h3"
+  headerClass="text-18"
+  description="Email: support@amalihomes.com"
+  id="contact-info"
+  spacing="sm"
+  align="left"
+/>
+```
+
+<Preview>
+  <TextPair
+    header="Contact Us"
+    headerAs="h3"
+    headerClass="text-18"
+    description="Email: support@amalihomes.com"
+    id="contact-info"
+    spacing="sm"
+    align="left"
+  />
+</Preview>
+
+## Accessibility
+
+`TextPair` is designed for WCAG 2.1 compliance:
+- **ARIA**:
+  - Use `aria-label` for custom context (e.g., “About page introduction”).
+  - `aria-labelledby` links to the `header` via `id` (auto-generated or explicit). Always provide `id` for major sections to avoid random IDs (`text-pair-xyz789`).
+  - Set `role` based on context:
+    - `region`: Major sections (e.g., hero, sidebar). Requires `aria-label` or `aria-labelledby`.
+    - `article`: Standalone content (e.g., blog posts).
+    - `group`: Minor related content (e.g., footer blocks). Omit for generic uses.
+- **Contrast**: `text-gray-800` (header) and `text-gray-700` (description) meet WCAG AA. Ensure `font-body` is ≥16px or bold for `description`.
+- **Headings**: Use `headerAs` to maintain logical heading order (e.g., `h2` after `h1`).
+- **Testing**: Verify with NVDA/VoiceOver and axe DevTools. Check for unique `id`s and appropriate roles.
+
+## Notes
+- **Styling**: Uses Tailwind CSS with `font-lato` and `font-body`. Ensure these are defined in your project.
+- **CMS Integration**: Ideal for Contentful-driven content. Map fields to `header`, `description`, and `id`.
+- **ID Generation**: Auto-generated `id`s use `Math.random()`, which may change on re-renders. Always specify `id` for significant sections (e.g., hero).
+- **Debugging**: `displayName="TextPair"` ensures clear names in React DevTools.
+
+## Best Practices
+- Use `role="region"` sparingly for key sections to avoid screen reader clutter.
+- Provide explicit `id`s for major components (e.g., `about-hero`).
+- Validate heading hierarchy in your Next.js app (e.g., `h2` for hero, not `h1` if site title uses `h1`).
+- Test accessibility with real screen readers for CMS-driven loops.
+```
