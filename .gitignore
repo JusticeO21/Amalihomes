@@ -41,3 +41,4 @@ yarn-error.log*
 .history
 /apps/web/.history
 /apps/storybook/storybook-static/
+/packages/ui/src/style/output.css

@@ -74,7 +74,7 @@ export const HeroTextContent = ({
     >
       <h1
         id="hero-heading"
-        className="leading-32 break-words text-24 md:text-56 lg:text-48 font-bold md:leading-56 tracking-[0%] mb-24 text-black"
+        className="leading-32 break-words text-24 md:text-40 lg:text-56 font-bold md:font-semibold  md:leading-48 lg:leading-64 tracking-[0%] mb-24 text-black"
       >
         {headline}
       </h1>

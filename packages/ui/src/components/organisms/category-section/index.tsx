@@ -1,4 +1,6 @@
-import { ProductCard, ProductCarousel } from "../../molecules";
+import { ProductCard } from "@amalihomes/ui";
+import { ProductCarousel } from "../../molecules";
+import Link from "next/link";
 
 // Define our own interface for category data, independent of Contentful
 export interface Category {
@@ -25,12 +27,16 @@ export const CategorySection = ({ heading, categories, className = "mb-4" }: Cat
       className={className}
     >
       {categories.map((category) => (
-        <ProductCard
+        <Link
+          href={`/category/${category.title}`}
           key={category.id}
-          imageUrl={category.imageUrl}
-          imageAlt={category.imageAlt}
-          caption={category.title}
-        />
+        >
+          <ProductCard
+            imageUrl={category.imageUrl}
+            imageAlt={category.imageAlt}
+            caption={category.title}
+          />
+        </Link>
       ))}
     </ProductCarousel>
   );

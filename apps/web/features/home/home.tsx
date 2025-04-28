@@ -11,6 +11,7 @@ import {
 } from "@amalihomes/ui";
 import { UspSectionWrapper } from "@amalihomes/ui/components/organisms/usp-section/usp-section-wrapper";
 import { homeLoader } from "./home-loader";
+import Link from "next/link";
 export default async function Home() {
   const {
     ctas,
@@ -71,14 +72,18 @@ export default async function Home() {
       >
         {newArrivalsCards.map((arrival) => {
           return (
-            <ProductCard
+            <Link
+              href={`/product/${arrival.caption}`}
               key={arrival.key}
-              imageUrl={arrival.src}
-              imageAlt={arrival.alt}
-              caption={arrival.caption}
-              imageClassName="min-w-[236px] h-[316px] sm:min-w-[316px] sm:h-[422px] md:min-w-[421px] md:h-[526px]"
-              captionClassName="text-18 sm:text-18 md:text-20 text-gray-600"
-            />
+            >
+              <ProductCard
+                imageUrl={arrival.src}
+                imageAlt={arrival.alt}
+                caption={arrival.caption}
+                imageClassName="min-w-[236px] h-[316px] sm:min-w-[316px] sm:h-[422px] md:min-w-[421px] md:h-[526px]"
+                captionClassName="text-18 sm:text-18 md:text-20 text-gray-600"
+              />
+            </Link>
           );
         })}
       </ProductCarousel>
