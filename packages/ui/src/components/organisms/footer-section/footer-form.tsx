@@ -29,11 +29,11 @@ export const FooterForm = ({
 
   const handleSubmit = (val: formType) => {
     toast.success(`Newsletter subscription successful \n ${val.email}`);
+    form.reset();
   };
 
   const { errors } = form.formState;
   const isValid = errors.email?.message !== undefined;
-
 
   return (
     <FormProvider {...form}>

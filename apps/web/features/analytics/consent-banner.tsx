@@ -12,5 +12,4 @@ export default function ConsentBanner() {
       <GdprBanner getBanner={saveConsent} />;
     </GdprWrapper>
   );
-
 }
