@@ -90,27 +90,24 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
                 </p>
               </div>
 
-              <form
-                className={cn(
-                  "flex flex-col gap-16 h-0 overflow-hidden transition-all duration-200",
-                  isCustomise && "h-184",
-                )}
-              >
-                {checkboxOptions.map(({ id, label }) => (
-                  <label
-                    key={id}
-                    htmlFor={id}
-                    className="flex items-center gap-8"
-                  >
-                    <Checkbox
-                      id={id}
-                      isChecked={gdprBanner[id as keyof GdprBannerState]}
-                      onChange={(isChecked) => handleCheckboxChange(id as keyof GdprBannerState, isChecked)}
-                    />
-                    <span className="text-gray-750 text-16 font-lato">{label}</span>
-                  </label>
-                ))}
-              </form>
+              {isCustomise && (
+                <form className={cn("flex flex-col gap-16 h-184 overflow-hidden transition-all duration-200")}>
+                  {checkboxOptions.map(({ id, label }) => (
+                    <label
+                      key={id}
+                      htmlFor={id}
+                      className="flex items-center gap-8"
+                    >
+                      <Checkbox
+                        id={id}
+                        isChecked={gdprBanner[id as keyof GdprBannerState]}
+                        onChange={(isChecked) => handleCheckboxChange(id as keyof GdprBannerState, isChecked)}
+                      />
+                      <span className="text-gray-750 text-16 font-lato">{label}</span>
+                    </label>
+                  ))}
+                </form>
+              )}
 
               <div className="flex gap-16 flex-col sm:flex-row">
                 <Button
@@ -130,7 +127,7 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
             </div>
           </div>
           <div className="flex items-start justify-end w-full sm:w-min">
-            <button onClick={handleClose}>
+            <button onClick={handleClose} className="cursor-pointer">
               <IconCancel
                 width={24}
                 height={24}
