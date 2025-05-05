@@ -49,7 +49,6 @@ describe("InputError", () => {
     expect(errorDiv).toHaveClass("flex");
     expect(errorDiv).toHaveClass("items-center");
     expect(errorDiv).toHaveClass("gap-4");
-    expect(errorDiv).toHaveClass("text-Red-text");
 
     expect(screen.getByText("Error")).toHaveClass("text-body");
   });

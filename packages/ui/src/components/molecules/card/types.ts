@@ -23,3 +23,13 @@ export type WhyChooseUsCardProps = {
   iconUrl: string;
   iconAlt?: string;
 };
+
+export type SalesRepCardProps = {
+  name: string;
+  role: string;
+  phoneNumber: string;
+  email: string;
+  imageUrl: string;
+  imageAlt: string;
+  className?: string;
+};

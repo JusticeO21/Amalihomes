@@ -92,6 +92,7 @@ const Input = ({
           inputContainerVariant({ variant }),
           type === "textarea" && "w-full h-[233px]",
           type === "number" && "w-[113px] p-4 gap-0 justify-between",
+          errors[name] && "border-red-600",
           className,
         )}
       >

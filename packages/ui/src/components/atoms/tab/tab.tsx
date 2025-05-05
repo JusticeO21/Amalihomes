@@ -24,14 +24,16 @@ interface TabProps extends HTMLAttributes<HTMLAnchorElement>, VariantProps<typeo
   href: string;
   label: string;
   focused?: boolean;
+  scroll?: boolean;
   icon?: ReactNode;
 }
-const Tab = ({ href, label, className = "", focused = false, icon, iconPosition, ...props }: TabProps) => {
+const Tab = ({ href, label, className = "", focused = false, icon, iconPosition, scroll=false, ...props }: TabProps) => {
   return (
     <Link
       aria-current={focused ? "page" : undefined}
       id={label}
       href={href}
+      scroll={scroll}
       className={cn(
         tabVariants({ iconPosition }),
         focused

@@ -1,24 +1,24 @@
-import { Typography, Container } from "@amalihomes/ui";
 import { getSeoTags } from "@/lib/seo/seo";
+import { Faqs } from "@amalihomes/ui";
+import { faqsLoader } from "./faqs-loader";
 
-export const generateMetadata = async () =>
-  getSeoTags({
-    title: "FAQs",
-    description: "Frequently Asked Questions",
+export const generateMetadata = async () => {
+  const { data } = await faqsLoader();
+
+  return getSeoTags({
+    title: data?.title,
+    description: data?.description,
   });
+};
 const FAQs = async () => {
-  return (
-    <main>
-      <Container className="flex min-h-[70vh] items-center justify-center">
-        <Typography
-          as="h1"
-          className="text-16"
-        >
-          FAQs page in progress. Answers to your questions coming soon!
-        </Typography>
-      </Container>
-    </main>
-  );
+  const { data, error } = await faqsLoader();
+  if (error) {
+    return <p>{error.message}</p>;
+  }
+
+  if (!data) return <p>loading</p>;
+
+  return <Faqs {...data} />;
 };
 
 export default FAQs;

@@ -2,11 +2,11 @@ import { Analytics } from "@/features/analytics";
 import { AnalyticsProvider } from "@/features/analytics/analytics-provider";
 import { AppFooter } from "@/features/footer/footer";
 import { AppHeader } from "@/features/header/header";
+import TawkChat from "@/features/live-chat";
 import { getSeoTags } from "@/lib/seo/seo";
 import { Lato } from "next/font/google";
 import { QueryProvider } from "../providers/react-query/query-provider";
 import "./globals.css";
-import TawkChat from "@/features/live-chat";
 
 const lato = Lato({
   weight: ["400", "700"],
