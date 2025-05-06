@@ -1,9 +1,8 @@
 "use client";
-import { Search } from "lucide-react";
 import { useState } from "react";
+import { useDebounce } from "../../../hooks/use-debounce/use-debounce";
 import { useSelectContext } from "./select-context";
 import { SelectSearchProps } from "./types";
-import { useDebounce } from "../../../hooks/use-debounce/use-debounce";
 
 const SelectSearch = ({ onSearch }: SelectSearchProps) => {
   const [query, setQuery] = useState("");
@@ -23,12 +22,9 @@ const SelectSearch = ({ onSearch }: SelectSearchProps) => {
   return (
     <div
       id="search"
-      className="flex items-center gap-12 w-full border rounded-lg p-12 border-Grey-stroke-strong text-body group focus-within:border-Grey-text-weak"
+      className="w-full border-l-2 border-gray-400 text-gray-400 px-4 text-18 font-lato font-normal leading-26"
+      onClick={(e) => e.stopPropagation()}
     >
-      <Search
-        size={20}
-        className="text-Grey-stroke-strong"
-      />
       <input
         type="text"
         id="search-input"

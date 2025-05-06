@@ -13,7 +13,7 @@ export const SelectItem = ({ value, children, className }: SelectItemProps) => {
       id={`select-item-${value}`}
       onClick={() => handleSelect(value)}
       className={cn(
-        `flex justify-between items-center w-full text-left rounded px-12 py-6 cursor-pointer transition-colors duration-300 hover:bg-Grey-fill hover:text-Grey-text-strong ${
+        `flex justify-between items-center w-full text-left rounded px-16 py-8 cursor-pointer transition-colors duration-300 hover:bg-brand-50 hover:text-Grey-text-strong ${
           value === selected ? "text-Grey-text-strong" : "text-Grey-stroke-weaker"
         }`,
         className,

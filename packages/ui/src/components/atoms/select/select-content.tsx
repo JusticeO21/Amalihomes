@@ -1,25 +1,18 @@
 "use client";
-import { useEffect } from "react";
 import { cn } from "../../../lib/utils";
 import { useSelectContext } from "./select-context";
-import SelectSearch from "./select-search";
 import { SelectContentProps } from "./types";
 
 export const SelectContent = ({ children, className }: SelectContentProps) => {
-  const { isOpen, hasSearch, handleSearch } = useSelectContext();
-
-  useEffect(() => {
-    if (hasSearch) handleSearch("");
-  }, [hasSearch, handleSearch, isOpen]);
+  const { isOpen } = useSelectContext();
 
   return isOpen ? (
     <div
       className={cn(
-        "absolute top-[100%] mt-2 w-full bg-[#fff] border border-Grey-fill rounded-md shadow-md flex flex-col items-center p-12 z-50",
+        "absolute top-[100%] mt-2 w-full bg-white border border-Grey-fill rounded-md shadow-md flex flex-col items-center overflow-hidden z-50",
         className,
       )}
     >
-      {hasSearch && <SelectSearch onSearch={handleSearch} />}
       <div className="w-full max-h-288 overflow-y-auto">{children}</div>
     </div>
   ) : null;

@@ -14,9 +14,6 @@ describe("SelectContent", () => {
     jest.clearAllMocks();
     mockUseSelectContext.mockReturnValue({
       isOpen: true,
-      search: "",
-      hasSearch: false,
-      setSearch: mockSetSearch,
     });
   });
 
