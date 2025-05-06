@@ -2,6 +2,8 @@ export type FigureProps = {
   imageUrl: string;
   imageAlt: string;
   caption?: string;
+  name?: string;
+  description?: string;
   captionClassName?: string;
   cardClassName?: string;
   imageClassName?: string;

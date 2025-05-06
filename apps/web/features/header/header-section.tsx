@@ -1,4 +1,5 @@
 "use client";
+import { useCountryStore } from "@/stores/use-country-store";
 import {
   Country,
   HeaderLanguageBar,
@@ -8,7 +9,7 @@ import {
   NavLinkProps,
   SearchFormValues,
 } from "@amalihomes/ui";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConsentBanner from "../analytics/consent-banner";
 export interface AppHeaderNavigation {
   logo: string;
@@ -21,6 +22,7 @@ export const AppHearNavigation = ({ links, logo, countries, languages }: AppHead
   const onSubmitSearchResults = (data: SearchFormValues) => {};
   const [isMenuOpen, setOpenMenu] = useState(false);
   const [isDrawerOpen, setOpenDrawer] = useState(false);
+  const { country, setCountry } = useCountryStore();
 
   const handleOpenMenu = () => {
     setOpenDrawer(false);
@@ -31,6 +33,15 @@ export const AppHearNavigation = ({ links, logo, countries, languages }: AppHead
     setOpenMenu(false);
   };
 
+  useEffect(() => {
+    if (window !== undefined) {
+      const initCountryValue = JSON.parse(localStorage.getItem("country-storage") ?? "{}");
+      setCountry(
+        initCountryValue?.state?.country ?? `${countries[0]?.country} (${countries[0]?.language.languageCode})`,
+      );
+    }
+  }, []);
+
   const isAuth = false;
   return (
     <HeaderWrapper className="flex flex-col gap-0 sticky top-0 z-50">
@@ -40,6 +51,8 @@ export const AppHearNavigation = ({ links, logo, countries, languages }: AppHead
         languages={languages}
         isDrawerOpen={isDrawerOpen}
         toggleDrawer={handleOpenDrawer}
+        selectedCountry={country}
+        setSelectedCountry={(country) => setCountry(country)}
       />
       <HeaderNavigationSection
         isAuth={isAuth}

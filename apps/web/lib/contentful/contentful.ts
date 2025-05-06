@@ -3,14 +3,16 @@ import { createClient } from "contentful";
 
 // Function to get client configuration options based on preview mode
 function getClientOptions(preview: boolean = false): CreateClientParams {
-  if (!process.env.CONTENTFUL_ACCESS_TOKEN_V1) {
-    throw new Error("Please set the CONTENTFUL_ACCESS_TOKEN_V1 environment variable");
+  if (!process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN_V1) {
+    throw new Error("Please set the NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN_V1 environment variable");
   }
 
   return {
-    space: process.env.CONTENTFUL_SPACE_ID_V1,
-    accessToken: preview ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN_V1 : process.env.CONTENTFUL_ACCESS_TOKEN_V1,
-    environment: process.env.CONTENTFUL_ENVIRONMENT ?? "master",
+    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID_V1,
+    accessToken: preview
+      ? process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN_V1
+      : process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN_V1,
+    environment: process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT ?? "master",
     ...(preview && { host: "preview.contentful.com" }),
   };
 }
