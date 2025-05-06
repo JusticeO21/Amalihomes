@@ -34,22 +34,27 @@
   --spacing-384: 24rem;
 
   --spacing-1: 1px;
+  --spacing-15: 15px;
+  --spacing-21: 21px;
   --spacing-26: 26px;
   --spacing-28: 28px;
   --spacing-18: 12px;
   --spacing-14: 14px;
   --spacing-56: 56px;
+  --spacing-63: 63px;
   --spacing-72: 72px;
   --spacing-87: 87px;
   --spacing-91: 91px;
-  --spacing-118: 118px;
   --spacing-184: 184px;
+  --spacing-118: 118px;
+  --spacing-142: 142px;
   --spacing-357: 357px;
   --spacing-380: 380px;
   --spacing-549: 549px;
   --spacing-40: 40px;
   --spacing-153: 153px;
   --spacing-121: 121px;
+  --spacing-393: 393px;
   --spacing-357: 357px;
   --spacing-350: 350px;
   --spacing-361: 361px;
@@ -58,9 +63,11 @@
   --spacing-770: 770px;
   --spacing-834: 834px;
   --spacing-668: 668px;
+  --spacing-750: 750px;
   
 
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
+  --radius-24: 24px;
 }

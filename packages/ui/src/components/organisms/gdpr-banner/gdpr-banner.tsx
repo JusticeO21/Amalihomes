@@ -127,7 +127,10 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
             </div>
           </div>
           <div className="flex items-start justify-end w-full sm:w-min">
-            <button onClick={handleClose} className="cursor-pointer">
+            <button
+              onClick={handleClose}
+              className="cursor-pointer"
+            >
               <IconCancel
                 width={24}
                 height={24}

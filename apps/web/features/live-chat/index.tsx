@@ -1,12 +1,26 @@
+"use client";
+
+import { useLiveChatStore } from "@/stores/use-live-chat-store";
 import Script from "next/script";
 
 const TawkChat = () => {
+  const { isChatWidgetVisible } = useLiveChatStore();
+  if (!isChatWidgetVisible) return null;
+
   return (
     <Script
       id="tawk-to"
       dangerouslySetInnerHTML={{
         __html: `
               var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              Tawk_API.customStyle = {
+                zIndex : '1000 !important'
+              };
+
+              window.Tawk_API.onLoad = function(){
+              window.Tawk_API.maximize();
+              window.Tawk_API.hideWidget()
+              };
               (function(){
                 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
                 s1.async=true;

@@ -2,9 +2,13 @@ import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleC
 import type { TypeContinentCardsSkeleton } from "./TypeContinentCards";
 
 export interface TypeContinentFields {
-    continent: EntryFieldTypes.Symbol;
-    cards: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeContinentCardsSkeleton>>;
+  continent: EntryFieldTypes.Symbol;
+  cards: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeContinentCardsSkeleton>>;
 }
 
 export type TypeContinentSkeleton = EntrySkeletonType<TypeContinentFields, "continent">;
-export type TypeContinent<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeContinentSkeleton, Modifiers, Locales>;
+export type TypeContinent<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<
+  TypeContinentSkeleton,
+  Modifiers,
+  Locales
+>;

@@ -27,7 +27,16 @@ interface TabProps extends HTMLAttributes<HTMLAnchorElement>, VariantProps<typeo
   scroll?: boolean;
   icon?: ReactNode;
 }
-const Tab = ({ href, label, className = "", focused = false, icon, iconPosition, scroll=false, ...props }: TabProps) => {
+const Tab = ({
+  href,
+  label,
+  className = "",
+  focused = false,
+  icon,
+  iconPosition,
+  scroll = false,
+  ...props
+}: TabProps) => {
   return (
     <Link
       aria-current={focused ? "page" : undefined}
