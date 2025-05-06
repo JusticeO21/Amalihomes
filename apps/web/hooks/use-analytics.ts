@@ -1,0 +1,10 @@
+import { AnalyticsContext, ConsentContextProps } from "@/providers/analytics/analytics-provider";
+import { useContext } from "react";
+
+export const useAnalytics = (): ConsentContextProps => {
+  const context = useContext(AnalyticsContext);
+  if (!context) {
+    throw new Error("useAnalytics must be used within an AnalyticsProvider");
+  }
+  return context;
+};

@@ -2,6 +2,7 @@
 import { useCountryStore } from "@/stores/use-country-store";
 import {
   Country,
+  GdprBannerProps,
   HeaderLanguageBar,
   HeaderNavigationSection,
   HeaderWrapper,
@@ -16,9 +17,10 @@ export interface AppHeaderNavigation {
   links: NavLinkProps[];
   countries: Country[];
   languages: Language[];
+  banner: Readonly<Omit<GdprBannerProps, "getBanner">>;
 }
 
-export const AppHearNavigation = ({ links, logo, countries, languages }: AppHeaderNavigation) => {
+export const AppHeaderSection = ({ links, logo, countries, languages, banner }: AppHeaderNavigation) => {
   const onSubmitSearchResults = (data: SearchFormValues) => {};
   const [isMenuOpen, setOpenMenu] = useState(false);
   const [isDrawerOpen, setOpenDrawer] = useState(false);
@@ -45,7 +47,7 @@ export const AppHearNavigation = ({ links, logo, countries, languages }: AppHead
   const isAuth = false;
   return (
     <HeaderWrapper className="flex flex-col gap-0 sticky top-0 z-50">
-      <ConsentBanner />
+      <ConsentBanner {...banner} />
       <HeaderLanguageBar
         countries={countries}
         languages={languages}

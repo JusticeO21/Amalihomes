@@ -1,6 +1,6 @@
 import { getEntry } from "@/lib/contentful/contentful";
+import { TypeLiveSupportSkeleton } from "@/lib/contentful/generated/types/TypeLiveSupport";
 import { LiveChatProps } from "./live-chat.types";
-import { TypeLiveSupportSkeleton } from "@/lib/contentful/types/TypeLiveSupport";
 
 export const liveChatLoader = async (): Promise<LiveChatProps> => {
   const response = await getEntry<TypeLiveSupportSkeleton>("liveSupport", { include: 5 });

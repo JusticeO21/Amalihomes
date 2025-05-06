@@ -44,7 +44,7 @@ const ProductEnquiriesForm = ({
 
   const onSubmit = (data: ProductEnquiriesSchemaType) => {
     toast.success("Form submitted successfully!");
-    form.reset()
+    form.reset();
     return data;
   };
 

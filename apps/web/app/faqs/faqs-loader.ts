@@ -1,5 +1,5 @@
 import { getEntry } from "@/lib/contentful/contentful";
-import { TypeFaqsSkeleton } from "@/lib/contentful/types";
+import { TypeFaqsSkeleton } from "@/lib/contentful/generated/types";
 import { FaqsLoaderProps, FaqsProps, QuestionCategory } from "@amalihomes/ui/components/organisms/faqs/types";
 
 type LoaderState<T> = {

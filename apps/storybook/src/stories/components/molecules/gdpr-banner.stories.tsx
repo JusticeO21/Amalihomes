@@ -1,115 +1,103 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { GdprBanner, GdprBannerState } from "@amalihomes/ui";
+import { Meta, StoryObj } from "@storybook/react";
+import { GdprBanner, GdprBannerProps, GdprBannerState } from "@amalihomes/ui";
+import { useState } from "react";
 
 const meta: Meta<typeof GdprBanner> = {
-  title: "Components/Molecules/GdprBanner",
+  title: "Components/GDPR/GdprBanner",
   component: GdprBanner,
-  tags: ["autodocs"],
-  argTypes: {
-    getBanner: {
-      action: "banner preferences updated",
-      description: "Function called when user saves or rejects cookie preferences",
-    },
+  parameters: {
+    layout: "fullscreen",
   },
-  decorators: [
-    (Story) => (
-      <div className="h-[300px] p-4">
-        <Story />
-      </div>
-    ),
-  ],
+  tags: ["autodocs"],
 };
 
 export default meta;
 type Story = StoryObj<typeof GdprBanner>;
 
+// Wrapper component to handle state management for the stories
+const GdprBannerWrapper = (args: GdprBannerProps) => {
+  const [bannerState, setBannerState] = useState<GdprBannerState | null>(null);
+
+  const handleBannerChange = (state: GdprBannerState) => {
+    setBannerState(state);
+    args.getBanner(state);
+  };
+
+  return (
+    <div>
+      <GdprBanner
+        {...args}
+        getBanner={handleBannerChange}
+      />
+      {bannerState && (
+        <div className="mt-8 p-4 bg-gray-100 rounded-md">
+          <h3 className="font-bold mb-2">Banner State:</h3>
+          <pre>{JSON.stringify(bannerState, null, 2)}</pre>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const defaultArgs: GdprBannerProps = {
+  getBanner: () => {},
+  title: "We value your privacy",
+  description:
+    "This website uses cookies to personalize content, provide social media features, and analyse our traffic. You can customize your preferences or reject all.",
+  customizeButtonText: "Customise Settings",
+  saveButtonText: "Save and Close",
+  rejectButtonText: "Reject All",
+  consentOptions: [
+    { id: "testStrict", label: "Test Strict" },
+    { id: "performance", label: "Performance" },
+    { id: "targeting", label: "Targeting" },
+    { id: "functionality", label: "Functionality" },
+    { id: "unclassified", label: "Unclassified" },
+  ],
+  icon: {
+    url: "",
+    alt: "Cookie preferences icon",
+  },
+};
+
 export const Default: Story = {
+  render: (args) => <GdprBannerWrapper {...args} />,
+  args: defaultArgs,
+};
+
+export const CustomText: Story = {
+  render: (args) => <GdprBannerWrapper {...args} />,
   args: {
-    getBanner: (preferences) => console.log("Preferences updated:", preferences),
-  },
-  render: function DefaultRender(args) {
-    const handleBannerUpdate = (preferences: GdprBannerState) => {
-      args.getBanner(preferences);
-    };
-
-    return <GdprBanner getBanner={handleBannerUpdate} />;
+    ...defaultArgs,
+    title: "Cookie Consent",
+    description: "We use cookies to enhance your browsing experience, analyze site traffic, and personalize content.",
+    customizeButtonText: "Preferences",
+    saveButtonText: "Accept Selected",
+    rejectButtonText: "Decline All",
   },
 };
 
-export const WithCustomOpenState: Story = {
-  render: function CustomOpenStateRender() {
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="text-gray-700 bg-white p-4 rounded shadow mb-4">
-          Note: In a real implementation, the banner would be hidden initially and shown based on user consent status.
-          This story is for demonstration purposes only.
-        </p>
-        <GdprBanner
-          getBanner={(preferences) => {
-            console.log("Preferences updated:", preferences);
-          }}
-        />
-      </div>
-    );
+export const MinimalOptions: Story = {
+  render: (args) => <GdprBannerWrapper {...args} />,
+  args: {
+    ...defaultArgs,
+    consentOptions: [
+      { id: "testStrict", label: "Essential Cookies (Required)" },
+      { id: "performance", label: "Analytics Cookies" },
+    ],
   },
 };
 
-export const WithIntegrationExample: Story = {
-  render: function IntegrationExampleRender() {
-    const handlePreferences = (preferences: GdprBannerState) => {
-      console.log("Preferences saved:", preferences);
-
-      if (preferences.performance) {
-        console.log("Performance cookies enabled");
-      }
-
-      if (preferences.targeting) {
-        console.log("Targeting cookies enabled");
-      }
-    };
-
-    return (
-      <div className="flex flex-col gap-4">
-        <div className="bg-white p-4 rounded shadow mb-4">
-          <h2 className="text-xl font-bold mb-2">Cookie Consent Integration Example</h2>
-          <p className="text-gray-700">
-            This example demonstrates how the GDPR Banner could be integrated with a cookie consent system. Check the
-            console after interacting with the banner to see the selected preferences.
-          </p>
-        </div>
-
-        <GdprBanner getBanner={handlePreferences} />
-      </div>
-    );
-  },
-};
-
-export const WithActions: Story = {
-  render: function ActionLoggingRender() {
-    const logAction = (action: string, data: GdprBannerState) => {
-      console.log(`Action: ${action}`, data);
-    };
-
-    const handleBannerUpdate = (preferences: GdprBannerState) => {
-      logAction("Cookie preferences updated", preferences);
-    };
-
-    return (
-      <div className="flex flex-col gap-4">
-        <div className="bg-white p-4 rounded shadow mb-4">
-          <h2 className="text-xl font-bold mb-2">Test Actions</h2>
-          <p className="text-gray-700">Try the following actions:</p>
-          <ul className="list-disc pl-5 mt-2">
-            <li>Click "Customise Settings" to open the options panel</li>
-            <li>Toggle some checkboxes to update preferences</li>
-            <li>Click "Save and Close" to save preferences</li>
-            <li>Alternatively, click "Reject All" to reject all cookie categories</li>
-          </ul>
-          <p className="text-gray-700 mt-2">Actions will be logged to the console.</p>
-        </div>
-
-        <GdprBanner getBanner={handleBannerUpdate} />
-      </div>
-    );
+export const MobileView: Story = {
+  render: (args) => (
+    <div className="max-w-sm mx-auto">
+      <GdprBannerWrapper {...args} />
+    </div>
+  ),
+  args: defaultArgs,
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
   },
 };

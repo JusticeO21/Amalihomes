@@ -1,15 +1,33 @@
 "use client";
-import { GdprBanner, GdprWrapper } from "@amalihomes/ui";
-import { useAnalytics } from "./analytics-provider";
+import { useAnalytics } from "@/hooks/use-analytics";
+import { GdprBanner, GdprBannerProps, GdprWrapper } from "@amalihomes/ui";
 
-export default function ConsentBanner() {
+export default function ConsentBanner({
+  consentOptions,
+  customizeButtonText,
+  rejectButtonText,
+  saveButtonText,
+  description,
+  title,
+  icon,
+}: Readonly<Omit<GdprBannerProps, "getBanner">>) {
   const { isBannerVisible, saveConsent } = useAnalytics();
 
   if (!isBannerVisible) return null;
 
   return (
     <GdprWrapper>
-      <GdprBanner getBanner={saveConsent} />;
+      <GdprBanner
+        icon={icon}
+        getBanner={saveConsent}
+        customizeButtonText={customizeButtonText}
+        rejectButtonText={rejectButtonText}
+        saveButtonText={saveButtonText}
+        description={description}
+        title={title}
+        consentOptions={consentOptions}
+      />
+      ;
     </GdprWrapper>
   );
 }

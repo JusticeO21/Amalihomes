@@ -1,14 +1,14 @@
-import { Analytics } from "@/features/analytics";
-import { AnalyticsProvider } from "@/features/analytics/analytics-provider";
+import { Analytics } from "@/features/analytics/analytics";
 import Contact from "@/features/contact/contact";
 import { AppFooter } from "@/features/footer/footer";
 import { AppHeader } from "@/features/header/header";
 import TawkChat from "@/features/live-chat";
+import { AppLiveChat } from "@/features/live-chat/live-chat";
 import { getSeoTags } from "@/lib/seo/seo";
+import { AnalyticsProvider } from "@/providers/analytics/analytics-provider";
 import { Lato } from "next/font/google";
 import { QueryProvider } from "../providers/react-query/query-provider";
 import "./globals.css";
-import { AppLiveChat } from "@/features/live-chat/live-chat";
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -42,7 +42,7 @@ export default function RootLayout({
           <noscript>
             <iframe
               title="Google Tag Manager"
-              src="https://www.googletagmanager.com/ns.html?id=GTM-WRDDB8RS"
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
               height="0"
               width="0"
               style={{ display: "none", visibility: "hidden" }}
@@ -53,10 +53,10 @@ export default function RootLayout({
             {children}
             <Contact />
             <AppFooter />
-            <AppLiveChat />
           </QueryProvider>
         </AnalyticsProvider>
         <TawkChat />
+        <AppLiveChat />
       </body>
     </html>
   );

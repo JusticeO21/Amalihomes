@@ -1,5 +1,5 @@
 import { getEntry } from "@/lib/contentful/contentful";
-import { TypeHomeSkeleton } from "@/lib/contentful/types";
+import { TypeHomeSkeleton } from "@/lib/contentful/generated/types";
 import { HomeProps } from "./home.types";
 
 export const homeLoader = async () => {

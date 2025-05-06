@@ -1,4 +1,4 @@
-export const IconGooglePartner = ({ width = 88, height = 100 }: { width?: number; height?: number }) => {
+export const IconGooglePartner = ({ width = 88, height = 99 }: { width?: number; height?: number }) => {
   return (
     <svg
       width={width}

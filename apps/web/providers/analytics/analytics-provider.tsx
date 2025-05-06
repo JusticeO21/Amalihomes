@@ -1,7 +1,7 @@
 "use client";
 import { GdprBannerState } from "@amalihomes/ui";
 import { deleteCookie, getCookie, setCookie } from "cookies-next";
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
 export interface ConsentContextProps {
   isConsentProvided: boolean;
@@ -13,7 +13,7 @@ export interface ConsentContextProps {
 const COOKIE_NAME = "cookie_consent";
 const COOKIE_MAX_AGE = 31536000;
 
-const AnalyticsContext = createContext<ConsentContextProps | null>(null);
+export const AnalyticsContext = createContext<ConsentContextProps | null>(null);
 
 const useAnalyticsProvider = (): ConsentContextProps => {
   const [isConsentProvided, setIsConsentProvided] = useState(false);
@@ -113,11 +113,3 @@ const useAnalyticsProvider = (): ConsentContextProps => {
 export const AnalyticsProvider = ({ children }: { children: React.ReactNode }) => (
   <AnalyticsContext.Provider value={useAnalyticsProvider()}>{children}</AnalyticsContext.Provider>
 );
-
-export const useAnalytics = (): ConsentContextProps => {
-  const context = useContext(AnalyticsContext);
-  if (!context) {
-    throw new Error("useAnalytics must be used within an AnalyticsProvider");
-  }
-  return context;
-};

@@ -1,9 +1,8 @@
 import { getEntry } from "@/lib/contentful/contentful";
-import { TypeHeaderSkeleton } from "@/lib/contentful/types";
+import { TypeHeaderSkeleton } from "@/lib/contentful/generated/types";
 import { HeaderProps } from "./header.types";
 
 export const headerLoader = async () => {
-  "use server";
   const header = await getEntry<TypeHeaderSkeleton>("header", { include: 5 });
   const data = header.fields as unknown as HeaderProps;
   const { countries, languages, links, logo } = data;

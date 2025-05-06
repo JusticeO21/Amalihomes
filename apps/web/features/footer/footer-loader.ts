@@ -1,6 +1,6 @@
-import { TypeFooterSkeleton } from "@/lib/contentful/types";
-import { FooterProps } from "./footer.types";
 import { getEntry } from "@/lib/contentful/contentful";
+import { TypeFooterSkeleton } from "@/lib/contentful/generated/types";
+import { FooterProps } from "./footer.types";
 
 export const footerLoader = async () => {
   const response = await getEntry<TypeFooterSkeleton>("footer", { include: 5 });

@@ -1,7 +1,7 @@
 "use client";
 
+import { useAnalytics } from "@/hooks/use-analytics";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { useAnalytics } from "./analytics-provider";
 
 export const Analytics = () => {
   const { isConsentProvided } = useAnalytics();

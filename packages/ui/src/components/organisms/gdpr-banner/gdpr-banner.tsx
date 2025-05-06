@@ -1,12 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Checkbox, Container } from "../../atoms";
-import { IconCancel, IconGooglePartner } from "../../icons";
 import { cn } from "../../../lib/utils";
+import { Button, Checkbox, Container, Image } from "../../atoms";
+import { IconCancel, IconGooglePartner } from "../../icons";
 
 export interface GdprBannerProps {
   getBanner: (banner: GdprBannerState) => void;
+  title: string;
+  description: string;
+  customizeButtonText: string;
+  saveButtonText: string;
+  rejectButtonText: string;
+  consentOptions: { id: string; label: string }[];
+  icon: {
+    url: string;
+    alt: string;
+  };
 }
 
 export interface GdprBannerState {
@@ -25,15 +35,16 @@ const defaultGdprBanner: GdprBannerState = {
   unclassified: true,
 };
 
-const checkboxOptions = [
-  { id: "testStrict", label: "Test Strict" },
-  { id: "performance", label: "Performance" },
-  { id: "targeting", label: "Targeting" },
-  { id: "functionality", label: "Functionality" },
-  { id: "unclassified", label: "Unclassified" },
-];
-
-export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
+export const GdprBanner = ({
+  getBanner,
+  consentOptions,
+  customizeButtonText,
+  description,
+  rejectButtonText,
+  saveButtonText,
+  title,
+  icon,
+}: GdprBannerProps) => {
   const [isCustomise, setIsCustomise] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [gdprBanner, setGdprBanner] = useState<GdprBannerState>(defaultGdprBanner);
@@ -78,21 +89,27 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
       >
         <div className="flex flex-col-reverse sm:flex-row gap-16 sm:gap-0 items-start justify-between">
           <div className="w-full sm:w-668 flex flex-col sm:flex-row items-start justify-start gap-24">
-            <div>
-              <IconGooglePartner />
-            </div>
+            {icon.url ? (
+              <Image
+                src={icon.url}
+                alt={icon.alt}
+                width={88}
+                height={99}
+              />
+            ) : (
+              <div>
+                <IconGooglePartner />
+              </div>
+            )}
             <div className="flex flex-col gap-16">
               <div className="flex flex-col gap-8">
-                <h6 className="font-lato text-24 font-bold leading-xl text-gray-950">We value your privacy</h6>
-                <p className="font-lato text-16 font-regular text-gray-600">
-                  This website uses cookies to personalize content, provide social media features, and analyse our
-                  traffic. You can customize your preferences or reject all.
-                </p>
+                <h6 className="font-lato text-24 font-bold leading-xl text-gray-950">{title}</h6>
+                <p className="font-lato text-16 font-regular text-gray-600">{description}</p>
               </div>
 
               {isCustomise && (
                 <form className={cn("flex flex-col gap-16 h-184 overflow-hidden transition-all duration-200")}>
-                  {checkboxOptions.map(({ id, label }) => (
+                  {consentOptions.map(({ id, label }) => (
                     <label
                       key={id}
                       htmlFor={id}
@@ -114,14 +131,14 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
                   className="bg-brand-600 text-white font-bold font-lato px-24 py-12 flex items-center justify-center"
                   onClick={isCustomise ? handleSave : () => setIsCustomise(true)}
                 >
-                  <span className="text-16">{isCustomise ? "Save and Close" : "Customise Settings"}</span>
+                  <span className="text-16">{isCustomise ? saveButtonText : customizeButtonText}</span>
                 </Button>
                 <Button
                   variant={"secondary"}
-                  className="text-brand-600 border border-brand-600 font-bold py-12 px-24 font-lato flex items-center justify-center"
+                  className="text-brand-600 border border-brand-600 font-bold py-12 px-24 font-lato flex items-center justify-center bg-white hover:bg-transparent"
                   onClick={handleReject}
                 >
-                  <span className="text-16">Reject All</span>
+                  <span className="text-16">{rejectButtonText}</span>
                 </Button>
               </div>
             </div>
@@ -129,6 +146,7 @@ export const GdprBanner = ({ getBanner }: GdprBannerProps) => {
           <div className="flex items-start justify-end w-full sm:w-min">
             <button
               onClick={handleClose}
+              data-testid="close-button"
               className="cursor-pointer"
             >
               <IconCancel

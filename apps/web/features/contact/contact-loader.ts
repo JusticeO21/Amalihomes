@@ -1,6 +1,6 @@
 import { getEntry } from "@/lib/contentful/contentful";
-import { TypeContactUsSkeleton } from "@/lib/contentful/types";
 import { ContactProps } from "./contact.types";
+import { TypeContactUsSkeleton } from "@/lib/contentful/generated/types";
 
 export const contactLoader = async (locale?: string) => {
   const response = await getEntry<TypeContactUsSkeleton>("contactUs", {

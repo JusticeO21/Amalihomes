@@ -4,6 +4,7 @@ export type { TypeContactUs, TypeContactUsFields, TypeContactUsSkeleton } from "
 export type { TypeContinent, TypeContinentFields, TypeContinentSkeleton } from "./TypeContinent";
 export type { TypeContinentCards, TypeContinentCardsFields, TypeContinentCardsSkeleton } from "./TypeContinentCards";
 export type { TypeCookieBanner, TypeCookieBannerFields, TypeCookieBannerSkeleton } from "./TypeCookieBanner";
+export type { TypeCookieOptions, TypeCookieOptionsFields, TypeCookieOptionsSkeleton } from "./TypeCookieOptions";
 export type { TypeCountry, TypeCountryFields, TypeCountrySkeleton } from "./TypeCountry";
 export type { TypeFaqs, TypeFaqsFields, TypeFaqsSkeleton } from "./TypeFaqs";
 export type { TypeFooter, TypeFooterFields, TypeFooterSkeleton } from "./TypeFooter";

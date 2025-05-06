@@ -75,25 +75,25 @@ describe("ProductEnquiriesForm", () => {
   });
 
   it("reset form after submitting", async () => {
-      fireEvent.input(screen.getByLabelText(mockProps.inputProductLabel), {
-        target: { value: testData.product },
-      });
-      fireEvent.input(screen.getByLabelText(mockProps.inputEmailLabel), {
-        target: { value: testData.email },
-      });
-      fireEvent.input(screen.getByLabelText(mockProps.inputSubjectLabel), {
-        target: { value: testData.subject },
-      });
-      fireEvent.input(screen.getByLabelText(mockProps.inputMessageLabel), {
-        target: { value: testData.message },
-      });
-  
-      act(() => {
-        fireEvent.click(screen.getByRole("button", { name: mockProps.buttonLabel }));
-      });
-  
-      await waitFor(() => {
-        expect(screen.getByLabelText(mockProps.inputProductLabel)).toHaveValue("");
-      });
+    fireEvent.input(screen.getByLabelText(mockProps.inputProductLabel), {
+      target: { value: testData.product },
     });
+    fireEvent.input(screen.getByLabelText(mockProps.inputEmailLabel), {
+      target: { value: testData.email },
+    });
+    fireEvent.input(screen.getByLabelText(mockProps.inputSubjectLabel), {
+      target: { value: testData.subject },
+    });
+    fireEvent.input(screen.getByLabelText(mockProps.inputMessageLabel), {
+      target: { value: testData.message },
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByRole("button", { name: mockProps.buttonLabel }));
+    });
+
+    await waitFor(() => {
+      expect(screen.getByLabelText(mockProps.inputProductLabel)).toHaveValue("");
+    });
+  });
 });

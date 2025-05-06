@@ -1,4 +1,4 @@
-import { TypeLinkSkeleton } from "@/lib/contentful/types";
+import { TypeLinkSkeleton } from "@/lib/contentful/generated/types";
 import { getEntries } from "lib/contentful/contentful";
 import { MetadataRoute } from "next";
 
