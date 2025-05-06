@@ -3,6 +3,7 @@ export * from "./faqs";
 export * from "./flash-sales";
 export * from "./footer-section";
 export * from "./gdpr-banner";
+export * from "./hero-section-about-us";
 export * from "./contact-us-section";
 export * from "./live-chat";
 export * from "./header-section";

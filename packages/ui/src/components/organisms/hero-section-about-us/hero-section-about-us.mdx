@@ -1,0 +1,155 @@
+```mdx
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs';
+import { AboutHero } from './AboutHero';
+
+<Meta title="Components/AboutHero" component={AboutHero} />
+
+# AboutHero
+
+The `AboutHero` component creates a responsive hero section with a background image, optional overlay, and text content (title and description) using the `TextPair` component. Built with Tailwind CSS, `class-variance-authority` (CVA), and the `Container` component from `@amalihomes/ui`, it’s ideal for prominent sections like the About page or CMS-driven hero content in a Next.js app. It supports customizable styling (height, content position, background, text color, overlay) and inherits accessibility features from `TextPair`.
+
+## Props
+
+<Props of={AboutHero} />
+
+### Prop Details
+- **`title`**: Required. The hero’s heading text (e.g., "Welcome to AmaliHomes").
+- **`description`**: Optional. Descriptive text below the title. Omitted if not provided.
+- **`headerAs`**: Heading level for the title (`h1`–`h6`). Default: `h2`.
+- **`headerClass`**: Custom classes for the title (appended to responsive text sizes).
+- **`descriptionClass`**: Custom classes for the description (appended to responsive text sizes).
+- **`align`**: Text alignment (`left`, `center`, `right`). Passed to `TextPair`.
+- **`className`**: Custom classes for the `Container` wrapper.
+- **`backgroundImage`**: URL for the background image (e.g., `/images/hero.jpg`).
+- **`height`**: Hero height (`sm`, `md`, `lg`, `xl`, `full`). Default: `md` (460px).
+- **`contentPosition`**: Horizontal content position (`left`, `center`, `right`). Default: `center`.
+- **`backgroundSize`**: Background image size (`cover`, `contain`, `auto`). Default: `cover`.
+- **`backgroundPosition`**: Background image position (`center`, `top`, `bottom`, `left`, `right`). Default: `center`.
+- **`background`**: Background color (`primary`, `secondary`, `dark`, `light`, `none`). Default: `none`.
+- **`text`**: Text color (`onDark`, `onLight`, `primary`, `muted`). Default: `onLight` (text-gray-900).
+- **`overlay`**: Overlay gradient (`dark`, `light`, `primary`, `none`). Default: `none`.
+
+## Usage Examples
+
+### About Page Hero
+A centered hero section with a dark overlay and white text, typical for the About page.
+
+```jsx
+import { AboutHero } from './AboutHero';
+
+export default function AboutPage() {
+  return (
+    <AboutHero
+      title="Welcome to AmaliHomes"
+      description="Discover a wide range of high-quality furniture designed to fit your style and space."
+      headerAs="h2"
+      height="lg"
+      contentPosition="center"
+      backgroundImage="/images/hero-about.jpg"
+      overlay="dark"
+      text="onDark"
+      align="center"
+    />
+  );
+}
+```
+
+<Preview>
+  <AboutHero
+    title="Welcome to AmaliHomes"
+    description="Discover a wide range of high-quality furniture designed to fit your style and space."
+    headerAs="h2"
+    height="lg"
+    contentPosition="center"
+    backgroundImage="https://via.placeholder.com/1920x560"
+    overlay="dark"
+    text="onDark"
+    align="center"
+  />
+</Preview>
+
+### CMS-Driven Hero (No Overlay)
+A hero section for a CMS-driven page with no overlay and primary text color.
+
+```jsx
+<AboutHero
+  title="Our Story"
+  description="Learn about our journey to bring timeless furniture to your home."
+  headerAs="h3"
+  height="md"
+  contentPosition="left"
+  backgroundImage="/images/story-hero.jpg"
+  overlay="none"
+  text="primary"
+  align="left"
+/>
+```
+
+<Preview>
+  <AboutHero
+    title="Our Story"
+    description="Learn about our journey to bring timeless furniture to your home."
+    headerAs="h3"
+    height="md"
+    contentPosition="left"
+    backgroundImage="https://via.placeholder.com/1920x460"
+    overlay="none"
+    text="primary"
+    align="left"
+  />
+</Preview>
+
+### Dark-Themed Hero
+A full-height hero with a dark background and light overlay.
+
+```jsx
+<AboutHero
+  title="Crafted with Care"
+  description="Every piece is designed with precision and passion."
+  headerAs="h1"
+  height="full"
+  contentPosition="right"
+  background="dark"
+  overlay="light"
+  text="onLight"
+  align="right"
+/>
+```
+
+<Preview>
+  <AboutHero
+    title="Crafted with Care"
+    description="Every piece is designed with precision and passion."
+    headerAs="h1"
+    height="full"
+    contentPosition="right"
+    background="dark"
+    overlay="light"
+    text="onLight"
+    align="right"
+  />
+</Preview>
+
+## Accessibility
+
+`AboutHero` inherits accessibility from `TextPair`:
+- **ARIA**: `TextPair` provides `aria-label`, `aria-labelledby`, and `role` (e.g., `region` for hero sections). Set `id` explicitly (e.g., `about-hero`) to avoid random `id`s from `TextPair`’s `Math.random()`.
+- **Overlay**: The overlay `div` uses `aria-hidden="true"` to exclude it from the accessibility tree.
+- **Contrast**: Ensure `text` variants (`onDark`, `onLight`, `primary`, `muted`) meet WCAG 2.1 AA contrast ratios. Test with `text-gray-600` (muted) for small text (≥16px or bold).
+- **Headings**: Choose `headerAs` to maintain logical heading order (e.g., `h1` after site title, `h2` for sub-sections).
+- **Testing**: Use NVDA/VoiceOver to verify (e.g., “Region, About page introduction, Welcome to AmaliHomes”). Run axe DevTools for automated checks.
+
+## Notes
+- **Styling**: Requires Tailwind classes (`text-primary`, `bg-gray-900`, `font-body`) in your config. Ensure `primary` and `secondary` are defined.
+- **CMS Integration**: Map Contentful fields to `title`, `description`, `backgroundImage`, and variants for dynamic heroes.
+- **Background Images**: Optimize images (e.g., WebP, 1920x1080) for performance. Use Next.js `Image` component for lazy loading if needed.
+- **TextPair ID**: `TextPair`’s auto-generated `id` (`Math.random()`) may change on re-renders. Provide explicit `id`s for hero sections.
+- **Dependencies**: Requires `@amalihomes/ui` (`Container`, `TextPair`), `class-variance-authority`, and `cn` utility.
+
+## Best Practices
+- Use `role="region"` via `TextPair` for hero sections, with `aria-label` (e.g., “About page introduction”).
+- Set explicit `id`s in `TextPair` for major sections (e.g., `about-hero`) to avoid random `id`s.
+- Optimize background images for performance and accessibility (e.g., descriptive alt text if using `img`).
+- Test heading hierarchy in your Next.js app (e.g., `h1` for site title, `h2` for hero).
+- Verify CMS-driven content renders correctly with Contentful data.
+```
