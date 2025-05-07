@@ -553,6 +553,9 @@
   .h-\[64px\] {
     height: 64px;
   }
+  .h-\[173px\] {
+    height: 173px;
+  }
   .h-\[203px\] {
     height: 203px;
   }
@@ -1889,6 +1892,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-gray-600);
+      }
+    }
+  }
+  .hover\:text-gray-950 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-gray-950);
       }
     }
   }

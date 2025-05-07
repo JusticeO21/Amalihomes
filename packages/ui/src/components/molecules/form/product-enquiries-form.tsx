@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button, Input, Typography } from "../../atoms";
-import { productEnquiriesSchema, ProductEnquiriesSchemaType } from "./schema";
+import { productEnquiriesSchema, ProductEnquiriesSchemaType } from "./schemas";
 import { toast } from "../toast";
 
 interface ProductEnquiriesFormProps {

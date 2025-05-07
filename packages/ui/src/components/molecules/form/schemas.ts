@@ -10,3 +10,21 @@ export const ContactUsFormSchema = z.object({
 });
 
 export type ContactUsFormValues = z.infer<typeof ContactUsFormSchema>;
+
+export const generalEnquiriesSchema = z.object({
+  enquiry: z.string().min(1, { message: "enquiry type is required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  subject: z.string().min(1, { message: "Subject is required" }),
+  message: z.string().min(1, { message: "Message is required" }),
+});
+
+export type GeneralEnquiriesSchemaType = z.infer<typeof generalEnquiriesSchema>;
+
+export const productEnquiriesSchema = z.object({
+  product: z.string().min(1, { message: "Product is required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  subject: z.string().min(1, { message: "Subject is required" }),
+  message: z.string().min(1, { message: "Message is required" }),
+});
+
+export type ProductEnquiriesSchemaType = z.infer<typeof productEnquiriesSchema>;
