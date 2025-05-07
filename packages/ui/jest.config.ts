@@ -7,6 +7,7 @@ const config: Config = {
   moduleNameMapper: {
     "^@/components/(.*)$": "<rootDir>/src/components/$1",
     "^@/lib/(.*)$": "<rootDir>/src/lib/$1",
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
 };
 

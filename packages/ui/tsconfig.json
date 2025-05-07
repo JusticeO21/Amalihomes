@@ -2,7 +2,8 @@
   "extends": "@amalihomes/typescript-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
-    "types": ["jest", "@testing-library/jest-dom"],
+    "rootDir": "src",
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

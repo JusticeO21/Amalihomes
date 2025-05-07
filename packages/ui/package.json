@@ -26,6 +26,7 @@
         "@types/react": "19.0.10",
         "@types/react-dom": "19.0.4",
         "eslint": "^9.22.0",
+        "identity-obj-proxy": "^3.0.0",
         "jest": "^29.7.0",
         "jest-environment-jsdom": "^29.7.0",
         "react": "^19.0.0",
