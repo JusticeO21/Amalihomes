@@ -16,7 +16,7 @@ const SalesRepCard = ({ name, role, phoneNumber, email, imageUrl, imageAlt }: Sa
         <div>
           <Typography
             variant="h6"
-            className="!text-gray-900 text-24 font-bold leading-32"
+            className="!text-gray-950 text-24 font-bold leading-32"
           >
             {name}
           </Typography>

@@ -556,6 +556,9 @@
   .h-\[64px\] {
     height: 64px;
   }
+  .h-\[122px\] {
+    height: 122px;
+  }
   .h-\[173px\] {
     height: 173px;
   }
@@ -1391,6 +1394,9 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .\!text-16 {
+    font-size: var(--text-16) !important;
+  }
   .\!text-18 {
     font-size: var(--text-18) !important;
   }
@@ -1522,6 +1528,9 @@
   }
   .\!text-gray-900 {
     color: var(--color-gray-900) !important;
+  }
+  .\!text-gray-950 {
+    color: var(--color-gray-950) !important;
   }
   .text-Amber-fill {
     color: var(--color-Amber-fill);
