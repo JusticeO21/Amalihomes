@@ -28,3 +28,12 @@ export const productEnquiriesSchema = z.object({
 });
 
 export type ProductEnquiriesSchemaType = z.infer<typeof productEnquiriesSchema>;
+
+export const orderEnquiriesSchema = z.object({
+  orderID: z.string().min(1, { message: "orderID is required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  subject: z.string().min(1, { message: "Subject is required" }),
+  message: z.string().min(1, { message: "Message is required" }),
+});
+
+export type OrderEnquiriesSchemaType = z.infer<typeof orderEnquiriesSchema>;
