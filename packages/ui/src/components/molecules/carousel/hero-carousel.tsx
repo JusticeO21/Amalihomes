@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CarouselControls } from "./carousel-controls";
 import { HeroCarouselProps } from "./types";
 import { Image } from "../../atoms";
@@ -17,6 +17,13 @@ export const HeroCarousel = ({ images }: HeroCarouselProps) => {
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [])
 
   return (
     <div
