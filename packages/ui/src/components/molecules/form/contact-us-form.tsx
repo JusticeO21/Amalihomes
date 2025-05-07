@@ -30,6 +30,7 @@ const ContactUsForm = ({
 
   const onSubmit = (data: ContactUsFormValues) => {
     toast.success("Message sent successfully");
+    form.reset();
     return data;
   };
   return (
