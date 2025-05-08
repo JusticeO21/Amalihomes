@@ -7,4 +7,5 @@ export type ContactUsFormProps = {
   messageInputLabel?: string;
   messageInputPlaceholder?: string;
   submitButtonLabel?: string;
+  className?: string;
 };

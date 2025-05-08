@@ -20,6 +20,13 @@ const TawkChat = () => {
               window.Tawk_API.onLoad = function(){
               window.Tawk_API.maximize();
               window.Tawk_API.hideWidget()
+               window.Tawk_API.addEvent('requested-quotation', function(error){});
+
+    window.Tawk_API.addEvent('product-add-to-cart', {
+        'sku'    : 'A0012',
+        'name'  : 'Jeans',
+        'price' :'50'
+    }, function(error){});
               };
               (function(){
                 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];

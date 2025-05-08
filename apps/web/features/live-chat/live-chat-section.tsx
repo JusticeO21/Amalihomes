@@ -1,6 +1,8 @@
 "use client";
-import { useLiveChatStore } from "@/stores/use-live-chat-store";
+import { HomePageState, useLiveChatStore } from "@/stores/use-live-chat-store";
 import {
+  ContactUsForm,
+  GeneralEnquiriesForm,
   LiveChatBottomNavBarState,
   LiveChatFaqWindow,
   LiveChatHome,
@@ -26,6 +28,11 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
     setTab,
     isChatWidgetVisible,
     closeChatWindow,
+    openChatWidget,
+    activeHomePage,
+    isBottomNavVisible,
+    setCurrentHomePge,
+    goBack,
   } = useLiveChatStore();
 
   const getImage = useCallback(
@@ -38,9 +45,21 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
 
   const homeCards = useMemo(
     () => [
-      { label: data.orderTitle, icon: getImage(data.orderIcon.fields) },
-      { label: data.productTitle, icon: getImage(data.productIcon.fields) },
-      { label: data.generalTitle, icon: getImage(data.generalIcon.fields) },
+      {
+        label: data.orderTitle,
+        icon: getImage(data.orderIcon.fields),
+        onClickL: () => setCurrentHomePge(HomePageState.ORDER_ENQUIRY),
+      },
+      {
+        label: data.productTitle,
+        icon: getImage(data.productIcon.fields),
+        onClick: () => setCurrentHomePge(HomePageState.PRODUCT_ENQUIRY),
+      },
+      {
+        label: data.generalTitle,
+        icon: getImage(data.generalIcon.fields),
+        onClick: () => setCurrentHomePge(HomePageState.GENERAL_ENQUIRY),
+      },
     ],
     [
       data.orderTitle,
@@ -50,6 +69,7 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
       data.productIcon.fields,
       data.generalIcon.fields,
       getImage,
+      setCurrentHomePge,
     ],
   );
 
@@ -87,6 +107,16 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
         tawkApi.hideWidget?.();
         closeChatWindow?.();
       };
+
+      tawkApi.onChatMaximized = function () {
+        openChatWidget?.();
+        tawkApi?.showWidget?.();
+      };
+
+      window.Tawk_API.onChatMessageAgent = function () {
+        openChatWidget?.();
+        tawkApi?.showWidget?.();
+      };
     };
 
     if (window.Tawk_API && Object.keys(window.Tawk_API).length) {
@@ -102,7 +132,7 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
     }, 200);
 
     return () => clearInterval(interval);
-  }, [isChatWidgetVisible, closeChatWindow]);
+  }, [isChatWidgetVisible, closeChatWindow, openChatWidget]);
 
   if (isChatWidgetVisible) return null;
 
@@ -112,14 +142,32 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
         <LiveChatWindowHeader
           closeWindow={toggleWindow}
           isBackBtnVisible={isBackBtnVisible}
+          back={() => goBack()}
         />
 
-        {currentWindowTab === LiveChatBottomNavBarState.HOME && (
+        {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.INITIAL && (
           <LiveChatHome
             cards={homeCards}
             introduction={data.introduction}
             image={profileImage}
             description={data.description}
+          />
+        )}
+
+        {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.GENERAL_ENQUIRY && (
+          <GeneralEnquiriesForm
+            buttonLabel="Send Enquiry"
+            description={data.generalFormDescription}
+            inputEmailLabel={data.generalInputEmailLabel}
+            inputEmailPlaceholder={data.generalEnquiresInputEmailPlaceholder}
+            inputEnquiryTypeLabel={data.generalEnquiryTypeLabel}
+            inputEnquiryTypePlaceholder={data.generalInputSubjectPlaceholder}
+            title={data.generalTitle}
+            inputMessageLabel={data.generalInputMessageLabel}
+            inputMessagePlaceholder={data.generalInputMessagePlaceholder}
+            inputSubjectLabel={data.generalInputSubjectLabel}
+            inputSubjectPlaceholder={data.generalInputSubjectPlaceholder}
+            inputEnquiryTypeOptions={data.generalEnquiryTypes}
           />
         )}
 
@@ -131,10 +179,12 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
           />
         )}
 
-        <LiveChatWindowBottomNavBar
-          currentTab={currentWindowTab}
-          setTab={setTab}
-        />
+        {isBottomNavVisible && (
+          <LiveChatWindowBottomNavBar
+            currentTab={currentWindowTab}
+            setTab={setTab}
+          />
+        )}
       </LiveChatWindow>
 
       <LiveChatWindowButton

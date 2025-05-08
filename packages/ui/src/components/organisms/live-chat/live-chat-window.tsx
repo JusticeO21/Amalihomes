@@ -38,7 +38,7 @@ export const LiveChatWindow = ({ children, isWindowOpen = false }: LiveChatWindo
     <div
       role="dialog"
       aria-modal="true"
-      className="bg-white md:rounded-24 p-16 w-screen h-screen sm:w-393 sm:max-h-750 sm:h-full chat-window-box-shadow relative overflow-auto flex flex-col gap-24 overflow-y-auto"
+      className="bg-white md:rounded-24 p-16 w-screen h-screen sm:w-393 sm:h-[calc(100dvh-100px)] chat-window-box-shadow relative overflow-auto flex flex-col gap-24 overflow-y-auto"
     >
       {children}
     </div>
