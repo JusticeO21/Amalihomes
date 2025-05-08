@@ -9,6 +9,14 @@
   display: none;
 }
 
+.direction-rtl {
+  direction: rtl;
+}
+
+.direction-ltr {
+  direction: ltr;
+}
+
 .scrollbar-hidden {
   scrollbar-width: none;
 }

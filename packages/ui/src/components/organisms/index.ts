@@ -12,3 +12,4 @@ export * from "./live-chat";
 export * from "./header-section";
 export * from "./hero-section";
 export * from "./usp-section";
+export * from "./key-features-section";

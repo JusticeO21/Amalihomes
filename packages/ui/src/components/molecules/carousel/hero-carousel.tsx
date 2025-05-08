@@ -1,14 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { CarouselControls } from "./carousel-controls";
 import { HeroCarouselProps } from "./types";
 import { Image } from "../../atoms";
 
 export const HeroCarousel = ({ images }: HeroCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-  };
+  },[images.length]);
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -23,7 +23,7 @@ export const HeroCarousel = ({ images }: HeroCarouselProps) => {
       nextSlide();
     }, 5000);
     return () => clearInterval(interval);
-  }, [nextSlide])
+  }, [nextSlide]);
 
   return (
     <div

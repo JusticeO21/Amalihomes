@@ -481,6 +481,9 @@
   .ml-auto {
     margin-left: auto;
   }
+  .\!block {
+    display: block !important;
+  }
   .block {
     display: block;
   }
@@ -570,6 +573,9 @@
   }
   .h-\[312px\] {
     height: 312px;
+  }
+  .h-\[357px\] {
+    height: 357px;
   }
   .h-\[360px\] {
     height: 360px;
@@ -1233,6 +1239,9 @@
   .object-cover {
     object-fit: cover;
   }
+  .\!object-center {
+    object-position: center !important;
+  }
   .p-0 {
     padding: var(--spacing-0);
   }
@@ -1525,9 +1534,6 @@
   }
   .\!text-gray-600 {
     color: var(--color-gray-600) !important;
-  }
-  .\!text-gray-900 {
-    color: var(--color-gray-900) !important;
   }
   .\!text-gray-950 {
     color: var(--color-gray-950) !important;
@@ -2326,6 +2332,11 @@
       height: 361px;
     }
   }
+  .md\:h-\[560px\] {
+    @media (width >= 834px) {
+      height: 560px;
+    }
+  }
   .md\:h-full {
     @media (width >= 834px) {
       height: 100%;
@@ -2585,6 +2596,11 @@
       display: none;
     }
   }
+  .lg\:\!h-full {
+    @media (width >= 1024px) {
+      height: 100% !important;
+    }
+  }
   .lg\:h-80 {
     @media (width >= 1024px) {
       height: var(--spacing-80);
@@ -2774,6 +2790,12 @@
 }
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
+}
+.direction-rtl {
+  direction: rtl;
+}
+.direction-ltr {
+  direction: ltr;
 }
 .scrollbar-hidden {
   scrollbar-width: none;

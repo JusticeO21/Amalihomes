@@ -23,7 +23,7 @@ describe("GeneralEnquiriesForm", () => {
     inputEnquiryTypePlaceholder: "Select enquiry type",
     inputEnquiryTypeOptions: ["Sales", "Support", "Feedback"],
   };
-  
+
   beforeAll(() => {
     jest.spyOn(console, "error").mockImplementation(() => {});
   });

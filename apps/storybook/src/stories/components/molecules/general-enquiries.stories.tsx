@@ -6,7 +6,7 @@ const meta: Meta<typeof GeneralEnquiriesForm> = {
   component: GeneralEnquiriesForm,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered"
+    layout: "centered",
   },
   argTypes: {
     title: {

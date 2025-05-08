@@ -19,7 +19,7 @@ interface OrderEnquiriesFormProps {
   inputMessagePlaceholder: string;
   inputOrderIDLabel: string;
   inputOrderIDPlaceholder: string;
-  inputOrderIDs: { id: string; price: string}[]
+  inputOrderIDs: { id: string; price: string }[];
 }
 
 const OrderEnquiriesForm = ({
@@ -46,17 +46,23 @@ const OrderEnquiriesForm = ({
     },
   });
 
-  const {getValues, setValue, clearErrors, reset, formState: {errors}} = form;
+  const {
+    getValues,
+    setValue,
+    clearErrors,
+    reset,
+    formState: { errors },
+  } = form;
   const [orderID, setOrderID] = useState<string>(getValues("orderID"));
   const handleOrderIDChange = (value: string) => {
     setOrderID(value);
     setValue("orderID", value);
     clearErrors("orderID");
-  }
+  };
 
   const onSubmit = (data: OrderEnquiriesSchemaType) => {
     reset();
-    setOrderID(inputOrderIDPlaceholder)
+    setOrderID(inputOrderIDPlaceholder);
     toast.success("Form submitted successfully!");
     return data;
   };
@@ -91,19 +97,24 @@ const OrderEnquiriesForm = ({
             className="w-full mb-4 p-0 text-gray-950 font-lato"
           >
             <SelectTrigger className={errors["orderID"] ? "border-red-500" : ""}>
-              <SelectValue placeholder={inputOrderIDPlaceholder} className="text-18 leading-26" />
+              <SelectValue
+                placeholder={inputOrderIDPlaceholder}
+                className="text-18 leading-26"
+              />
             </SelectTrigger>
             <SelectContent>
-              {
-                inputOrderIDs.map((orderID) => (
-                  <SelectItem key={orderID.id} value={orderID.id} className="font-bold">
-                    <div>
+              {inputOrderIDs.map((orderID) => (
+                <SelectItem
+                  key={orderID.id}
+                  value={orderID.id}
+                  className="font-bold"
+                >
+                  <div>
                     <p className="text-18 text-gray-950 leading-26">{orderID.id}</p>
                     <p className="text-16 text-gray-600 leading-24">{orderID.price}</p>
-                    </div>
-                  </SelectItem>
-                ))
-              }
+                  </div>
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
