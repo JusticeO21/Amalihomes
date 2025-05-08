@@ -12,8 +12,9 @@ jest.mock("../toast", () => ({
 
 describe("ProductEnquiriesForm", () => {
   let mockProps: React.ComponentProps<typeof ProductEnquiriesForm>;
+
   const testData = {
-    product: "Test Product",
+    product: "Product 1",
     email: "test@example.com",
     subject: "Test Subject",
     message: "Test message content",
@@ -32,6 +33,22 @@ describe("ProductEnquiriesForm", () => {
       inputMessagePlaceholder: "Enter your message",
       inputProductLabel: "Product",
       inputProductPlaceholder: "Select product",
+      inputProducts: [
+        {
+          id: "1",
+          imageUrl: "https://example.com/image1.jpg",
+          name: "Product 1",
+          imageAlt: "Product 1 Image",
+          price: "$10.00",
+        },
+        {
+          id: "2",
+          imageUrl: "https://example.com/image2.jpg",
+          name: "Product 2",
+          imageAlt: "Product 2 Image",
+          price: "$20.00",
+        },
+      ],
     };
   });
 
@@ -51,32 +68,16 @@ describe("ProductEnquiriesForm", () => {
     expect(screen.getByLabelText(mockProps.inputSubjectLabel)).toBeInTheDocument();
     expect(screen.getByLabelText(mockProps.inputMessageLabel)).toBeInTheDocument();
     expect(screen.getByLabelText(mockProps.inputProductLabel)).toBeInTheDocument();
+    expect(screen.getByText(mockProps.inputProductPlaceholder)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: mockProps.buttonLabel })).toBeInTheDocument();
   });
 
   it("submits successfully with valid data", async () => {
-    fireEvent.input(screen.getByLabelText(mockProps.inputProductLabel), {
-      target: { value: testData.product },
-    });
+    fireEvent.click(screen.getByLabelText(mockProps.inputProductLabel));
+    fireEvent.click(screen.getByRole("button", { name: /product 1/i }));
+
     fireEvent.input(screen.getByLabelText(mockProps.inputEmailLabel), {
       target: { value: testData.email },
-    });
-    fireEvent.input(screen.getByLabelText(mockProps.inputSubjectLabel), {
-      target: { value: testData.subject },
-    });
-    fireEvent.input(screen.getByLabelText(mockProps.inputMessageLabel), {
-      target: { value: testData.message },
-    });
-    fireEvent.click(screen.getByRole("button", { name: mockProps.buttonLabel }));
-
-    await waitFor(() => {
-      expect(toast.success).toHaveBeenCalledWith("Form submitted successfully!");
-    });
-  });
-
-  it("reset form after submitting", async () => {
-    fireEvent.input(screen.getByLabelText(mockProps.inputProductLabel), {
-      target: { value: testData.product },
     });
     fireEvent.input(screen.getByLabelText(mockProps.inputEmailLabel), {
       target: { value: testData.email },
@@ -93,7 +94,48 @@ describe("ProductEnquiriesForm", () => {
     });
 
     await waitFor(() => {
+      expect(toast.success).toHaveBeenCalledWith("Form submitted successfully!");
+    });
+  });
+
+  it("reset form after submitting", async () => {
+    fireEvent.click(screen.getByLabelText(mockProps.inputProductLabel));
+    fireEvent.click(screen.getByText(/product 1/i));
+
+    fireEvent.input(screen.getByLabelText(mockProps.inputEmailLabel), {
+      target: { value: testData.email },
+    });
+    fireEvent.input(screen.getByLabelText(mockProps.inputSubjectLabel), {
+      target: { value: testData.subject },
+    });
+    fireEvent.input(screen.getByLabelText(mockProps.inputMessageLabel), {
+      target: { value: testData.message },
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByRole("button", { name: mockProps.buttonLabel }));
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText(mockProps.inputProductPlaceholder)).toBeInTheDocument();
+      expect(screen.getByLabelText(mockProps.inputEmailLabel)).toHaveValue("");
+      expect(screen.getByLabelText(mockProps.inputSubjectLabel)).toHaveValue("");
+      expect(screen.getByLabelText(mockProps.inputMessageLabel)).toHaveValue("");
       expect(screen.getByLabelText(mockProps.inputProductLabel)).toHaveValue("");
+    });
+  });
+
+  it("shows error message required fields are empty", async () => {
+    act(() => {
+      fireEvent.click(screen.getByRole("button", { name: mockProps.buttonLabel }));
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText(/product is required/i)).toBeInTheDocument();
+      expect(screen.getByText(/invalid email/i)).toBeInTheDocument();
+      expect(screen.getByText(/subject is required/i)).toBeInTheDocument();
+      expect(screen.getByText(/invalid email/i)).toBeInTheDocument();
+      expect(screen.getByText(/invalid email/i)).toBeInTheDocument();
     });
   });
 });

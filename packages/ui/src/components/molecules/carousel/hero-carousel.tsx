@@ -23,7 +23,7 @@ export const HeroCarousel = ({ images }: HeroCarouselProps) => {
       nextSlide();
     }, 5000);
     return () => clearInterval(interval);
-  }, [])
+  }, [nextSlide])
 
   return (
     <div

@@ -53,6 +53,10 @@ const meta: Meta<typeof ProductEnquiriesForm> = {
       control: "text",
       description: "Placeholder for the product input field",
     },
+    inputProducts: {
+      control: "object",
+      description: "List of products to choose from",
+    },
   },
 };
 
@@ -73,6 +77,32 @@ export const Default: Story = {
     inputSubjectPlaceholder: "Enter the subject of your enquiry",
     inputProductLabel: "Product",
     inputProductPlaceholder: "Enter the product name or code",
+    inputProducts: [
+      {
+        id: "1",
+        imageUrl:
+          "https://img.freepik.com/free-psd/stylish-modern-sneaker-design-white-gray-black-red-teal-accents-thick-sole-casual-footwear-trendy-shoe_632498-30181.jpg?ga=GA1.1.1242949356.1739700795&semt=ais_hybrid&w=740",
+        name: "Product 1",
+        imageAlt: "Product 1",
+        price: "$ 100",
+      },
+      {
+        id: "2",
+        imageUrl:
+          "https://img.freepik.com/free-photo/green-accessory-leather-elegance-handbags_1203-6546.jpg?ga=GA1.1.1242949356.1739700795&semt=ais_hybrid&w=740",
+        name: "Product 2",
+        imageAlt: "Product 2",
+        price: "$200",
+      },
+      {
+        id: "3",
+        imageUrl:
+          "https://img.freepik.com/free-photo/stylish-golden-watch-white-surface_181624-27078.jpg?ga=GA1.1.1242949356.1739700795&semt=ais_hybrid&w=740",
+        name: "Product 3",
+        imageAlt: "Product 3",
+        price: "$300",
+      },
+    ],
   },
   render: (args) => (
     <div className="w-[393px] p-16">
