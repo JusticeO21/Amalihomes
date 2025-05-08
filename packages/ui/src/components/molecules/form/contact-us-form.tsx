@@ -46,6 +46,7 @@ const ContactUsForm = ({
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-40"
+          noValidate
         >
           <div className="space-y-12">
             <Input
