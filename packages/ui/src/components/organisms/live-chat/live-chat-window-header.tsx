@@ -9,7 +9,7 @@ export interface LiveChatWindowHeaderProps {
 
 export const LiveChatWindowHeader = ({ closeWindow, isBackBtnVisible = true, back }: LiveChatWindowHeaderProps) => {
   return (
-    <div className="flex justify-between items-end w-full sticky top-0">
+    <div className="flex justify-between items-end w-full sticky top-0 z-2000">
       {isBackBtnVisible && (
         <button
           className="flex items-center justify-center rounded-full w-40 h-40 bg-brand-50 cursor-pointer self-end"

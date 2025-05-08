@@ -1,7 +1,6 @@
 "use client";
 import { HomePageState, useLiveChatStore } from "@/stores/use-live-chat-store";
 import {
-  ContactUsForm,
   GeneralEnquiriesForm,
   LiveChatBottomNavBarState,
   LiveChatFaqWindow,
@@ -11,6 +10,7 @@ import {
   LiveChatWindowButton,
   LiveChatWindowHeader,
   LiveChatWrapper,
+  ProductEnquiriesForm,
 } from "@amalihomes/ui/index";
 import { useCallback, useEffect, useMemo } from "react";
 import { ChatIconFields, LiveChatProps } from "./live-chat.types";
@@ -168,6 +168,22 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
             inputSubjectLabel={data.generalInputSubjectLabel}
             inputSubjectPlaceholder={data.generalInputSubjectPlaceholder}
             inputEnquiryTypeOptions={data.generalEnquiryTypes}
+          />
+        )}
+        {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.PRODUCT_ENQUIRY && (
+          <ProductEnquiriesForm
+            buttonLabel={data.productButtonLabel}
+            description={data.productFormDescription}
+            inputEmailLabel={data.generalInputEmailLabel}
+            inputEmailPlaceholder={data.generalEnquiresInputEmailPlaceholder}
+            title={data.productFormTitle}
+            inputMessageLabel={data.productInputMessageLabel}
+            inputMessagePlaceholder={data.productInputMessagePlaceholder}
+            inputSubjectLabel={data.productInputSubjectLabel}
+            inputSubjectPlaceholder={data.productInputSubjectPlaceholder}
+            inputProductLabel={data.productTitle}
+            inputProductPlaceholder={""}
+            inputProducts={[]}
           />
         )}
 
