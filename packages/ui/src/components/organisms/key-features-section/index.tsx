@@ -12,6 +12,8 @@ export type KeyFeaturesSetionProps = {
   imageUrl: string;
   imageAlt: string;
   gridDirection?: "forward" | "reverse";
+  headingClass?: string;
+  descriptionClass?: string;
 };
 export const KeyFeaturesSetion = ({
   heading,
@@ -20,6 +22,8 @@ export const KeyFeaturesSetion = ({
   imageAlt,
   imageUrl,
   gridDirection,
+  headingClass,
+  descriptionClass,
 }: KeyFeaturesSetionProps) => {
   return (
     <UspSectionWrapper gridClass={`${gridDirection === "reverse" ? "direction-rtl" : ""}`}>
@@ -27,6 +31,8 @@ export const KeyFeaturesSetion = ({
         <UspHeader
           heading={heading}
           description={description}
+          headingClass={headingClass}
+          descriptionClass={descriptionClass}
         />
         <UspCardList cards={cards} />
       </UspContentWrapper>

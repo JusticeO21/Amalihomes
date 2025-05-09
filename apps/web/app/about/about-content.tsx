@@ -22,7 +22,7 @@ export const AboutContent = (data: AboutUsContent) => {
   const { imageUrl: heroImageUrl, imageAlt: heroImageAlt } = getContentfulImage(mainImage, "_", "_");
   const { imageUrl: uspImageUrl, imageAlt: uspImageAlt } = getContentfulImage(uspImage, "_", "_");
   return (
-    <main>
+    <main className="font-lato">
       <AboutHero
         title={title}
         description={description}
@@ -51,6 +51,7 @@ export const AboutContent = (data: AboutUsContent) => {
         imageUrl={uspImageUrl}
         imageAlt={uspImageAlt}
         cards={features}
+        descriptionClass="!text-[16px]"
       />
     </main>
   );
