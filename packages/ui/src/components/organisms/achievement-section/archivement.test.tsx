@@ -51,7 +51,7 @@ describe("CompaniesMetrics", () => {
     );
 
     const grid = screen.getByText("30+").closest("div.grid");
-    expect(grid).toHaveClass("grid grid-cols-2");
+    expect(grid).toHaveClass("grid grid-cols-1 md:grid-cols-2");
   });
 
   test("limits metrics to 4", () => {

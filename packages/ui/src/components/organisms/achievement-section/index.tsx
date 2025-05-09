@@ -50,11 +50,14 @@ export const CompaniesMetrics = ({
         spacing="md"
       />
 
-      <div className={`grid ${layout === "grid" ? "grid-cols-2" : "grid-cols-4"} !${gridClassName && gridClassName}`}>
+      <div
+        className={`grid grid-cols-1 ${layout === "grid" ? "md:grid-cols-2" : "md:grid-cols-4"} !${gridClassName && gridClassName}`}
+      >
         {metrics.map(
           (item, index) =>
             index < 4 && (
               <MetricCard
+                className={"p-24 md:p-[19.5px] lg:p-24"}
                 key={`metric-${index}`}
                 number={item.metric}
                 label={item.label}
