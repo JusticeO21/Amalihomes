@@ -36,7 +36,8 @@ export const AboutContent = (data: AboutUsContent) => {
       <AchievementSection
         gridClassName="grid-cols-1 sm:!grid-cols-1 !gap-y-16 md:!grid-cols-4"
         className="gap-32"
-        titleClass="text-24 leading-32 md:text-32 md:leading-40 lg:text-[40px] lg:leading-48"
+        titleClass="text-24 leading-32 md:text-32 md:leading-40 lg:text-[40px] lg:leading-48 text-gray-950"
+        descriptionClass="!text-gray-600"
         metrics={metrics}
         numberClass="!text-brand-600"
         title={historyTitle}
