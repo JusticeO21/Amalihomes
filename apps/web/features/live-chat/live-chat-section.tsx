@@ -10,6 +10,7 @@ import {
   LiveChatWindowButton,
   LiveChatWindowHeader,
   LiveChatWrapper,
+  OrderEnquiriesForm,
   ProductEnquiriesForm,
 } from "@amalihomes/ui/index";
 import { useCallback, useEffect, useMemo } from "react";
@@ -48,7 +49,7 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
       {
         label: data.orderTitle,
         icon: getImage(data.orderIcon.fields),
-        onClickL: () => setCurrentHomePge(HomePageState.ORDER_ENQUIRY),
+        onClick: () => setCurrentHomePge(HomePageState.ORDER_ENQUIRY),
       },
       {
         label: data.productTitle,
@@ -170,6 +171,23 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
             inputEnquiryTypeOptions={data.generalEnquiryTypes}
           />
         )}
+        {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.ORDER_ENQUIRY && (
+          <OrderEnquiriesForm
+            buttonLabel="Send Enquiry"
+            description={data.orderFormDescription}
+            inputEmailLabel={data.orderInputEmailLabel}
+            inputEmailPlaceholder={data.orderInputEmailPlaceholder}
+            inputMessageLabel={data.orderMessageLabel}
+            inputMessagePlaceholder={data.orderInputMessagePlaceholder}
+            inputOrderIDLabel={data.orderInputOrderIdLabel}
+            inputOrderIDPlaceholder={data.orderInputOrderIdPlaceholder}
+            inputOrderIDs={[]}
+            inputSubjectLabel={data.orderInputSubjectLabel}
+            inputSubjectPlaceholder={data.orderInputSubjectPlaceholder}
+            title={data.orderTitle}
+          />
+        )}
+           
         {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.PRODUCT_ENQUIRY && (
           <ProductEnquiriesForm
             buttonLabel={data.productButtonLabel}
