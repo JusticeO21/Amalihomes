@@ -187,7 +187,7 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
             title={data.orderTitle}
           />
         )}
-           
+
         {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.PRODUCT_ENQUIRY && (
           <ProductEnquiriesForm
             buttonLabel={data.productButtonLabel}

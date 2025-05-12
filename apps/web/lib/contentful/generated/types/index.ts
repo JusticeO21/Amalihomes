@@ -14,6 +14,7 @@ export type { TypeHistoryCard, TypeHistoryCardFields, TypeHistoryCardSkeleton } 
 export type { TypeHome, TypeHomeFields, TypeHomeSkeleton } from "./TypeHome";
 export type { TypeLanguage, TypeLanguageFields, TypeLanguageSkeleton } from "./TypeLanguage";
 export type { TypeLink, TypeLinkFields, TypeLinkSkeleton } from "./TypeLink";
+export type { TypeLiveSupport, TypeLiveSupportFields, TypeLiveSupportSkeleton } from "./TypeLiveSupport";
 export type { TypeQuestionAnswer, TypeQuestionAnswerFields, TypeQuestionAnswerSkeleton } from "./TypeQuestionAnswer";
 export type {
   TypeQuestionCategory,
@@ -25,5 +26,6 @@ export type {
   TypeSalesRepresentativeFields,
   TypeSalesRepresentativeSkeleton,
 } from "./TypeSalesRepresentative";
+export type { TypeShop, TypeShopFields, TypeShopSkeleton } from "./TypeShop";
 export type { TypeSocialMedia, TypeSocialMediaFields, TypeSocialMediaSkeleton } from "./TypeSocialMedia";
 export type { TypeTeamCard, TypeTeamCardFields, TypeTeamCardSkeleton } from "./TypeTeamCard";
