@@ -91,7 +91,7 @@ export const ProductCarousel = ({
       marginY={0}
       className={cn(`relative m-auto w-full flex flex-col gap-16 md:gap-24 overflow-hidden`, className)}
     >
-      <div className="flex justify-between items-center w-full text-24 sm:text-h3-sm md:text-40">
+      <div className="flex justify-between items-center w-full text-24 md:text-h3-sm lg:text-40">
         {heading && (
           <Typography
             variant="h4"

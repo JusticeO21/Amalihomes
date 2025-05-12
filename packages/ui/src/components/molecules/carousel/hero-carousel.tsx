@@ -27,10 +27,10 @@ export const HeroCarousel = ({ images }: HeroCarouselProps) => {
 
   return (
     <div
-      className="flex flex-col items-center gap-24 max-w-[724px] md:w-full max-h-[290px] sm:max-h-[559px]"
+      className="flex flex-col items-center gap-24 max-w-[724px] md:w-full max-h-[290px] md:max-h-[559px]"
       aria-live="polite"
     >
-      <div className="flex gap-24 w-full max-h-[244px] sm:max-h-[491px]">
+      <div className="flex gap-24 w-full max-h-[244px] md:max-h-[491px]">
         <div className="relative w-full rounded-t-[724px] overflow-hidden bg-Grey-fill-weaker flex justify-between items-center ">
           {images?.map((image) => (
             <div
@@ -50,12 +50,12 @@ export const HeroCarousel = ({ images }: HeroCarouselProps) => {
           ))}
         </div>
 
-        <div className="w-[43px] sm:w-[87px] flex flex-col justify-between overflow-hidden p-4">
+        <div className="w-[43px] md:w-[87px] flex flex-col justify-between overflow-hidden p-4">
           {[...images].splice(0, 3).map((image) => {
             return (
               <div
                 key={image.imageAlt}
-                className={`relative w-full h-[38px] sm:!h-[78px] flex justify-center items-center transition-all duration-500 ease-in-out ${currentIndex === images.indexOf(image) ? "" : "opacity-50"}`}
+                className={`relative w-full h-[38px] md:!h-[78px] flex justify-center items-center transition-all duration-500 ease-in-out ${currentIndex === images.indexOf(image) ? "" : "opacity-50"}`}
                 aria-label={`slide ${images.indexOf(image) + 1}`}
                 aria-current={currentIndex === images.indexOf(image) ? "true" : "false"}
               >

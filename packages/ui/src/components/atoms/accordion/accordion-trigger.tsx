@@ -18,7 +18,7 @@ export const AccordionTrigger = ({ label, className = "" }: AccordionTriggerProp
   return (
     <button
       type="button"
-      className={`p-16 m-0 flex justify-between items-center w-full text-left transition-all duration-300 sm:text-20 sm:leading-28 cursor-pointer rounded-md hover:bg-Grey-fill-weaker hover:font-bold hover:text-gray-600 font-lato ${isOpen ? "text-18 text-gray-600 font-bold leading-26 rounded-b-none bg-Grey-fill-weaker" : "text-16 font-normal leading-24 text-gray-950"} ${className}`}
+      className={`p-16 m-0 flex justify-between items-center w-full text-left transition-all duration-300 md:text-20 md:leading-28 cursor-pointer rounded-md hover:bg-Grey-fill-weaker hover:font-bold hover:text-gray-600 font-lato ${isOpen ? "text-18 text-gray-600 font-bold leading-26 rounded-b-none bg-Grey-fill-weaker" : "text-16 font-normal leading-24 text-gray-950"} ${className}`}
       onClick={() => onValueChange(itemValue)}
     >
       <h4>{label}</h4>

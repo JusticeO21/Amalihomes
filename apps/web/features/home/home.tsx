@@ -80,8 +80,8 @@ export default async function Home() {
                 imageUrl={arrival.src}
                 imageAlt={arrival.alt}
                 caption={arrival.caption}
-                imageClassName="min-w-[236px] h-[316px] sm:min-w-[316px] sm:h-[422px] md:min-w-[421px] md:h-[526px]"
-                captionClassName="text-18 sm:text-18 md:text-20 text-gray-600"
+                imageClassName="min-w-[236px] h-[316px] md:min-w-[316px] md:h-[422px] lg:min-w-[421px] lg:h-[526px]"
+                captionClassName="text-18 md:text-18 lg:text-20 text-gray-600"
               />
             </Link>
           );

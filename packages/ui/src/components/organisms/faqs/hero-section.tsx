@@ -19,14 +19,14 @@ const FaqHeroSection = ({ backgroundImageAlt, backgroundImageUrl, title, descrip
         <Typography
           variant="h3"
           className={
-            "!text-h3-sm sm:!text-40 md:!text-48 text-white font-semibold leading-40 sm:leading-48 md:leading-56 "
+            "!text-h3-sm md:!text-40 lg:!text-48 text-white font-semibold leading-40 md:leading-48 lg:leading-56 "
           }
         >
           {title}
         </Typography>
         <Typography
           variant="p"
-          className={`text-16 sm:text-18 text-white font-normal leading-24 sm:leading-26 max-w-[329px] sm:max-w-[570px] md:max-w-[864px]`}
+          className={`text-16 md:text-18 text-white font-normal leading-24 md:leading-26 max-w-[328px] md:max-w-[563px] lg:max-w-[864px]`}
         >
           {description}
         </Typography>

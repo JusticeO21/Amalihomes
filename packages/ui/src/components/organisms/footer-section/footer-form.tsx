@@ -32,9 +32,6 @@ export const FooterForm = ({
     form.reset();
   };
 
-  const { errors } = form.formState;
-  const isValid = errors.email?.message !== undefined;
-
   return (
     <FormProvider {...form}>
       <form
@@ -50,7 +47,7 @@ export const FooterForm = ({
             area-label="email"
             placeholder={inputPlaceholder}
             inputClassName={`px-12 border-[1.5px] rounded-md flex-1 w-361 md:w-350 lg:w-357 placeholder:text-white text-white h-24`}
-            className={`h-48 ${isValid && "border-red-400"}`}
+            className={`h-48`}
           />
           <Button
             type="submit"

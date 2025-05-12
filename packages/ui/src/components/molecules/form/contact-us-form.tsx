@@ -36,7 +36,7 @@ const ContactUsForm = ({
     return data;
   };
   return (
-    <div className={cn("p-32 space-y-24 bg-white rounded-sm w-full sm:w-[558px] md:w-[600px] shadow-md", className)}>
+    <div className={cn("p-32 space-y-24 bg-white rounded-sm w-full md:w-[578px] lg:w-[600px] shadow-md", className)}>
       <Typography
         variant="h5"
         className="text-black leading-40 font-semibold text-h5-lg"

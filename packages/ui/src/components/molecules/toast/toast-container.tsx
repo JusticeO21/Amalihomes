@@ -5,15 +5,15 @@ import { cn } from "../../../lib/utils";
 import { ToastItem } from "./toast-item";
 import { toastManager } from "./toast-manager";
 
-const toastContainerVariants = cva("fixed z-50 flex flex-col gap-4 sm:w-fit", {
+const toastContainerVariants = cva("fixed z-50 flex flex-col gap-4 md:w-fit", {
   variants: {
     position: {
-      "top-left": "top-4 left-0 sm:left-4",
-      "top-middle": "top-4 sm:w-full items-center",
-      "top-right": "top-4 right-0 sm:right-4",
-      "bottom-left": "sm:bottom-4 left-0 sm:left-4",
-      "bottom-middle": "sm:bottom-4 sm:w-full items-center",
-      "bottom-right": "sm:bottom-4 right-0 sm:right-4",
+      "top-left": "top-4 left-0 md:left-4",
+      "top-middle": "top-4 md:w-full items-center",
+      "top-right": "top-4 right-0 md:right-4",
+      "bottom-left": "md:bottom-4 left-0 md:left-4",
+      "bottom-middle": "md:bottom-4 md:w-full items-center",
+      "bottom-right": "md:bottom-4 right-0 md:right-4",
     },
   },
   defaultVariants: {
@@ -42,7 +42,7 @@ const ToastContainer = ({ position, duration = 2000 }: ContainerProps) => {
   if (toasts.length === 0) return null;
 
   return (
-    <div className={cn(toastContainerVariants({ position }), "w-full items-center top-4 sm:top-auto")}>
+    <div className={cn(toastContainerVariants({ position }), "w-full items-center top-4 md:top-auto")}>
       {toasts.map((toast) => (
         <ToastItem
           key={toast.id}

@@ -40,14 +40,14 @@ const ProductCard = ({
         id={`img-${imageUrl}`}
         className={cn(
           figureVariants({ borderRadius }),
-          "min-w-[203px] h-[203px] sm:min-w-[270px] sm:h-[270px] md:min-w-[361px] md:h-[361px] object-cover relative hover:brightness-75 transition-all duration-300 ",
+          "min-w-[203px] h-[203px] md:min-w-[270px] md:h-[270px] lg:min-w-[361px] lg:h-[361px] object-cover relative hover:brightness-75 transition-all duration-300 ",
           imageClassName,
         )}
       />
       {caption && (
         <figcaption
           id={`caption-${caption}`}
-          className={cn("text-14 sm:text-20 text-gray-600 font-normal sm:font-semibold text-center", captionClassName)}
+          className={cn("text-14 md:text-20 text-gray-600 font-normal md:font-semibold text-center", captionClassName)}
         >
           {caption}
         </figcaption>

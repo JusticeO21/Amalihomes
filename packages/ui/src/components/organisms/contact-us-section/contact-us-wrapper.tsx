@@ -23,7 +23,7 @@ const ContactUsWrapper = ({
       )}
       <Container
         marginY={0}
-        className={`relative z-10 space-y-24 md:gap-24 flex flex-col items-center md:flex-row md:justify-between md:items-start bg-transparent ${rowReversed ? "md:flex-row-reverse" : ""}`}
+        className={`relative z-10 space-y-24 md:gap-24 flex flex-col items-center justify-center lg:flex-row lg:justify-between lg:items-start bg-transparent ${rowReversed ? "lg:flex-row-reverse" : ""}`}
       >
         {children}
       </Container>

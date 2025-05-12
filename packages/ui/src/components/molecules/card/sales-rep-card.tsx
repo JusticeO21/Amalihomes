@@ -6,7 +6,7 @@ import { SalesRepCardProps } from "./types";
 
 const SalesRepCard = ({ name, role, phoneNumber, email, imageUrl, imageAlt }: SalesRepCardProps) => {
   return (
-    <div className="p-24 space-y-16 bg-white rounded-md w-full sm:w-[558px] md:w-[532px]  shadow-md">
+    <div className="p-24 space-y-16 bg-white rounded-md w-full md:w-[578px] lg:w-[532px]  shadow-md">
       <div className="flex items-center gap-16">
         <Avatar
           src={imageUrl}
@@ -35,7 +35,7 @@ const SalesRepCard = ({ name, role, phoneNumber, email, imageUrl, imageAlt }: Sa
         </figure>
         <Link
           href={`tel:${phoneNumber}`}
-          className="text-18 text-gray-600  font-normal leading-26 break-words"
+          className="text-18 text-gray-600 font-normal leading-26 break-words"
         >
           {phoneNumber}
         </Link>
@@ -47,7 +47,7 @@ const SalesRepCard = ({ name, role, phoneNumber, email, imageUrl, imageAlt }: Sa
         </figure>
         <Link
           href={`mailto:${email}`}
-          className="text-18 text-gray-600  font-normal leading-26"
+          className="text-18 text-gray-600 font-normal leading-26"
         >
           {email}
         </Link>

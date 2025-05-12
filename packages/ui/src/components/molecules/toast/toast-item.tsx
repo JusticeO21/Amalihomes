@@ -7,7 +7,7 @@ import { toastManager } from "./toast-manager";
 import { Toast } from "./types";
 
 const toastVariants = cva(
-  "rounded-md flex flex-col gap-16 p-16 transition-all duration-300 w-full sm:w-[355px] border",
+  "rounded-md flex flex-col gap-16 p-16 transition-all duration-300 w-full md:w-[355px] border",
   {
     variants: {
       type: {

@@ -33,7 +33,7 @@ const Questions = ({ questionCategories }: QuestionsComponentProps) => {
 
   return (
     <Container
-      className="overflow-hidden space-y-24 sm:space-y-20 my-24 sm:my-64"
+      className="overflow-hidden space-y-24 md:space-y-20 my-24 md:my-64"
       marginY={0}
     >
       {/* Category Tabs */}
