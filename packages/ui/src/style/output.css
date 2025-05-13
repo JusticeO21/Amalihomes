@@ -62,6 +62,7 @@
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -473,6 +474,12 @@
   .mb-40 {
     margin-bottom: var(--spacing-40);
   }
+  .mb-\[40px\] {
+    margin-bottom: 40px;
+  }
+  .mb-\[64px\] {
+    margin-bottom: 64px;
+  }
   .ml-0 {
     margin-left: var(--spacing-0);
   }
@@ -523,6 +530,9 @@
   }
   .h-1 {
     height: var(--spacing-1);
+  }
+  .h-6 {
+    height: var(--spacing-6);
   }
   .h-24 {
     height: var(--spacing-24);
@@ -731,6 +741,9 @@
   .max-w-\[670px\] {
     max-width: 670px;
   }
+  .max-w-\[700px\] {
+    max-width: 700px;
+  }
   .max-w-\[724px\] {
     max-width: 724px;
   }
@@ -782,6 +795,9 @@
   }
   .transform {
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
+  }
+  .animate-pulse {
+    animation: var(--animate-pulse);
   }
   .cursor-not-allowed {
     cursor: not-allowed;
@@ -994,6 +1010,9 @@
   }
   .overflow-x-auto {
     overflow-x: auto;
+  }
+  .overflow-x-scroll {
+    overflow-x: scroll;
   }
   .overflow-y-auto {
     overflow-y: auto;
@@ -1219,6 +1238,9 @@
   }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
+  }
+  .bg-gray-200 {
+    background-color: var(--color-gray-200);
   }
   .bg-gray-900 {
     background-color: var(--color-gray-900);
@@ -1447,6 +1469,9 @@
   }
   .\!text-18 {
     font-size: var(--text-18) !important;
+  }
+  .\!text-\[24px\] {
+    font-size: 24px !important;
   }
   .\!text-\[32px\] {
     font-size: 32px !important;
@@ -2296,11 +2321,6 @@
       width: 100%;
     }
   }
-  .md\:max-w-\[110\] {
-    @media (width >= 834px) {
-      max-width: 110;
-    }
-  }
   .md\:max-w-\[110px\] {
     @media (width >= 834px) {
       max-width: 110px;
@@ -2626,11 +2646,6 @@
       width: 100%;
     }
   }
-  .lg\:max-w-\[110px\] {
-    @media (width >= 1024px) {
-      max-width: 110px;
-    }
-  }
   .lg\:max-w-\[310px\] {
     @media (width >= 1024px) {
       max-width: 310px;
@@ -2649,11 +2664,6 @@
   .lg\:max-w-\[unset\] {
     @media (width >= 1024px) {
       max-width: unset;
-    }
-  }
-  .lg\:max-w-full {
-    @media (width >= 1024px) {
-      max-width: 100%;
     }
   }
   .lg\:min-w-\[361px\] {
@@ -3112,4 +3122,9 @@ button {
   syntax: "*";
   inherits: false;
   initial-value: 1;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
 }

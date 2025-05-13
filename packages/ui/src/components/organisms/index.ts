@@ -19,3 +19,4 @@ export * from "./gdpr-banner";
 export * from "./hero-section-about-us";
 export * from "./key-features-section";
 export * from "./leadership-team-section";
+export * from "./show-room";
