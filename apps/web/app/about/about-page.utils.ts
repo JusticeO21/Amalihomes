@@ -48,8 +48,6 @@ export const transformUspCards = (cards: ContentfulUspCard[]): UspCard[] => {
 
 export function transformShowroomData(data: ContentfulContinents): Continent[] {
   return data.map((continentItem: ContentfulContinent) => {
-    console.log(continentItem.fields.cards);
-
     return {
       id: continentItem.sys.id,
       label: continentItem.fields.continent,

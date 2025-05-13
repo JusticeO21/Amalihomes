@@ -1,8 +1,8 @@
 import React from "react";
-import { AboutHero, CompaniesMetrics as AchievementSection, KeyFeaturesSetion } from "@amalihomes/ui";
+import { AboutHero, CompaniesMetrics as AchievementSection, KeyFeaturesSetion, LeadershipTeam } from "@amalihomes/ui";
 import { AboutUsContent } from "./about-page.types";
 import { getContentfulImage } from "utils/contentful";
-import { transformMetrics, transformUspCards } from "./about-page.utils";
+import { transformMetrics, transformUspCards, transformLeaders } from "./about-page.utils";
 
 export const AboutContent = (data: AboutUsContent) => {
   const {
@@ -16,9 +16,13 @@ export const AboutContent = (data: AboutUsContent) => {
     uspDescription,
     uspImage,
     uspCards,
+    teamTitle,
+    teamDescription,
+    teamCards,
   } = data;
   const metrics = transformMetrics(historyCards);
   const features = transformUspCards(uspCards);
+  const leaders = transformLeaders(teamCards);
   const { imageUrl: heroImageUrl, imageAlt: heroImageAlt } = getContentfulImage(mainImage, "_", "_");
   const { imageUrl: uspImageUrl, imageAlt: uspImageAlt } = getContentfulImage(uspImage, "_", "_");
   return (
@@ -52,6 +56,12 @@ export const AboutContent = (data: AboutUsContent) => {
         imageAlt={uspImageAlt}
         cards={features}
         descriptionClass="!text-[16px]"
+      />
+
+      <LeadershipTeam
+        heading={teamTitle}
+        description={teamDescription}
+        leaders={leaders}
       />
     </main>
   );
