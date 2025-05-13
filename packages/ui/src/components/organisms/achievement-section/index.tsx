@@ -63,7 +63,7 @@ export const CompaniesMetrics = ({
                 label={item.label}
                 id={`metric-card-${index}`}
                 numberClass={`${numberClass}`}
-                labelClass={labelClass}
+                labelClass={`md:max-w-[110px] lg:max-w-[unset] ${labelClass}`}
                 aria-label={`${item.metric} ${item.label}`}
               />
             ),
