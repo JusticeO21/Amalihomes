@@ -5,7 +5,7 @@ import * as React from "react";
 import { ItemContext, useAccordion } from "./accordion.context";
 import { AccordionTriggerProps } from "./types";
 
-export const AccordionTrigger = ({ label, className = "" }: AccordionTriggerProps) => {
+export const AccordionTrigger = ({ label, labelAs: LabelTag = "h4", className = "", labelClassName = "" }: AccordionTriggerProps) => {
   const { value, onValueChange } = useAccordion();
   const itemValue = React.useContext(ItemContext);
 
@@ -21,7 +21,7 @@ export const AccordionTrigger = ({ label, className = "" }: AccordionTriggerProp
       className={`p-16 m-0 flex justify-between items-center w-full text-left transition-all duration-300 md:text-20 md:leading-28 cursor-pointer rounded-md hover:bg-Grey-fill-weaker hover:font-bold hover:text-gray-600 font-lato ${isOpen ? "text-18 text-gray-600 font-bold leading-26 rounded-b-none bg-Grey-fill-weaker" : "text-16 font-normal leading-24 text-gray-950"} ${className}`}
       onClick={() => onValueChange(itemValue)}
     >
-      <h4>{label}</h4>
+      <LabelTag className={labelClassName}>{label}</LabelTag>
       <ChevronDown
         width={24}
         className={`transition-transform duration-300 text-gray-950 ${isOpen ? "rotate-180" : ""}`}

@@ -15,8 +15,10 @@ export interface AccordionItemProps {
 }
 
 export interface AccordionTriggerProps {
+  labelAs?: React.ElementType;
   label: string;
   className?: string;
+  labelClassName?: string;
 }
 
 export interface AccordionContentProps {
