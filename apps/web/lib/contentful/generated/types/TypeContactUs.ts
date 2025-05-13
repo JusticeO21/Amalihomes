@@ -8,7 +8,7 @@ export interface TypeContactUsFields {
   title: EntryFieldTypes.Symbol;
   description: EntryFieldTypes.Text;
   salesRepresentative: EntryFieldTypes.EntryLink<TypeSalesRepresentativeSkeleton>;
-  pageReps?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
+  pageReps: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
   countryReps: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCountrySkeleton>>;
   formTitle: EntryFieldTypes.Symbol;
   inputNameLabel: EntryFieldTypes.Symbol;

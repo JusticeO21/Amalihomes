@@ -18,8 +18,8 @@ const Shop = async () => {
       console.warn("Shop data missing required fields", { shop });
       throw new Error("Invalid data format");
     }
-    
-     return <ShopContent {...shop} />
+
+    return <ShopContent {...shop} />;
   } catch (error) {
     console.error("ShopPage failed to load", { error });
     return notFound();

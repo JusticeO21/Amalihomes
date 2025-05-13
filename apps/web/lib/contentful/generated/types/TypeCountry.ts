@@ -6,7 +6,7 @@ export interface TypeCountryFields {
   country?: EntryFieldTypes.Symbol;
   otherName?: EntryFieldTypes.Symbol;
   defaultLanguage?: EntryFieldTypes.EntryLink<TypeLanguageSkeleton>;
-  salesRepresentative?: EntryFieldTypes.EntryLink<TypeSalesRepresentativeSkeleton>;
+  salesRepresentative: EntryFieldTypes.EntryLink<TypeSalesRepresentativeSkeleton>;
 }
 
 export type TypeCountrySkeleton = EntrySkeletonType<TypeCountryFields, "country">;
