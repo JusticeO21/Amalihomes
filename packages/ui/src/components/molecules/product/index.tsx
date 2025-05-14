@@ -54,7 +54,7 @@ export const Product = ({
           </Link>
         </h2>
         <div className={"flex flex-col gap-8"}>
-         <Rating rating={rating} />
+          <Rating rating={rating} />
           <Discount
             discount={discount}
             price={price}

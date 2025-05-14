@@ -17,10 +17,23 @@ export interface Language {
   language: string;
   languageCode: string;
 }
+
+export interface SalesRepresentative {
+  profile: {
+    imageUrl: string;
+    imageAlt: string;
+  };
+  name: string;
+  role: string;
+  phoneNumber: string;
+  email: string;
+}
+
 export interface Country {
   country: string;
   otherName?: string;
   language: Language;
+  salesRepresentative: SalesRepresentative;
 }
 
 interface LanguageDrawerProps {

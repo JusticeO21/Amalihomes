@@ -4,7 +4,7 @@ import { HTMLAttributes, ReactNode } from "react";
 import { cn } from "../../../lib/utils";
 
 const tabVariants = cva(
-  "flex gap-12 items-center transition-colors duration-300 rounded-md font-lato py-12 px-24 leading-26 text-18 min-w-fit",
+  "flex gap-12 items-center transition-colors duration-300 rounded-md font-lato py-12 px-24 leading-26 !text-18 min-w-fit",
   {
     variants: {
       iconPosition: {

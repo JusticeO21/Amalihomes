@@ -24,7 +24,7 @@ export const AppHeaderSection = ({ links, logo, countries, languages, banner }: 
   const onSubmitSearchResults = (data: SearchFormValues) => {};
   const [isMenuOpen, setOpenMenu] = useState(false);
   const [isDrawerOpen, setOpenDrawer] = useState(false);
-  const { country, setCountry } = useCountryStore();
+  const { country, setCountry, setCountries } = useCountryStore();
 
   const handleOpenMenu = () => {
     setOpenDrawer(false);
@@ -41,6 +41,7 @@ export const AppHeaderSection = ({ links, logo, countries, languages, banner }: 
       setCountry(
         initCountryValue?.state?.country ?? `${countries[0]?.country} (${countries[0]?.language.languageCode})`,
       );
+      setCountries(countries);
     }
   }, []);
 

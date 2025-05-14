@@ -13,6 +13,31 @@ export interface ContactProps {
   ctaLabel: string;
 }
 
+export interface PageRep {
+  metadata: Metadata;
+  sys: ImageSys;
+  fields: PageRepFields;
+}
+
+export interface PageRepFields {
+  label: string;
+  link: string;
+  pageRep?: SalesRepresentative;
+}
+
+export interface CountryRep {
+  metadata: Metadata;
+  sys: ImageSys;
+  fields: CountryRepFields;
+}
+
+export interface CountryRepFields {
+  country: string;
+  defaultLanguage: unknown;
+  salesRepresentative: SalesRepresentative;
+  otherName?: string;
+}
+
 export interface ProfileClass {
   metadata: Metadata;
   sys: ImageSys;
