@@ -25,7 +25,7 @@ export interface TypeAboutUsFields {
   showroomTitle: EntryFieldTypes.Symbol;
   showroomDescription: EntryFieldTypes.Text;
   continents: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeContinentSkeleton>>;
-  salesRep: EntryFieldTypes.EntryLink<TypeSalesRepresentativeSkeleton>;
+  salesRep?: EntryFieldTypes.EntryLink<TypeSalesRepresentativeSkeleton>;
 }
 
 export type TypeAboutUsSkeleton = EntrySkeletonType<TypeAboutUsFields, "aboutUs">;

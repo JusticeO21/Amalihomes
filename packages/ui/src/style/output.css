@@ -128,6 +128,7 @@
     --text-24: 24px;
     --text-40: 40px;
     --text-48: 48px;
+    --text-64: 64px;
     --text-56: 56px;
     --font-weight-regular: 400;
     --leading-xl: 2rem;
@@ -361,6 +362,9 @@
   .top-112 {
     top: var(--spacing-112);
   }
+  .top-\[50\%\] {
+    top: 50%;
+  }
   .top-\[100\%\] {
     top: 100%;
   }
@@ -387,6 +391,9 @@
   }
   .left-0 {
     left: var(--spacing-0);
+  }
+  .left-\[50\%\] {
+    left: 50%;
   }
   .z-0 {
     z-index: 0;
@@ -490,6 +497,9 @@
   .mt-8 {
     margin-top: var(--spacing-8);
   }
+  .mt-\[66px\] {
+    margin-top: 66px;
+  }
   .mb-1 {
     margin-bottom: var(--spacing-1);
   }
@@ -510,6 +520,9 @@
   }
   .ml-0 {
     margin-left: var(--spacing-0);
+  }
+  .ml-8 {
+    margin-left: var(--spacing-8);
   }
   .ml-auto {
     margin-left: auto;
@@ -723,6 +736,9 @@
   }
   .w-361 {
     width: var(--spacing-361);
+  }
+  .w-\[22px\] {
+    width: 22px;
   }
   .w-\[36px\] {
     width: 36px;
@@ -1230,6 +1246,9 @@
   .border-gray-400 {
     border-color: var(--color-gray-400);
   }
+  .border-gray-600 {
+    border-color: var(--color-gray-600);
+  }
   .border-green-100 {
     border-color: var(--color-green-100);
   }
@@ -1286,6 +1305,9 @@
   }
   .bg-black {
     background-color: var(--color-black);
+  }
+  .bg-black\/30 {
+    background-color: color-mix(in oklab, var(--color-black) 30%, transparent);
   }
   .bg-brand {
     background-color: var(--color-brand);
@@ -1409,6 +1431,9 @@
   }
   .p-32 {
     padding: var(--spacing-32);
+  }
+  .p-\[10px\] {
+    padding: 10px;
   }
   .px-0 {
     padding-inline: var(--spacing-0);
@@ -1652,6 +1677,10 @@
   .leading-40 {
     --tw-leading: var(--spacing-40);
     line-height: var(--spacing-40);
+  }
+  .leading-\[22px\] {
+    --tw-leading: 22px;
+    line-height: 22px;
   }
   .leading-xl {
     --tw-leading: var(--leading-xl);
@@ -2913,6 +2942,11 @@
   .lg\:text-56 {
     @media (width >= 1024px) {
       font-size: var(--text-56);
+    }
+  }
+  .lg\:text-64 {
+    @media (width >= 1024px) {
+      font-size: var(--text-64);
     }
   }
   .lg\:text-\[40px\] {

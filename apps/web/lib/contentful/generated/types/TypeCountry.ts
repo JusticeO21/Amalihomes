@@ -3,10 +3,11 @@ import type { TypeLanguageSkeleton } from "./TypeLanguage";
 import type { TypeSalesRepresentativeSkeleton } from "./TypeSalesRepresentative";
 
 export interface TypeCountryFields {
-  country?: EntryFieldTypes.Symbol;
+  country: EntryFieldTypes.Symbol;
   otherName?: EntryFieldTypes.Symbol;
   defaultLanguage?: EntryFieldTypes.EntryLink<TypeLanguageSkeleton>;
   salesRepresentative: EntryFieldTypes.EntryLink<TypeSalesRepresentativeSkeleton>;
+  image: EntryFieldTypes.AssetLink;
 }
 
 export type TypeCountrySkeleton = EntrySkeletonType<TypeCountryFields, "country">;

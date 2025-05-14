@@ -1,8 +1,4 @@
 import { Analytics } from "@/features/analytics/analytics";
-import Contact from "@/features/contact/contact";
-import { AppFooter } from "@/features/footer/footer";
-import { AppHeader } from "@/features/header/header";
-import { AppLiveChat } from "@/features/live-chat/live-chat";
 import { getSeoTags } from "@/lib/seo/seo";
 import { AnalyticsProvider } from "@/providers/analytics/analytics-provider";
 import { Lato } from "next/font/google";
@@ -47,14 +43,8 @@ export default function RootLayout({
               style={{ display: "none", visibility: "hidden" }}
             />
           </noscript>
-          <QueryProvider>
-            <AppHeader />
-            {children}
-            <Contact />
-            <AppFooter />
-          </QueryProvider>
+          <QueryProvider>{children}</QueryProvider>
         </AnalyticsProvider>
-        <AppLiveChat />
       </body>
     </html>
   );

@@ -37,3 +37,46 @@ export const orderEnquiriesSchema = z.object({
 });
 
 export type OrderEnquiriesSchemaType = z.infer<typeof orderEnquiriesSchema>;
+
+export const loginSchema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+  password: z.string().min(1, { message: "Password is required" }),
+});
+
+export type LoginSchemaType = z.infer<typeof loginSchema>;
+
+export const registerSchema = z
+  .object({
+    fullName: z
+      .string()
+      .min(1, { message: "Full name is required" })
+      .max(100, { message: "Full name must be less than 100 characters" })
+      .trim(),
+
+    email: z
+      .string()
+      .email({ message: "Invalid email address" })
+      .max(100, { message: "Email must be less than 100 characters" })
+      .trim()
+      .toLowerCase(),
+
+    password: z
+      .string()
+      .min(1, { message: "Password is required" })
+      .min(8, { message: "Password must be at least 8 characters" })
+      .max(50, { message: "Password must be less than 50 characters" })
+      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).*$/, {
+        message: "Password must contain at least one lowercase, uppercase, number, and special character",
+      }),
+
+    confirmPassword: z.string().min(1, { message: "Confirm password is required" }),
+    terms: z.boolean().refine((val) => val === true, {
+      message: "You must agree to the terms and conditions",
+    }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+export type RegisterSchemaType = z.infer<typeof registerSchema>;
