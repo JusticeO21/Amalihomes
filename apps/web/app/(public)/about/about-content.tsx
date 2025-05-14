@@ -49,7 +49,7 @@ export const AboutContent = (data: AboutUsContent) => {
       />
 
       <AchievementSection
-        gridClassName="grid-cols-1 !gap-y-16"
+        gridClassName="grid-cols-1 !gap-y-16 items-center"
         className="gap-32"
         titleClass="text-24 leading-32 md:text-32 md:leading-40 lg:text-[40px] lg:leading-48 text-gray-950"
         descriptionClass="!text-gray-600"
