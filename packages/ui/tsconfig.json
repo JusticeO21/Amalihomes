@@ -5,6 +5,6 @@
     "rootDir": "src",
     "types": ["jest", "@testing-library/jest-dom"]
   },
-  "include": ["src"],
+  "include": ["src", "../../apps/storybook/src/stories/components/molecules/tabs", "../../apps/storybook/src/stories/components/molecules/tabs.stories.tsx"],
   "exclude": ["node_modules", "dist"]
 }

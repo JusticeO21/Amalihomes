@@ -4,11 +4,13 @@ import { ContactUsDetails, ContactUsForm, ContactUsWrapper, SalesRepCard } from 
 import { useQuery } from "@tanstack/react-query";
 import { usePathname } from "next/navigation";
 import { contactLoader } from "./contact-loader";
+import { useState } from "react";
 
 const Contact = () => {
   const pathname = usePathname();
   const country = useCountryStore((state) => state.country);
   const formattedCountry = country?.split("(")[1]?.split(")")[0];
+  const [inputValue, setInputValue] = useState<string>("");
 
   const { data, isLoading } = useQuery({
     queryKey: ["contactUs", formattedCountry],
@@ -26,6 +28,19 @@ const Contact = () => {
   if (!data) {
     return <div>Error loading contact information</div>;
   }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    const iframe = document.getElementById("damlp5o2h4h41747041652234") as HTMLIFrameElement;
+    const innerDoc = iframe?.contentDocument ? iframe.contentDocument : iframe?.contentWindow?.document;
+
+    console.log(iframe);
+    const ulObj = innerDoc?.querySelector(".tawk-chatinput-editor");
+    if (ulObj !== null) {
+      console.log(ulObj);
+      ulObj!.innerHTML = e.target.value;
+    }
+  };
 
   const { salesRepresentative, title, description, image, ...formData } = data;
   return (

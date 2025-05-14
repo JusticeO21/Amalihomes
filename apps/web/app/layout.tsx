@@ -2,7 +2,6 @@ import { Analytics } from "@/features/analytics/analytics";
 import Contact from "@/features/contact/contact";
 import { AppFooter } from "@/features/footer/footer";
 import { AppHeader } from "@/features/header/header";
-import TawkChat from "@/features/live-chat";
 import { AppLiveChat } from "@/features/live-chat/live-chat";
 import { getSeoTags } from "@/lib/seo/seo";
 import { AnalyticsProvider } from "@/providers/analytics/analytics-provider";
@@ -55,7 +54,6 @@ export default function RootLayout({
             <AppFooter />
           </QueryProvider>
         </AnalyticsProvider>
-        <TawkChat />
         <AppLiveChat />
       </body>
     </html>

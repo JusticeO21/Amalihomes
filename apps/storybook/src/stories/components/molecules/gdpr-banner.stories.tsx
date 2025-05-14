@@ -3,7 +3,7 @@ import { GdprBanner, GdprBannerProps, GdprBannerState } from "@amalihomes/ui";
 import { useState } from "react";
 
 const meta: Meta<typeof GdprBanner> = {
-  title: "Components/GDPR/GdprBanner",
+  title: "Components/Molecules/GdprBanner",
   component: GdprBanner,
   parameters: {
     layout: "fullscreen",

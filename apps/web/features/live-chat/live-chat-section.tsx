@@ -1,20 +1,28 @@
 "use client";
-import { HomePageState, useLiveChatStore } from "@/stores/use-live-chat-store";
+import { HomePageState, LiveChatBottomNavBarState, useLiveChatStore } from "@/stores/use-live-chat-store";
 import {
   GeneralEnquiriesForm,
-  LiveChatBottomNavBarState,
   LiveChatFaqWindow,
   LiveChatHome,
+  LiveChatPageWindow,
   LiveChatWindow,
-  LiveChatWindowBottomNavBar,
   LiveChatWindowButton,
   LiveChatWindowHeader,
   LiveChatWrapper,
   OrderEnquiriesForm,
+  LiveChatTawkTo,
   ProductEnquiriesForm,
+  Tabs,
+  TabsList,
+  TabsContent,
+  TabTrigger,
+  LiveChatBottomNavBarItem,
 } from "@amalihomes/ui/index";
 import { useCallback, useEffect, useMemo } from "react";
 import { ChatIconFields, LiveChatProps } from "./live-chat.types";
+import { IconHome } from "@amalihomes/ui/components/icons/icon-home";
+import { IconMessenger } from "@amalihomes/ui/components/icons/icon-messenger";
+import { IconInfo } from "@amalihomes/ui/components/icons/icon-info";
 
 export interface LiveChatSectionProps {
   data: LiveChatProps;
@@ -27,8 +35,6 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
     isBackBtnVisible,
     currentWindowTab,
     setTab,
-    isChatWidgetVisible,
-    closeChatWindow,
     openChatWidget,
     activeHomePage,
     isBottomNavVisible,
@@ -87,55 +93,11 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    const setupTawk = () => {
-      const tawkApi = window.Tawk_API;
-      if (!tawkApi) return;
-
-      if (isChatWidgetVisible) {
-        tawkApi.showWidget?.();
-        tawkApi.maximize?.();
-      }
-
-      tawkApi.onChatHidden = function () {
-        if (tawkApi.isChatMinimized()) {
-          tawkApi.hideWidget?.();
-          closeChatWindow?.();
-        }
-      };
-
-      tawkApi.onChatMinimized = function () {
-        tawkApi.hideWidget?.();
-        closeChatWindow?.();
-      };
-
-      tawkApi.onChatMaximized = function () {
-        openChatWidget?.();
-        tawkApi?.showWidget?.();
-      };
-
-      window.Tawk_API.onChatMessageAgent = function () {
-        openChatWidget?.();
-        tawkApi?.showWidget?.();
-      };
-    };
-
-    if (window.Tawk_API && Object.keys(window.Tawk_API).length) {
-      setupTawk();
-      return;
-    }
-
-    const interval = setInterval(() => {
-      if (window.Tawk_API && Object.keys(window.Tawk_API).length) {
-        setupTawk();
-        clearInterval(interval);
-      }
-    }, 200);
-
-    return () => clearInterval(interval);
-  }, [isChatWidgetVisible, closeChatWindow, openChatWidget]);
-
-  if (isChatWidgetVisible) return null;
+    const tawkApi = window.Tawk_API;
+    if (!tawkApi) return;
+    tawkApi.showWidget?.();
+    tawkApi.maximize?.();
+  }, []);
 
   return (
     <LiveChatWrapper isWindowOpen={isWindowOpen}>
@@ -146,79 +108,128 @@ export const LiveChatSection = ({ data }: LiveChatSectionProps) => {
           back={() => goBack()}
         />
 
-        {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.INITIAL && (
-          <LiveChatHome
-            cards={homeCards}
-            introduction={data.introduction}
-            image={profileImage}
-            description={data.description}
-          />
-        )}
+        <Tabs
+          isControlled={true}
+          currentTab={currentWindowTab}
+          onTabChange={(tab) => setTab(tab as LiveChatBottomNavBarState)}
+          className="w-full h-full flex flex-col gap-24"
+        >
+          <div className="flex-1 *:h-full">
+            <TabsContent value="HOME">
+              <LiveChatPageWindow
+                isVisible={currentWindowTab === "HOME" && activeHomePage == HomePageState.PRODUCT_ENQUIRY}
+              >
+                <ProductEnquiriesForm
+                  buttonLabel={data.productButtonLabel}
+                  description={data.productFormDescription}
+                  inputEmailLabel={data.generalInputEmailLabel}
+                  inputEmailPlaceholder={data.generalEnquiresInputEmailPlaceholder}
+                  title={data.productFormTitle}
+                  inputMessageLabel={data.productInputMessageLabel}
+                  inputMessagePlaceholder={data.productInputMessagePlaceholder}
+                  inputSubjectLabel={data.productInputSubjectLabel}
+                  inputSubjectPlaceholder={data.productInputSubjectPlaceholder}
+                  inputProductLabel={data.productTitle}
+                  inputProductPlaceholder={""}
+                  inputProducts={[]}
+                />
+              </LiveChatPageWindow>
 
-        {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.GENERAL_ENQUIRY && (
-          <GeneralEnquiriesForm
-            buttonLabel="Send Enquiry"
-            description={data.generalFormDescription}
-            inputEmailLabel={data.generalInputEmailLabel}
-            inputEmailPlaceholder={data.generalEnquiresInputEmailPlaceholder}
-            inputEnquiryTypeLabel={data.generalEnquiryTypeLabel}
-            inputEnquiryTypePlaceholder={data.generalInputSubjectPlaceholder}
-            title={data.generalTitle}
-            inputMessageLabel={data.generalInputMessageLabel}
-            inputMessagePlaceholder={data.generalInputMessagePlaceholder}
-            inputSubjectLabel={data.generalInputSubjectLabel}
-            inputSubjectPlaceholder={data.generalInputSubjectPlaceholder}
-            inputEnquiryTypeOptions={data.generalEnquiryTypes}
-          />
-        )}
-        {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.ORDER_ENQUIRY && (
-          <OrderEnquiriesForm
-            buttonLabel="Send Enquiry"
-            description={data.orderFormDescription}
-            inputEmailLabel={data.orderInputEmailLabel}
-            inputEmailPlaceholder={data.orderInputEmailPlaceholder}
-            inputMessageLabel={data.orderMessageLabel}
-            inputMessagePlaceholder={data.orderInputMessagePlaceholder}
-            inputOrderIDLabel={data.orderInputOrderIdLabel}
-            inputOrderIDPlaceholder={data.orderInputOrderIdPlaceholder}
-            inputOrderIDs={[]}
-            inputSubjectLabel={data.orderInputSubjectLabel}
-            inputSubjectPlaceholder={data.orderInputSubjectPlaceholder}
-            title={data.orderTitle}
-          />
-        )}
+              <LiveChatPageWindow isVisible={currentWindowTab === "HOME" && activeHomePage == HomePageState.INITIAL}>
+                <LiveChatHome
+                  cards={homeCards}
+                  introduction={data.introduction}
+                  image={profileImage}
+                  description={data.description}
+                />
+              </LiveChatPageWindow>
 
-        {currentWindowTab === LiveChatBottomNavBarState.HOME && activeHomePage == HomePageState.PRODUCT_ENQUIRY && (
-          <ProductEnquiriesForm
-            buttonLabel={data.productButtonLabel}
-            description={data.productFormDescription}
-            inputEmailLabel={data.generalInputEmailLabel}
-            inputEmailPlaceholder={data.generalEnquiresInputEmailPlaceholder}
-            title={data.productFormTitle}
-            inputMessageLabel={data.productInputMessageLabel}
-            inputMessagePlaceholder={data.productInputMessagePlaceholder}
-            inputSubjectLabel={data.productInputSubjectLabel}
-            inputSubjectPlaceholder={data.productInputSubjectPlaceholder}
-            inputProductLabel={data.productTitle}
-            inputProductPlaceholder={""}
-            inputProducts={[]}
-          />
-        )}
+              <LiveChatPageWindow
+                isVisible={currentWindowTab === "HOME" && activeHomePage == HomePageState.GENERAL_ENQUIRY}
+              >
+                <GeneralEnquiriesForm
+                  buttonLabel="Send Enquiry"
+                  description={data.generalFormDescription}
+                  inputEmailLabel={data.generalInputEmailLabel}
+                  inputEmailPlaceholder={data.generalEnquiresInputEmailPlaceholder}
+                  inputEnquiryTypeLabel={data.generalEnquiryTypeLabel}
+                  inputEnquiryTypePlaceholder={data.generalInputSubjectPlaceholder}
+                  title={data.generalTitle}
+                  inputMessageLabel={data.generalInputMessageLabel}
+                  inputMessagePlaceholder={data.generalInputMessagePlaceholder}
+                  inputSubjectLabel={data.generalInputSubjectLabel}
+                  inputSubjectPlaceholder={data.generalInputSubjectPlaceholder}
+                  inputEnquiryTypeOptions={data.generalEnquiryTypes}
+                />
+              </LiveChatPageWindow>
 
-        {currentWindowTab === LiveChatBottomNavBarState.FAQ && (
-          <LiveChatFaqWindow
-            title={data.faqTitle}
-            description={data.faqDescription}
-            cards={faqCards}
-          />
-        )}
+              <LiveChatPageWindow
+                isVisible={currentWindowTab === "HOME" && activeHomePage == HomePageState.ORDER_ENQUIRY}
+              >
+                <OrderEnquiriesForm
+                  buttonLabel="Send Enquiry"
+                  description={data.orderFormDescription}
+                  inputEmailLabel={data.orderInputEmailLabel}
+                  inputEmailPlaceholder={data.orderInputEmailPlaceholder}
+                  inputMessageLabel={data.orderMessageLabel}
+                  inputMessagePlaceholder={data.orderInputMessagePlaceholder}
+                  inputOrderIDLabel={data.orderInputOrderIdLabel}
+                  inputOrderIDPlaceholder={data.orderInputOrderIdPlaceholder}
+                  inputOrderIDs={[]}
+                  inputSubjectLabel={data.orderInputSubjectLabel}
+                  inputSubjectPlaceholder={data.orderInputSubjectPlaceholder}
+                  title={data.orderTitle}
+                />
+              </LiveChatPageWindow>
+            </TabsContent>
+            <TabsContent
+              value="MESSAGE"
+              className="h-full"
+            >
+              <LiveChatTawkTo />
+            </TabsContent>
+            <TabsContent value="FAQ">
+              <LiveChatFaqWindow
+                title={data.faqTitle}
+                description={data.faqDescription}
+                cards={faqCards}
+              />
+            </TabsContent>
+          </div>
 
-        {isBottomNavVisible && (
-          <LiveChatWindowBottomNavBar
-            currentTab={currentWindowTab}
-            setTab={setTab}
-          />
-        )}
+          {isBottomNavVisible && (
+            <TabsList className="p-16 rounded-lg flex justify-between items-center bg-brand-50 sticky bottom-0">
+              <TabTrigger
+                value="HOME"
+                render={(value) => (
+                  <LiveChatBottomNavBarItem
+                    icon={IconHome}
+                    isActive={value == "HOME"}
+                  />
+                )}
+              />
+              <TabTrigger
+                value="MESSAGE"
+                onClick={() => openChatWidget()}
+                render={(value) => (
+                  <LiveChatBottomNavBarItem
+                    icon={IconMessenger}
+                    isActive={value == "MESSAGE"}
+                  />
+                )}
+              />
+              <TabTrigger
+                value="FAQ"
+                render={(value) => (
+                  <LiveChatBottomNavBarItem
+                    icon={IconInfo}
+                    isActive={value == "FAQ"}
+                  />
+                )}
+              />
+            </TabsList>
+          )}
+        </Tabs>
       </LiveChatWindow>
 
       <LiveChatWindowButton

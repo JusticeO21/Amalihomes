@@ -17,7 +17,7 @@ export const LiveChatWindowButton = ({ isWindowOpen = false, image, openWindow }
   return (
     <button
       onClick={openWindow}
-      className="rounded-full w-[60px] h-[60px] cursor-pointer  transition-transform duration-200 shadow-sm relative bottom-0"
+      className="rounded-full w-48 h-48 cursor-pointer  transition-transform duration-200 shadow-sm relative bottom-0"
     >
       <Image
         src={image?.url ?? ""}

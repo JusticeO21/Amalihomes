@@ -9,3 +9,5 @@ export * from "./live-chat-window-header";
 export * from "./live-chat.types";
 export * from "./live-chat-faq-window";
 export * from "./live-chat-faq-card";
+export * from "./live-chat-page-window";
+export * from "./live-chat-tawk-to";

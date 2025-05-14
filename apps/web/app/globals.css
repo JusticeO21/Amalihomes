@@ -4,3 +4,38 @@
 @import "../../../packages/ui/src/style/theme/spacing.css";
 @import "../../../packages/ui/src/style/theme/colors.css";
 @import "../../../packages/ui/src/style/theme/breakpoints.css";
+
+
+button.tawk-button-circle,
+.tawk-button-circle,
+.tawk-min-chat-icon,
+.tawk-button.tawk-button-circle,
+.tawk-button {
+  display: none !important;
+}
+
+#tawk-body .tawk-chat-message-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#tawk-body .ps__thumb-x {
+    opacity: 0 !important;
+}
+
+.tawk-chatinput-editor {
+    background-color: transparent !important;
+}
+
+
+#tawk-body .tawk-chat-message-container::-webkit-scrollbar {
+    display: none;
+}
+
+#tawk-body .tawk-chat-message-container::-webkit-scrollbar-track {
+    display: none;
+}
+
+#tawk-body .tawk-chat-message-container::-webkit-scrollbar-thumb {
+    display: none;
+}
