@@ -11,3 +11,4 @@ export * from "./nav-link";
 export * from "./checkbox";
 export * from "./tab";
 export * from "./accordion";
+export * from "./rating";

@@ -5,3 +5,4 @@ export * from "./card";
 export * from "./form";
 export * from "./text-pair";
 export * from "./form";
+export * from "./product";
