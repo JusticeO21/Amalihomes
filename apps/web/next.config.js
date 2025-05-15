@@ -15,6 +15,11 @@ const nextConfig = {
         hostname: "placehold.co",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.postimg.cc",
+        pathname: "/**",
+      },
     ],
   },
 };

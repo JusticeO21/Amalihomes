@@ -9,10 +9,10 @@ export function Discount({ discount, price }: { discount?: number; price: number
   const formattedFinalPrice = formatCurrency(finalPrice);
 
   return (
-    <p className="flex gap-2 text-20 font-bold leading-28">
+    <p className="flex gap-4 text-14 sm:text-16 lg:text-20 font-bold leading-28 flex-wrap ">
       {discount ? (
         <>
-          <span className="line-through text-5D5D5D">{formattedOriginalPrice}</span>
+          <span className="line-through text-gray-600">{formattedOriginalPrice}</span>
           <span className="text-gray-950">{formattedFinalPrice}</span>
         </>
       ) : (

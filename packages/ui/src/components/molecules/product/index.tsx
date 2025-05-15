@@ -34,16 +34,21 @@ export const Product = ({
   className,
 }: ProductProps) => {
   return (
-    <div className={cn("flex flex-col w-254  hover:shadow-md relative gap-16", className)}>
-      <div>
-        <Image
-          className="w-full h-184 rounded-md"
-          src={imageUrl}
-          alt={imageAlt}
-          width={254}
-          height={184}
-        />
-      </div>
+    <div
+      className={cn(
+        `flex-none flex flex-col w-178 md:w-254 md:min-w-254 md:max-w-254 hover:shadow-md relative gap-16 ${
+          cardType === "recommended" ? "w-142 md:w-181 md:min-w-181 md:max-w-181 lg:w-200" : ""
+        }`,
+        className,
+      )}
+    >
+      <Image
+        className="w-full h-184 rounded-md"
+        src={imageUrl}
+        alt={imageAlt}
+        width={254}
+        height={184}
+      />
       <div className={"flex flex-col gap-8"}>
         <h2 className="text-20 font-bold leading-28 line-clamp-2 hover:text-brand-500">
           <Link

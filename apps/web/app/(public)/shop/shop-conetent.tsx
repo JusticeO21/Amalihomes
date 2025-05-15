@@ -2,6 +2,8 @@ import React from "react";
 import { CategorySection } from "@amalihomes/ui";
 import type { ShopPageProps } from "./shope-page.types";
 import { formatCategoriesCards } from "./shop-page.utils";
+import { ProductsListing } from "@/features/products-listing";
+import { RecommendedProducts } from "@/features/products-listing/recommended-products";
 
 export const ShopContent = (data: ShopPageProps) => {
   const { categories, categoryTitle } = data;
@@ -12,6 +14,8 @@ export const ShopContent = (data: ShopPageProps) => {
         categories={formattedCategoryCards}
         heading={categoryTitle}
       />
+      <ProductsListing />
+      <RecommendedProducts />
     </main>
   );
 };
