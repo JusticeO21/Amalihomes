@@ -1,4 +1,4 @@
-import { Container, Filter } from "@amalihomes/ui";
+import { Typography, Container } from "@amalihomes/ui";
 import { getSeoTags } from "@/lib/seo/seo";
 
 export const generateMetadata = async () =>
@@ -10,7 +10,12 @@ const Shop = () => {
   return (
     <main>
       <Container className="flex min-h-[70vh] items-center justify-center">
-        <Filter/>
+        <Typography
+          as="h1"
+          className="text-16"
+        >
+          Our shop is coming soon! Stay tuned.
+        </Typography>
       </Container>
     </main>
   );

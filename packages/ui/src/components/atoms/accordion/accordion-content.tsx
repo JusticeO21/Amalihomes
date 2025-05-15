@@ -16,7 +16,7 @@ export const AccordionContent = ({ children, className = "" }: AccordionContentP
 
   return (
     <div
-      className={`text-18 text-gray-600 font-normal leading-26 transition-all duration-300 overflow-hidden px-20 bg-Grey-fill-weaker ${isOpen ? "visible max-h-screen opacity-100 pt-12 pb-16 " : "max-h-0 opacity-0 invisible"} ${className}`}
+      className={`text-18 text-gray-600 font-normal leading-26 transition-all duration-300 overflow-hidden px-20 bg-Grey-fill-weaker ${isOpen ? "visible max-h-auto opacity-100 pt-12 pb-16 " : "max-h-0 opacity-0 invisible"} ${className}`}
       data-state={isOpen ? "open" : "closed"}
     >
       {children}

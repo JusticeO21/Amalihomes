@@ -5,7 +5,12 @@ import * as React from "react";
 import { ItemContext, useAccordion } from "./accordion.context";
 import { AccordionTriggerProps } from "./types";
 
-export const AccordionTrigger = ({ label, labelAs: LabelTag = "h4", className = "", labelClassName = "" }: AccordionTriggerProps) => {
+export const AccordionTrigger = ({
+  label,
+  labelAs: LabelTag = "h4",
+  className = "",
+  labelClassName = "",
+}: AccordionTriggerProps) => {
   const { value, onValueChange } = useAccordion();
   const itemValue = React.useContext(ItemContext);
 
