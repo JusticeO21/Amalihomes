@@ -1,8 +1,15 @@
 import React from "react";
-import { AboutHero, CompaniesMetrics as AchievementSection, KeyFeaturesSetion, LeadershipTeam } from "@amalihomes/ui";
+
+import {
+  AboutHero,
+  CompaniesMetrics as AchievementSection,
+  KeyFeaturesSetion,
+  LeadershipTeam,
+  Showroom,
+} from "@amalihomes/ui";
 import { AboutUsContent } from "./about-page.types";
 import { getContentfulImage } from "utils/contentful";
-import { transformMetrics, transformUspCards, transformLeaders } from "./about-page.utils";
+import { transformMetrics, transformUspCards, transformLeaders, transformShowroomData } from "./about-page.utils";
 
 export const AboutContent = (data: AboutUsContent) => {
   const {
@@ -19,10 +26,14 @@ export const AboutContent = (data: AboutUsContent) => {
     teamTitle,
     teamDescription,
     teamCards,
+    continents,
+    showroomTitle,
+    showroomDescription,
   } = data;
   const metrics = transformMetrics(historyCards);
   const features = transformUspCards(uspCards);
   const leaders = transformLeaders(teamCards);
+  const showroom = transformShowroomData(continents);
   const { imageUrl: heroImageUrl, imageAlt: heroImageAlt } = getContentfulImage(mainImage, "_", "_");
   const { imageUrl: uspImageUrl, imageAlt: uspImageAlt } = getContentfulImage(uspImage, "_", "_");
   return (
@@ -38,7 +49,7 @@ export const AboutContent = (data: AboutUsContent) => {
       />
 
       <AchievementSection
-        gridClassName="grid-cols-1 !gap-y-16"
+        gridClassName="grid-cols-1 !gap-y-16 items-center"
         className="gap-32"
         titleClass="text-24 leading-32 md:text-32 md:leading-40 lg:text-[40px] lg:leading-48 text-gray-950"
         descriptionClass="!text-gray-600"
@@ -62,6 +73,13 @@ export const AboutContent = (data: AboutUsContent) => {
         heading={teamTitle}
         description={teamDescription}
         leaders={leaders}
+      />
+
+      <Showroom
+        tabs={showroom}
+        purpose="showroom"
+        heading={showroomTitle}
+        description={showroomDescription}
       />
     </main>
   );

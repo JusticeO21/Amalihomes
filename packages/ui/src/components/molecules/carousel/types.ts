@@ -5,6 +5,9 @@ export type ProductCarouselProps = {
   showControls?: boolean;
   className?: string;
   heading?: string;
+  controlsClassName?: string;
+  nextButtonClassName?: string;
+  previousButtonClassName?: string;
 };
 
 export type CarouselControlsProps = {
@@ -13,6 +16,8 @@ export type CarouselControlsProps = {
   disableNextButton?: boolean;
   disablePrevButton?: boolean;
   className?: string;
+  nextButtonClassName?: string;
+  previousButtonClassName?: string;
 };
 
 export type HeroCarouselProps = {

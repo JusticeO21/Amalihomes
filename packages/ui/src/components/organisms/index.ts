@@ -11,5 +11,9 @@ export * from "./header-section";
 export * from "./hero-section";
 export * from "./usp-section";
 export * from "./key-features-section";
+export * from "./tabs";
+export * from "./flash-sales";
 export * from "./leadership-team-section";
+export * from "./show-room";
 export * from "./filter";
+

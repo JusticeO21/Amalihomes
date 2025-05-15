@@ -8,8 +8,9 @@ export const PasswordToggleButton = ({ showPassword, handleTogglePassword }: Pas
       onClick={handleTogglePassword}
       title={showPassword ? "Hide password" : "Show password"}
       aria-label="button to toggle password visibility"
+      type="button"
     >
-      {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+      {!showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
     </button>
   );
 };

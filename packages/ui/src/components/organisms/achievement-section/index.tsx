@@ -57,7 +57,7 @@ export const CompaniesMetrics = ({
           (item, index) =>
             index < 4 && (
               <MetricCard
-                className={"p-24 md:p-[19.5px] lg:p-24"}
+                className={"p-24 md:p-[19.5px] md:mx-auto lg:p-24"}
                 key={`metric-${index}`}
                 number={item.metric}
                 label={item.label}

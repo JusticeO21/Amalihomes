@@ -15,10 +15,10 @@ describe("PasswordToggleButton", () => {
     jest.clearAllMocks();
   });
 
-  it("renders the Eye icon when showPassword is false", () => {
+  it("renders the Eye icon when showPassword is true", () => {
     render(
       <PasswordToggleButton
-        showPassword={false}
+        showPassword={true}
         handleTogglePassword={mockHandleToggle}
       />,
     );
@@ -28,10 +28,10 @@ describe("PasswordToggleButton", () => {
     expect(Eye).toHaveBeenCalled();
   });
 
-  it("renders the EyeOff icon when showPassword is true", () => {
+  it("renders the EyeOff icon when showPassword is false", () => {
     render(
       <PasswordToggleButton
-        showPassword={true}
+        showPassword={false}
         handleTogglePassword={mockHandleToggle}
       />,
     );

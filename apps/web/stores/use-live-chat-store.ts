@@ -1,4 +1,3 @@
-import { LiveChatBottomNavBarState } from "@amalihomes/ui";
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
@@ -11,6 +10,8 @@ interface LiveChatState {
   activeHomePage: HomePageState;
   isBottomNavVisible: boolean;
 }
+
+export type LiveChatBottomNavBarState = "HOME" | "MESSAGE" | "FAQ";
 
 export enum HomePageState {
   INITIAL,
@@ -34,7 +35,7 @@ const initState: LiveChatState = {
   isChatWidgetVisible: false,
   isWindowOpen: false,
   isBackBtnVisible: false,
-  currentWindowTab: LiveChatBottomNavBarState.HOME,
+  currentWindowTab: "HOME",
   activeHomePage: HomePageState.INITIAL,
   isBottomNavVisible: true,
 };
@@ -51,7 +52,7 @@ export const useLiveChatStore = create<LiveChatStore>()(
         setTab: (tab) =>
           set((state) => {
             let currentState = { ...state, currentWindowTab: tab };
-            if (tab === LiveChatBottomNavBarState.MESSAGE) {
+            if (tab === "MESSAGE") {
               currentState = {
                 ...currentState,
                 isChatWidgetVisible: true,
@@ -65,7 +66,8 @@ export const useLiveChatStore = create<LiveChatStore>()(
             isWindowOpen: !state.isWindowOpen,
           })),
         closeChatWindow: () => set((state) => ({ ...state, ...initState })),
-        openChatWidget: () => set((state) => ({ ...state, ...initState, isChatWidgetVisible: true })),
+        openChatWidget: () =>
+          set((state) => ({ ...state, isChatWidgetVisible: true, isBottomNavVisible: false, isBackBtnVisible: true })),
         setCurrentHomePge: (page) =>
           set((state) => ({
             ...state,

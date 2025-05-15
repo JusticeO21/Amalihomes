@@ -24,11 +24,18 @@ export const headerLoader = async () => {
   });
 
   const formattedCountries = countries.map((tempCountry) => {
-    const { country, otherName, defaultLanguage } = tempCountry.fields;
+    const { country, otherName, defaultLanguage, salesRepresentative } = tempCountry.fields;
     return {
       country: country,
       otherName: otherName as string,
       language: defaultLanguage.fields,
+      salesRepresentative: {
+        ...salesRepresentative.fields,
+        profile: {
+          imageUrl: `https:${salesRepresentative.fields.profile.fields.file.url}`,
+          imageAlt: salesRepresentative.fields.profile.fields.title,
+        },
+      },
     };
   });
 

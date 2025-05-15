@@ -8,12 +8,17 @@ export const CarouselControls = ({
   disableNextButton,
   disablePrevButton,
   className,
+  nextButtonClassName,
+  previousButtonClassName,
 }: CarouselControlsProps) => {
   return (
     <div className={cn("flex items-center gap-8 ml-auto", className)}>
       <button
         onClick={previousSlide}
-        className="cursor-pointer p-12 rounded-full bg-Grey-fill-weaker hover:bg-gray-200 disabled:bg-white disabled:cursor-no-drop group"
+        className={cn(
+          "cursor-pointer p-12 rounded-full bg-Grey-fill-weaker hover:bg-gray-200 disabled:bg-white disabled:cursor-no-drop group",
+          previousButtonClassName,
+        )}
         aria-label="Previous slide"
         id="previous-button"
         disabled={disablePrevButton}
@@ -25,7 +30,10 @@ export const CarouselControls = ({
       </button>
       <button
         onClick={nextSlide}
-        className="cursor-pointer p-12 rounded-full bg-Grey-fill-weaker hover:bg-gray-200 disabled:bg-white disabled:cursor-no-drop group"
+        className={cn(
+          "cursor-pointer p-12 rounded-full bg-Grey-fill-weaker hover:bg-gray-200 disabled:bg-white disabled:cursor-no-drop group",
+          nextButtonClassName,
+        )}
         aria-label="Next slide"
         id="next-button"
         disabled={disableNextButton}

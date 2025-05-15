@@ -5,7 +5,7 @@ export interface TypeSalesRepresentativeFields {
   name: EntryFieldTypes.Symbol;
   role: EntryFieldTypes.Symbol;
   phoneNumber: EntryFieldTypes.Symbol;
-  email?: EntryFieldTypes.Symbol;
+  email: EntryFieldTypes.Symbol;
 }
 
 export type TypeSalesRepresentativeSkeleton = EntrySkeletonType<TypeSalesRepresentativeFields, "salesRepresentative">;

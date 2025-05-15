@@ -3,14 +3,14 @@ import { TextPair, LeaderCard } from "../../molecules";
 import { Container } from "../../atoms";
 import { GridContainer } from "../../atoms";
 
-type Leaders = {
+interface Leaders {
   name: string;
   role: string;
   imageUrl: string;
   imageAlt: string;
   description?: string;
   id: string | number;
-};
+}
 
 interface LeadershipTeamProps {
   description: string;

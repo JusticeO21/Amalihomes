@@ -11,6 +11,9 @@ export const ProductCarousel = ({
   showControls = true,
   className = "",
   heading = "",
+  controlsClassName = "",
+  nextButtonClassName = "",
+  previousButtonClassName = "",
 }: ProductCarouselProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollAmount, setScrollAmount] = useState(361);
@@ -102,6 +105,9 @@ export const ProductCarousel = ({
         )}
         {showControls && scrollState !== "all" && (
           <CarouselControls
+            className={controlsClassName}
+            nextButtonClassName={nextButtonClassName}
+            previousButtonClassName={previousButtonClassName}
             previousSlide={() => handleScroll("left")}
             nextSlide={() => handleScroll("right")}
             disableNextButton={scrollState === "last"}

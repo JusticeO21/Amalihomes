@@ -16,6 +16,21 @@ export interface CountryFields {
   country: string;
   otherName?: string;
   defaultLanguage: LanguageElement;
+  salesRepresentative: SalesRepresentative;
+}
+
+export interface SalesRepresentative {
+  metadata: Metadata;
+  sys: LanguageSys;
+  fields: SalesRepresentativeFields;
+}
+
+export interface SalesRepresentativeFields {
+  profile: Logo;
+  name: string;
+  role: string;
+  phoneNumber: string;
+  email: string;
 }
 
 export interface LanguageElement {

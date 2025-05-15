@@ -55,42 +55,51 @@ button {
   cursor: pointer;
 }
 
-button {
-  cursor: pointer;
+button:disabled {
+  cursor: not-allowed;
 }
-
-.slider {
-  -webkit-appearance: none;  /* Override default CSS styles */
-  appearance: none;
-  width: 100%; /* Full-width */
-  height: 4px; /* Specified height */
-  background: #FBA03C; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
-} 
-
-/* Mouse-over effects */
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 16px; /* Set a specific slider handle width */
-  height: 16px; /* Slider handle height */
-  background: #FBA03C;
-  border-radius: 50%; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-  width: 16px; /* Set a specific slider handle width */
-  height: 16px; /* Slider handle height */
-  border-radius: 50%; /* Green background */
-  background: #FBA03C; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
+ 
+ .spinner-after,.spinner-before {
+  animation: up 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+ }
+ 
+ .spinner-after {
+  animation: down 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+ }
+ 
+ @keyframes down {
+  0%, 100% {
+   transform: none;
+  }
+ 
+  25% {
+   transform: translateX(100%);
+  }
+ 
+  50% {
+   transform: translateX(100%) translateY(100%);
+  }
+ 
+  75% {
+   transform: translateY(100%);
+  }
+ }
+ 
+ @keyframes up {
+  0%, 100% {
+   transform: none;
+  }
+ 
+  25% {
+   transform: translateX(-100%);
+  }
+ 
+  50% {
+   transform: translateX(-100%) translateY(-100%);
+  }
+ 
+  75% {
+   transform: translateY(-100%);
+  }
+ }
+ 
