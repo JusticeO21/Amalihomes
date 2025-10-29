@@ -38,6 +38,7 @@ export type FilterProps = {
   onFilterChange?: (state: FilterState) => void;
   resetFilters?: () => void;
   className?: string;
+  onResetFilters?: (resetFn: () => void) => void;
 };
 
 export type FilterSectionProps = {
